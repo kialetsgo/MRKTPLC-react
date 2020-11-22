@@ -2,6 +2,7 @@
 import React from 'react'
 import 'bootstrap/scss/bootstrap.scss'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 import './App.scss'
 import Home from './../src/components/pages/Home'
 import About from './../src/components/pages/About'
@@ -14,19 +15,6 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <SiteHeader />
-          <Switch>
-
-          <Route path="/contact"><Contact /></Route>
-
-          <Route path="/about"><About /></Route>
-
-
-          <Route path="/"><Home /></Route>
-
-
-
-
-          </Switch>
         </Router>
 
       </div>
