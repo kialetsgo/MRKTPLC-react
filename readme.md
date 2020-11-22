@@ -12,3 +12,4 @@ NPM DEPENDENCIES INSTALLED
 `@material-ui/icons`
 
 `react-scrollspy`
+`react-scrollspy-nav`

@@ -15,9 +15,17 @@ class App extends React.Component {
         <Router>
           <SiteHeader />
           <Switch>
-            <Route path="/contact"><Contact /></Route>
-            <Route path="/about"><About /></Route>
-            <Route path="/"><Home /></Route>
+
+          <Route path="/contact"><Contact /></Route>
+
+          <Route path="/about"><About /></Route>
+
+
+          <Route path="/"><Home /></Route>
+
+
+
+
           </Switch>
         </Router>
 
