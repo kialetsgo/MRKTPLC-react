@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import axios from 'axios'
 import qs from 'qs'
 
@@ -15,8 +15,8 @@ class CreateListing extends React.Component {
         }
     }
 
-    handleChange(e, stateName) {
-        switch (stateName) {
+    handleChange(e, elemName) {
+        switch (elemName) {
             case 'listing_name':
                 this.setState({
                     listing_name: e.target.value
@@ -32,6 +32,11 @@ class CreateListing extends React.Component {
                     description: e.target.value
                 })
                 break;
+            case 'location':
+                this.setState({
+                    location: e.target.value
+                })
+                break;
             case 'category':
                 this.setState({
                     category: e.target.value
@@ -45,8 +50,6 @@ class CreateListing extends React.Component {
         }
         console.log(this.state)
     }
-
-    console.log('asdas')
 
     render() {
         return (
@@ -64,6 +67,7 @@ class CreateListing extends React.Component {
                     <div className="form-group">
                         <label htmlFor="category">Select Food Category</label>
                         <select className="form-control" onChange={e => { this.handleChange(e, 'category') }} id="category">
+                            <option>---PLEASE SELECT---</option>
                             <option>Dairy, Chilled & Eggs</option>
                             <option>Fruits & Vegetables</option>
                             <option>Meat & Seafood</option>
@@ -76,6 +80,7 @@ class CreateListing extends React.Component {
                     <div className="form-group">
                         <label htmlFor="location">Select Area</label>
                         <select className="form-control" onChange={e => { this.handleChange(e, 'location') }} id="location">
+                            <option>---PLEASE SELECT---</option>
                             <option>Ang Mo Kio</option>
                             <option>Bedok</option>
                             <option>Bishan</option>
@@ -108,7 +113,11 @@ class CreateListing extends React.Component {
                         <label htmlFor="description">Item Description</label>
                         <textarea className="form-control" onChange={e => { this.handleChange(e, 'description') }} id="description" rows="3"></textarea>
                     </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <div className="form-group">
+                        <label htmlFor="description">Select Expiry Date</label>
+                        <input type="date" onChange={e => { this.handleChange(e, 'expiry_date') }} className="form-control" id="expiry_date" />
+                    </div>
+                    <button type="submit" className="btn btn-primary mt-3">Submit</button>
                 </form>
             </div>
         )
