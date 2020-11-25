@@ -15,14 +15,15 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-          <SiteHeader />
+          
+        <SiteHeader />
           <Switch>
+
             <Route path="/users/register" component={Register} />
-            <Route path="/">
-              <Home />
-            </Route>
+
   
           </Switch>
+
           <SiteFooter />
         </Router>
 

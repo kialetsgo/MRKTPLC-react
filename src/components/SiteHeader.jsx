@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react'
+import { Link as ReactLink} from 'react-router-dom'
 import { Icon, IconButton } from '@material-ui/core'
 import 'bootstrap/scss/bootstrap.scss'
 // import { Link } from 'react-router-dom'
@@ -22,7 +23,7 @@ class SiteHeader extends Component {
         window.addEventListener("scroll", this.handleScroll);
     }
     componentWillUnmount() {
-        window.removeEventListener('scroll');
+        window.removeEventListener('scroll',this.handleScroll);
     }
     handleScroll = () => {
         if (window.pageYOffset > 140) {
@@ -48,17 +49,17 @@ class SiteHeader extends Component {
                         <ul className="navbar-nav mr-auto">
                             <li id="home" className="nav-item">
                                 <IconButton>
-                                    <Home /><Link to="/" className="nav-link" spy={true} smooth={true} duration={500} >Home</Link>
+                                    <Home /><Link hashSpy={true} to="/" className="nav-link" spy={true} smooth={true} duration={500} >Home</Link>
                                 </IconButton>
                             </li>
                             <li id="info" className="nav-item">
                                 <IconButton>
-                                    <Info /><Link to="/about" className="nav-link" spy={true} smooth={true} duration={500} >Info</Link>
+                                    <Info /><Link hashSpy={true} to="/about" className="nav-link" spy={true} smooth={true} duration={500} >Info</Link>
                                 </IconButton>
                             </li>
                             <li id="contact" className="nav-item">
                                 <IconButton>
-                                    <ContactMail /><Link to="/contact" className="nav-link" spy={true} smooth={true} duration={500} >Contact</Link>
+                                    <ContactMail /><Link hashSpy={true} to="/contact" className="nav-link" spy={true} smooth={true} duration={500} >Contact</Link>
                                 </IconButton>
                             </li>
                         </ul>
@@ -95,7 +96,7 @@ class SiteHeader extends Component {
                             </li>
                             <li className="nav-item">
                                 <IconButton>
-                                    <AddCircleOutline /><Link to="/" className="nav-link">Register</Link>
+                                    <AddCircleOutline /><ReactLink to="/users/register" className="nav-link">Register</ReactLink>
                                 </IconButton>
                             </li>
                             <li className="nav-item">
