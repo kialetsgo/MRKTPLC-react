@@ -26,20 +26,20 @@ class SiteHeader extends Component {
 
                             <li id="home" className="nav-item">
                                 <IconButton>
-                                    <Home /><Link to="/" className="nav-link">Home</Link>
+                                    <Home style={{fontSize: '20px'}}/><Link to="/" className="nav-link">Home</Link>
                                 </IconButton>
 
                             </li>
                             <li id="info" className="nav-item">
                                 <IconButton>
-                                    <Info /><Link to="/about" className="nav-link">Info</Link>
+                                    <Info style={{fontSize: '20px'}}/><Link to="/about" className="nav-link">Info</Link>
                                 </IconButton>
 
                             </li>
                             <li id="contact" className="nav-item">
 
                                 <IconButton>
-                                    <ContactMail /><Link to="/contact" className="nav-link">Contact</Link>
+                                    <ContactMail style={{fontSize: '20px'}}/><Link to="/contact" className="nav-link">Contact</Link>
                                 </IconButton>
 
                             </li>
@@ -58,12 +58,12 @@ class SiteHeader extends Component {
                         <ul class="navbar-nav mr-auto">
                             <li id="dashboard" className="nav-item">
                                 <IconButton>
-                                    <Dashboard /><Link to="/" className="nav-link">Dashboard</Link>
+                                    <Dashboard style={{fontSize: '20px'}}/><Link to="/" className="nav-link">Dashboard</Link>
                                 </IconButton>
                             </li>
                             <li id="event" className="nav-item">
                                 <IconButton>
-                                    <EventAvailable /><Link to="/" className="nav-link">Events</Link>
+                                    <EventAvailable style={{fontSize: '20px'}}/><Link to="/" className="nav-link">Events</Link>
                                 </IconButton>
                             </li>
                         </ul>
@@ -78,17 +78,17 @@ class SiteHeader extends Component {
                         <ul class="navbar-nav ml-auto">
                             <li className="nav-item">
                                 <IconButton>
-                                    <PersonSharp /><Link to="/" className="nav-link">Login</Link>
+                                    <PersonSharp style={{fontSize: '20px'}}/><Link to="/users/login" className="nav-link">Login</Link>
                                 </IconButton>
                             </li>
                             <li className="nav-item">
                                 <IconButton>
-                                    <AddCircleOutline /><Link to="/" className="nav-link">Register</Link>
+                                    <AddCircleOutline style={{fontSize: '20px'}}/><Link to="/users/register" className="nav-link">Register</Link>
                                 </IconButton>
                             </li>
                             <li className="nav-item">
-                                <IconButton>
-                                    <ExitToApp /><Link to="/" className="nav-link">Logout</Link>
+                                <IconButton fontSize="small">
+                                    <ExitToApp style={{fontSize: '20px'}}/><Link to="/" className="nav-link" >Logout</Link>
                                 </IconButton>
                             </li>
 

@@ -7,6 +7,9 @@ import Home from './../src/components/pages/Home'
 import About from './../src/components/pages/About'
 import Contact from './../src/components/pages/Contact'
 import SiteHeader from './components/SiteHeader'
+import SiteFooter from './components/SiteFooter'
+import Register from './components/pages/Register'
+import LoginPage from './components/pages/Login'
 
 class App extends React.Component {
   render() {
@@ -15,6 +18,9 @@ class App extends React.Component {
         <Router>
           <SiteHeader />
           <Switch>
+          <Route path="/users/register" component={Register} />
+
+          <Route path="/users/login" component={LoginPage} />
 
           <Route path="/contact"><Contact /></Route>
 
@@ -27,6 +33,7 @@ class App extends React.Component {
 
 
           </Switch>
+          <SiteFooter />
         </Router>
 
       </div>
