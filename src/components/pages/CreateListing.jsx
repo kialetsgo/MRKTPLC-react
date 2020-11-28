@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import axios from 'axios'
 import qs from 'qs'
 
@@ -15,8 +15,8 @@ class CreateListing extends React.Component {
         }
     }
 
-    handleChange(e, stateName) {
-        switch (stateName) {
+    handleChange(e, elemName) {
+        switch (elemName) {
             case 'listing_name':
                 this.setState({
                     listing_name: e.target.value
@@ -30,6 +30,11 @@ class CreateListing extends React.Component {
             case 'description':
                 this.setState({
                     description: e.target.value
+                })
+                break;
+            case 'location':
+                this.setState({
+                    location: e.target.value
                 })
                 break;
             case 'category':
@@ -46,24 +51,49 @@ class CreateListing extends React.Component {
         console.log(this.state)
     }
 
-    console.log('asdas')
+    handleFormSubmission(e) {
+        e.preventDefault() // prevent submit to another page
+        axios.post('http://localhost:5000/api/v1/listings/new', qs.stringify({
+            description: this.state.description,
+            img: this.state.img,
+            listing_name: this.state.listing_name,
+            category: this.state.category,
+            location: this.state.location,
+            expiry_date: this.state.expiry_date,
+        }))
+            .then(response => {
+                console.log(response.data)
+                this.setState({
+                    description: '',
+                    img: '',
+                    listing_name: '',
+                    category: '',
+                    location: '',
+                    expiry_date: '',
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     render() {
         return (
             <div className="container">
                 <h1 className="mt-5">Create Listing</h1>
-                <form className="mt-5 mb-5">
+                <form className="mt-5 mb-5" onSubmit={e => { this.handleFormSubmission(e) }}>
                     <div className="form-group">
                         <label htmlFor="listing_name">Name of Item</label>
-                        <input type="text" onChange={e => { this.handleChange(e, 'listing_name') }} className="form-control" id="listing_name" />
+                        <input type="text" value={this.state.listing_name} onChange={e => { this.handleChange(e, 'listing_name') }} className="form-control" id="listing_name" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="img">Image URL</label>
-                        <input type="text" onChange={e => { this.handleChange(e, 'img') }} className="form-control" id="img" />
+                        <input type="text" value={this.state.img} onChange={e => { this.handleChange(e, 'img') }} className="form-control" id="img" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="category">Select Food Category</label>
-                        <select className="form-control" onChange={e => { this.handleChange(e, 'category') }} id="category">
+                        <select className="form-control" value={this.state.category} onChange={e => { this.handleChange(e, 'category') }} id="category">
+                            <option>---PLEASE SELECT---</option>
                             <option>Dairy, Chilled & Eggs</option>
                             <option>Fruits & Vegetables</option>
                             <option>Meat & Seafood</option>
@@ -75,7 +105,8 @@ class CreateListing extends React.Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="location">Select Area</label>
-                        <select className="form-control" onChange={e => { this.handleChange(e, 'location') }} id="location">
+                        <select className="form-control" value={this.state.location} onChange={e => { this.handleChange(e, 'location') }} id="location">
+                            <option>---PLEASE SELECT---</option>
                             <option>Ang Mo Kio</option>
                             <option>Bedok</option>
                             <option>Bishan</option>
@@ -106,9 +137,13 @@ class CreateListing extends React.Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="description">Item Description</label>
-                        <textarea className="form-control" onChange={e => { this.handleChange(e, 'description') }} id="description" rows="3"></textarea>
+                        <textarea className="form-control" value={this.state.description} onChange={e => { this.handleChange(e, 'description') }} id="description" rows="3"></textarea>
                     </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <div className="form-group">
+                        <label htmlFor="description">Select Expiry Date</label>
+                        <input type="date" value={this.state.expiry_date} onChange={e => { this.handleChange(e, 'expiry_date') }} className="form-control" id="expiry_date" />
+                    </div>
+                    <button type="submit" className="btn btn-primary mt-3">Submit</button>
                 </form>
             </div>
         )
