@@ -53,6 +53,7 @@ class CreateListing extends React.Component {
 
     handleFormSubmission(e) {
         e.preventDefault() // prevent submit to another page
+        const token = this.props.cookies.get('token')
         axios.post('http://localhost:5000/api/v1/listings/new', qs.stringify({
             description: this.state.description,
             img: this.state.img,
@@ -60,6 +61,7 @@ class CreateListing extends React.Component {
             category: this.state.category,
             location: this.state.location,
             expiry_date: this.state.expiry_date,
+            token
         }))
             .then(response => {
                 console.log(response.data)

@@ -10,6 +10,7 @@ import SiteHeader from './components/SiteHeader'
 import SiteFooter from './components/SiteFooter'
 import Register from './components/pages/Register'
 import LoginPage from './components/pages/Login'
+import CreateListing from './components/pages/CreateListing'
 
 class App extends React.Component {
   render() {
@@ -18,10 +19,10 @@ class App extends React.Component {
         <Router>
           <SiteHeader />
           <Switch>
-
-          <Route path="/users/login" component={LoginPage} />
-          <Route path="/users/register" component={Register} />
-          <Route path="/"><Home /></Route>
+            <Route path="/listings/new" component={CreateListing} />
+            <Route path="/users/login" component={LoginPage} />
+            <Route path="/users/register" component={Register} />
+            <Route path="/"><Home /></Route>
 
 
 
