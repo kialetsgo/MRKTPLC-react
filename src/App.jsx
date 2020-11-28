@@ -18,15 +18,9 @@ class App extends React.Component {
         <Router>
           <SiteHeader />
           <Switch>
-          <Route path="/users/register" component={Register} />
 
           <Route path="/users/login" component={LoginPage} />
-
-          <Route path="/contact"><Contact /></Route>
-
-          <Route path="/about"><About /></Route>
-
-
+          <Route path="/users/register" component={Register} />
           <Route path="/"><Home /></Route>
 
 

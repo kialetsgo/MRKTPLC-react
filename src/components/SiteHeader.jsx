@@ -3,17 +3,17 @@ import React, { Component } from 'react'
 import { Icon, IconButton } from '@material-ui/core'
 import 'bootstrap/scss/bootstrap.scss'
 import { Link } from 'react-router-dom'
+import { HashLink as HLink } from 'react-router-hash-link';
 import { Home } from '@material-ui/icons';
 import { Info } from '@material-ui/icons'
 import { ContactMail } from '@material-ui/icons'
 import { Dashboard, PersonSharp, AddCircleOutline, EventAvailable, ExitToApp } from '@material-ui/icons'
 import './SiteHeader.scss'
-import Scrollspy from 'react-scrollspy'
 
 class SiteHeader extends Component {
     render() {
         return (
-            <div id="site-header">
+            <div id="site-header sticky" className="sticky">
                 <nav id="navbar-data" className="navbar navbar-expand-lg navbar-light bg-light">
 
 
@@ -26,20 +26,20 @@ class SiteHeader extends Component {
 
                             <li id="home" className="nav-item">
                                 <IconButton>
-                                    <Home style={{fontSize: '20px'}}/><Link to="/" className="nav-link">Home</Link>
+                                    <Home style={{fontSize: '20px'}}/><HLink to="/#page-home" className="nav-link">Home</HLink>
                                 </IconButton>
 
                             </li>
                             <li id="info" className="nav-item">
                                 <IconButton>
-                                    <Info style={{fontSize: '20px'}}/><Link to="/about" className="nav-link">Info</Link>
+                                    <Info style={{fontSize: '20px'}}/><HLink to="/about#page-about" className="nav-link">Info</HLink>
                                 </IconButton>
 
                             </li>
                             <li id="contact" className="nav-item">
 
                                 <IconButton>
-                                    <ContactMail style={{fontSize: '20px'}}/><Link to="/contact" className="nav-link">Contact</Link>
+                                    <ContactMail style={{fontSize: '20px'}}/><HLink to="/contact#page-contact" className="nav-link">Contact</HLink>
                                 </IconButton>
 
                             </li>
