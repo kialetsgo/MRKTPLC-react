@@ -1,4 +1,3 @@
-
 NPM DEPENDENCIES INSTALLED
 
 `qs`
@@ -14,6 +13,4 @@ NPM DEPENDENCIES INSTALLED
 
 `react-scrollspy`
 `react-scrollspy-nav`
-alingsad
-a line
 
