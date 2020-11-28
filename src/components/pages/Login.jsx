@@ -1,16 +1,93 @@
-/* eslint-disable no-unused-vars */
-import React, { Component } from 'react'
-import './Login.scss'
+import React from 'react'
+import axios from 'axios'
+import qs from 'qs'
+import moment from 'moment'
+import { withCookies } from 'react-cookie'
+import { withRouter } from 'react-router-dom'
 
-class LoginPage extends Component {
+class Login extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            email: '',
+            password: '',
+            formErr: [],
+        }
+    }
+
+    handleEmailChange(e) {
+        this.setState({
+            email: e.target.value
+        })
+    }
+
+    handlePasswrdChange(e) {
+        this.setState({
+            password: e.target.value
+        })
+    }
+
+    handleFormSubmission(e) {
+        e.preventDefault()
+
+        // make api call to login
+        axios.post('http://localhost:5000/api/v1/users/login', qs.stringify({
+            email: this.state.email,
+            password: this.state.password,
+        }))
+            .then(response => {
+                if (!response.data.success) {
+                    this.setState({
+                        formErr: "Email or username is incorrect, please try again"
+                    })
+                    return
+                }
+
+                this.props.cookies.set('token', response.data.token, {
+                    path: '/',
+                    expires: moment.unix(response.data.expiresAt).toDate()
+                })
+
+                this.props.history.push('/users/profile')
+            })
+
+            .catch(err => {
+                this.setState({
+                    formErr: "Email or username is incorrect, please try again"
+                })
+            })
+    }
+
     render() {
-        return (
+        return(
             <div className="page-login">
-                <p>this is a login page</p>
+                <div className="container">
+                    <form className="mt-5 mb-5" onSubmit={ e => { this.handleFormSubmission(e) } }>
+                        <div className="form-group">
+                            <label htmlFor="exampleInputEmail1">Email address</label>
+                            <input type="email" onChange={ e => { this.handleEmailChange(e) } } className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="exampleInputPassword1">Password</label>
+                            <input type="password" onChange={ e => { this.handlePasswrdChange(e) } } className="form-control" id="exampleInputPassword1" />
+                        </div>
+                        {
+                            this.state.formErr !== "" ? (
+                                <div className="form-group">
+                                    <p>{ this.state.formErr }</p>
+                                </div>
+                            ) : (
+                                ""
+                            )
+                        }
+                        <button type="submit" className="btn btn-primary">Login</button>
+                    </form>
+                </div>
 
             </div>
         )
     }
 }
 
-export default LoginPage
+export default withRouter(withCookies(Login))

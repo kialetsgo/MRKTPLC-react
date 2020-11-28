@@ -13,4 +13,7 @@ NPM DEPENDENCIES INSTALLED
 
 `react-scrollspy`
 `react-scrollspy-nav`
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
