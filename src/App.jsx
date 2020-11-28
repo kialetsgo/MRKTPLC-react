@@ -21,6 +21,7 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <SiteHeader />
+
             <Switch>
 
               <GuestRoute path="/users/login" component={Login} />
@@ -43,8 +44,9 @@ class App extends React.Component {
           <SiteFooter />
         </Router>
       </div>
-    );
+    )
   }
 }
 
 export default App;
+
