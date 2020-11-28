@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.1.2",
     "@testing-library/user-event": "^12.2.2",
@@ -12,9 +14,17 @@
     "node-sass": "^4.14.1",
     "qs": "^6.9.4",
     "react": "^17.0.1",
+
+
     "react-cookie": "^4.0.3",
+
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-router-hash-link": "^2.2.2",
     "react-scripts": "4.0.0",
+    "react-scroll": "^1.8.1",
+    "react-scrollspy": "^3.4.3",
+    "react-scrollspy-nav": "^1.2.4",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
