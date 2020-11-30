@@ -5,7 +5,7 @@ import './About.scss'
 class HomePage extends Component {
     render() {
         return (
-            <div className="page-about">
+            <div id="page-about">
                 <p>this is an about page</p>
 
             </div>

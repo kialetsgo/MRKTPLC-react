@@ -1,12 +1,10 @@
 #page-home {
-  margin-top: 10vh;;
-  height: 90vh;
-}
 
-#page-about {
   height: 100vh;
+  border:3px solid red;
+  
+  p{
+    margin-top:10vh;
+  }
 }
 
-#page-contact {
-  height: 95vh;
-}

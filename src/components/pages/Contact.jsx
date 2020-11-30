@@ -5,7 +5,7 @@ import './Contact.scss'
 class HomePage extends Component {
     render() {
         return (
-            <div className="page-contact">
+            <div id="page-contact">
                 <p>this is a contact page</p>
 
             </div>
