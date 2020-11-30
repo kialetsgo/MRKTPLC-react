@@ -1,15 +1,17 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
 import 'bootstrap/scss/bootstrap.scss'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.scss'
-import Home from './../src/components/pages/Home'
-import About from './../src/components/pages/About'
-import Contact from './../src/components/pages/Contact'
+import ProtectedRoute from './components/ProtectedRoute'
+import GuestRoute from './components/GuestRoute'
+import Home from './components/pages/Home'
+import About from './components/pages/About'
+import Contact from './components/pages/Contact.jsx'
+import UserProfile from './components/pages/UserProfile'
+import Login from './components/pages/Login'
+import Register from './components/pages/Register'
 import SiteHeader from './components/SiteHeader'
 import SiteFooter from './components/SiteFooter'
-import Register from './components/pages/Register'
-import LoginPage from './components/pages/Login'
 import CreateListing from './components/pages/CreateListing'
 
 class App extends React.Component {
@@ -18,23 +20,32 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <SiteHeader />
+
           <Switch>
-            <Route path="/listings/new" component={CreateListing} />
-            <Route path="/users/login" component={LoginPage} />
-            <Route path="/users/register" component={Register} />
-            <Route path="/"><Home /></Route>
 
+            <GuestRoute path="/users/login" component={Login} />
 
+            <GuestRoute path="/users/register" component={Register} />
 
+            <GuestRoute path="/about" component={About} />
+
+            <GuestRoute path="/contact" component={Contact} />
+
+            <ProtectedRoute path="/users/profile" component={UserProfile} />
+
+            <ProtectedRoute path="/listings/new" component={CreateListing} />
+
+            <Route path="/">
+              <Home />
+            </Route>
 
           </Switch>
           <SiteFooter />
         </Router>
-
       </div>
     )
   }
 }
 
-
 export default App;
+
