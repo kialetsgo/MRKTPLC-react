@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import './Contact.scss'
 
-class HomePage extends Component {
+class Contact extends Component {
     render() {
         return (
             <div id="page-contact">
@@ -13,4 +13,4 @@ class HomePage extends Component {
     }
 }
 
-export default HomePage
+export default Contact
