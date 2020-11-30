@@ -6,7 +6,11 @@ import ProtectedRoute from './components/ProtectedRoute'
 import GuestRoute from './components/GuestRoute'
 import Home from './components/pages/Home'
 import About from './components/pages/About'
+<<<<<<< HEAD
 import Contact from './components/pages/Contact.jsx'
+=======
+import Contact from './components/pages/Contact'
+>>>>>>> ca4acba60b4af73f4cf93a61a567678acfdec84e
 import UserProfile from './components/pages/UserProfile'
 import Login from './components/pages/Login'
 import Register from './components/pages/Register'

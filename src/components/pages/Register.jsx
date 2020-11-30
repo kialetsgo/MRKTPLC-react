@@ -64,8 +64,6 @@ class Login extends React.Component {
                     expires: moment.unix(response.data.expiresAt).toDate()
                 })
 
-                this.props.history.push('/users/profile')
-
                 // clear form messages
                 this.setState({
                     email: '',
@@ -75,9 +73,12 @@ class Login extends React.Component {
                     formErr: [],
                     })
 
+                this.props.history.push('/users/profile')
+
             })
             
             .catch(err => {
+                console.log(err)
                 this.setState({
                     formErr: "Username or email is taken, please try again"
                 })
