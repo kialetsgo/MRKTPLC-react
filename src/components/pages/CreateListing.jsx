@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios'
 import qs from 'qs'
+import { withCookies } from 'react-cookie'
+import { withRouter } from 'react-router-dom'
 
 class CreateListing extends React.Component {
     constructor(props) {
@@ -47,12 +49,20 @@ class CreateListing extends React.Component {
                     expiry_date: e.target.value
                 })
                 break;
+                default:
         }
         console.log(this.state)
     }
 
     handleFormSubmission(e) {
         e.preventDefault() // prevent submit to another page
+        const token = this.props.cookies.get('token')
+        const config = {
+            headers: {
+                'Authorization': token
+            }
+        }
+        console.log(token)
         axios.post('http://localhost:5000/api/v1/listings/new', qs.stringify({
             description: this.state.description,
             img: this.state.img,
@@ -60,7 +70,8 @@ class CreateListing extends React.Component {
             category: this.state.category,
             location: this.state.location,
             expiry_date: this.state.expiry_date,
-        }))
+            token
+        }), config)
             .then(response => {
                 console.log(response.data)
                 this.setState({
@@ -150,4 +161,4 @@ class CreateListing extends React.Component {
     }
 }
 
-export default CreateListing
+export default withRouter(withCookies(CreateListing))

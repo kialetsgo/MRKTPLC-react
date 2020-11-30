@@ -4,10 +4,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.scss'
 import ProtectedRoute from './components/ProtectedRoute'
 import GuestRoute from './components/GuestRoute'
-import './App.scss';
 import Home from './components/pages/Home'
 import About from './components/pages/About'
-import Contact from './src/components/pages/Contact'
+import Contact from './components/pages/Contact.jsx'
 import UserProfile from './components/pages/UserProfile'
 import Login from './components/pages/Login'
 import Register from './components/pages/Register'
@@ -22,25 +21,25 @@ class App extends React.Component {
         <Router>
           <SiteHeader />
 
-            <Switch>
+          <Switch>
 
-              <GuestRoute path="/users/login" component={Login} />
+            <GuestRoute path="/users/login" component={Login} />
 
-              <GuestRoute path="/users/register" component={Register} />
+            <GuestRoute path="/users/register" component={Register} />
 
-              <GuestRoute path="/about" component={About} />
+            <GuestRoute path="/about" component={About} />
 
-              <GuestRoute path="/contact" component={Contact} />
+            <GuestRoute path="/contact" component={Contact} />
 
-              <ProtectedRoute path="/users/profile" component={UserProfile} />
+            <ProtectedRoute path="/users/profile" component={UserProfile} />
 
-              <ProtectedRoute path="/listings/new" component={CreateListing} />
-              
-              <Route path="/">
-                <Home />
-              </Route>
+            <ProtectedRoute path="/listings/new" component={CreateListing} />
 
-            </Switch>
+            <Route path="/">
+              <Home />
+            </Route>
+
+          </Switch>
           <SiteFooter />
         </Router>
       </div>
