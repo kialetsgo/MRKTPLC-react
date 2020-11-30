@@ -4,7 +4,7 @@ import qs from 'qs'
 import moment from 'moment'
 import { withCookies } from 'react-cookie'
 import { withRouter } from 'react-router-dom'
-
+import './Login.scss'
 class Login extends React.Component {
     constructor(props) {
         super(props)

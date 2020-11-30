@@ -49,6 +49,7 @@ class CreateListing extends React.Component {
                     expiry_date: e.target.value
                 })
                 break;
+                default:
         }
         console.log(this.state)
     }

@@ -1,12 +1,12 @@
 import React from 'react'
+import './../pages/Home.scss'
 
 class Home extends React.Component {
     render() {
         return(
-            <div className="page-home">
-                <div className="container">
+            <div id="page-home">
 
-                </div>
+                <p>this is a home page</p>
             </div>
         )
     }
