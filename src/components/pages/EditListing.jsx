@@ -3,55 +3,52 @@ import axios from 'axios'
 import qs from 'qs'
 import { withCookies } from 'react-cookie'
 import { withRouter } from 'react-router-dom'
+import moment from 'moment'
 
-class CreateListing extends React.Component {
+class EditListing extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            description: '',
-            img: '',
-            listing_name: '',
-            category: '',
-            location: '',
-            expiry_date: '',
+            listing: {},
         }
     }
 
+    componentDidMount() {
+        const routeParams = this.props.match.params
+        // console.log(routeParams)
+        // console.log(this.props)
+
+        if (this.props.location.state && this.props.location.state.product) {
+            this.setState({
+                listing: this.props.location.state.product
+            })
+            return
+        }
+        // call getListing with the slug input
+        this.autoFillForm(routeParams.slug)
+    }
+
     handleChange(e, elemName) {
-        this.setState({ [elemName]: e.target.value })
-        // switch (elemName) {
-        //     case 'listing_name':
-        //         this.setState({
-        //             listing_name: e.target.value
-        //         })
-        //         break;
-        //     case 'img':
-        //         this.setState({
-        //             img: e.target.value
-        //         })
-        //         break;
-        //     case 'description':
-        //         this.setState({
-        //             description: e.target.value
-        //         })
-        //         break;
-        //     case 'location':
-        //         this.setState({
-        //             location: e.target.value
-        //         })
-        //         break;
-        //     case 'category':
-        //         this.setState({
-        //             category: e.target.value
-        //         })
-        //         break;
-        //     case 'expiry_date':
-        //         this.setState({
-        //             expiry_date: e.target.value
-        //         })
-        //         break;
-        // }
-        console.log(this.state)
+        this.setState({
+            listing: { ...this.state.listing, [elemName]: e.target.value } //elemName=name
+        })
+        console.log(this.state.listing)
+        console.log(moment(this.state.listing.expiry_date).format("YYYY-MM-DD"))
+    }
+
+    autoFillForm(slug) {
+        return axios.get(`http://localhost:5000/api/v1/listings/${slug}`)
+            .then(response => {
+                this.setState({
+                    listing: response.data
+                })
+                // console.log(response.data)
+                // console.log(this.state.listing)
+
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     handleFormSubmission(e) {
@@ -62,25 +59,18 @@ class CreateListing extends React.Component {
                 auth_token: token
             }
         }
-        console.log(token)
-        axios.post('http://localhost:5000/api/v1/users/listing/new', qs.stringify({
-            description: this.state.description,
-            img: this.state.img,
-            listing_name: this.state.listing_name,
-            category: this.state.category,
-            location: this.state.location,
-            expiry_date: this.state.expiry_date,
+        // console.log(token)
+        let slug = this.props.match.params.slug
+        axios.patch(`http://localhost:5000/api/v1/listings/${slug}`, qs.stringify({
+            description: this.state.listing.description,
+            img: this.state.listing.img,
+            listing_name: this.state.listing.listing_name,
+            category: this.state.listing.category,
+            location: this.state.listing.location,
+            expiry_date: this.state.listing.expiry_date,
         }), config)
             .then(response => {
                 console.log(response.data)
-                this.setState({
-                    description: '',
-                    img: '',
-                    listing_name: '',
-                    category: '',
-                    location: '',
-                    expiry_date: '',
-                })
             })
             .catch(err => {
                 console.log(err)
@@ -90,19 +80,19 @@ class CreateListing extends React.Component {
     render() {
         return (
             <div className="container">
-                <h1 className="mt-5">Create Listing</h1>
+                <h1 className="mt-5">Edit Listing</h1>
                 <form className="mt-5 mb-5" onSubmit={e => { this.handleFormSubmission(e) }}>
                     <div className="form-group">
                         <label htmlFor="listing_name">Name of Item</label>
-                        <input type="text" value={this.state.listing_name} onChange={e => { this.handleChange(e, 'listing_name') }} className="form-control" id="listing_name" />
+                        <input type="text" value={this.state.listing.listing_name} onChange={e => { this.handleChange(e, 'listing_name') }} className="form-control" id="listing_name" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="img">Image URL</label>
-                        <input type="text" value={this.state.img} onChange={e => { this.handleChange(e, 'img') }} className="form-control" id="img" />
+                        <input type="text" value={this.state.listing.img} onChange={e => { this.handleChange(e, 'img') }} className="form-control" id="img" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="category">Select Food Category</label>
-                        <select className="form-control" value={this.state.category} onChange={e => { this.handleChange(e, 'category') }} id="category">
+                        <select className="form-control" value={this.state.listing.category} onChange={e => { this.handleChange(e, 'category') }} id="category">
                             <option>---PLEASE SELECT---</option>
                             <option>Dairy, Chilled & Eggs</option>
                             <option>Fruits & Vegetables</option>
@@ -115,7 +105,7 @@ class CreateListing extends React.Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="location">Select Area</label>
-                        <select className="form-control" value={this.state.location} onChange={e => { this.handleChange(e, 'location') }} id="location">
+                        <select className="form-control" value={this.state.listing.location} onChange={e => { this.handleChange(e, 'location') }} id="location">
                             <option>---PLEASE SELECT---</option>
                             <option>Ang Mo Kio</option>
                             <option>Bedok</option>
@@ -147,17 +137,17 @@ class CreateListing extends React.Component {
                     </div>
                     <div className="form-group">
                         <label htmlFor="description">Item Description</label>
-                        <textarea className="form-control" value={this.state.description} onChange={e => { this.handleChange(e, 'description') }} id="description" rows="3"></textarea>
+                        <textarea className="form-control" value={this.state.listing.description} onChange={e => { this.handleChange(e, 'description') }} id="description" rows="3"></textarea>
                     </div>
                     <div className="form-group">
                         <label htmlFor="description">Select Expiry Date</label>
-                        <input type="date" value={this.state.expiry_date} onChange={e => { this.handleChange(e, 'expiry_date') }} className="form-control" id="expiry_date" />
+                        <input type="date" value={moment(this.state.listing.expiry_date).format("YYYY-MM-DD")} onChange={e => { this.handleChange(e, 'expiry_date') }} className="form-control" id="expiry_date" />
                     </div>
-                    <button type="submit" className="btn btn-primary mt-3">Submit</button>
+                    <button type="submit" className="btn btn-primary mt-3">Submit Changes</button>
                 </form>
             </div>
         )
     }
 }
 
-export default withRouter(withCookies(CreateListing))
+export default withRouter(withCookies(EditListing))

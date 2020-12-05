@@ -8,6 +8,7 @@ import { withCookies } from 'react-cookie'
 import { withRouter } from 'react-router-dom'
 
 const ajv = new Ajv({ allErrors: true })
+
 class Login extends React.Component {
     constructor(props) {
         super(props)
@@ -99,8 +100,8 @@ class Login extends React.Component {
 
     render() {
         return(
-            <div className="page-login">
-                <div className="container">
+            <div id="page-login">
+                <div className="container marginTop">
                     <form className="mt-5 mb-5" onSubmit={ e => { this.handleFormSubmission(e) } }>
                         <div className="form-group">
                             <label htmlFor="exampleInputEmail1">Email address</label>

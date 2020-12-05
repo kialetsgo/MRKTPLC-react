@@ -6,6 +6,7 @@ import Ajv from 'ajv'
 import RegistrationValidationSchema from '../../validation-schemas/registration'
 import { withCookies } from 'react-cookie'
 import { withRouter } from 'react-router-dom'
+import './Register.scss'
 
 const ajv = new Ajv({ allErrors: true })
 class Login extends React.Component {
@@ -44,6 +45,7 @@ class Login extends React.Component {
                     location: e.target.value
                 })
                 break
+                default:
         }
     }
 
@@ -127,21 +129,21 @@ class Login extends React.Component {
     }
 
     render() {
-        return(
-            <div className="page-login">
+        return (
+            <div id="page-register">
                 <div className="container">
-                    <form className="mt-5 mb-5" onSubmit={e => {this.handleFormSubmission(e)} }>
+                    <form className="mt-5 mb-5" onSubmit={e => { this.handleFormSubmission(e) }}>
                         <div className="form-group">
                             <label htmlFor="exampleInputEmail1">Email address</label>
-                            <input type="email" value={this.state.email} onChange={e => {this.handleChange(e, 'email')} } className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <input type="email" value={this.state.email} onChange={e => { this.handleChange(e, 'email') }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                         </div>
                         <div className="form-group">
                             <label htmlFor="exampleInputUser1">Username</label>
-                            <input type="text" value={this.state.username} onChange={e => {this.handleChange(e, 'username')} } className="form-control" id="exampleInputUser1" />
+                            <input type="text" value={this.state.username} onChange={e => { this.handleChange(e, 'username') }} className="form-control" id="exampleInputUser1" />
                         </div>
                         <div className="form-group">
                             <label htmlFor="exampleInputPassword1">Password</label>
-                            <input type="password" value={this.state.password} onChange={e => {this.handleChange(e, 'password')} } className="form-control" id="exampleInputPassword1" />
+                            <input type="password" value={this.state.password} onChange={e => { this.handleChange(e, 'password') }} className="form-control" id="exampleInputPassword1" />
                         </div>
                         <div className="form-group">
                             <label htmlFor="location">Select Area</label>

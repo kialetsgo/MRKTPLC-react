@@ -1,32 +1,31 @@
 import React from 'react'
 import axios from 'axios'
 import qs from 'qs'
+import { withCookies } from 'react-cookie'
+import { withRouter } from 'react-router-dom'
 
 class UserProfile extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            email: '',
             location: ''
         }
     }
 
-    getProfile() {
-        // make api call to get profile
-        return axios.get('/users/profile', qs.stringify({
-            email: this.state.email,
-            location: this.state.location,
-        }))
-            .then(response => {
-                this.setState({
-                    email: response.data.email,
-                    location: response.data.location
-                })
+    componentDidMount() {
+        const routeParams = this.props.match.params
+        // console.log(routeParams)
+        // console.log(this.props)
+
+        if (this.props.location.state && this.props.location.state.location) {
+            this.setState({
+                location: this.props.location.state.location
             })
-            .catch(err => {
-                console.log(err)
-            })
+            return
+        }
+        // call UserProfile with the input
+        this.autoFillForm(routeParams.location)
     }
 
     handleLocationChange(e) {
@@ -35,22 +34,38 @@ class UserProfile extends React.Component {
         })
     }
 
-    handleFormSubmission(e) {
-        e.preventDefault()
-
-        console.log(`form submission activated`)
-
-        // make api call to get profile
-        axios.patch('/users/profile', qs.stringify({
-            location: this.state.location
-        }))
+    autoFillForm(location) {
+        return axios.get('/users/profile')
             .then(response => {
-                console.log(response.data)
+                this.setState({
+                    location: response.data
+                })
             })
-
             .catch(err => {
                 console.log(err)
             })
+    }
+
+    handleFormSubmission(e) {
+        e.preventDefault() // prevent submit to another page
+        const token = this.props.cookies.get('token')
+        const config = {
+            headers: {
+                auth_token: token
+            }
+        }
+        // console.log(token)
+        let location = this.props.match.params.location
+        axios.patch('/users/profile', qs.stringify({
+            location: this.state.location
+        }), config)
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
     }
 
     render() {
@@ -64,34 +79,34 @@ class UserProfile extends React.Component {
                         </div> */}
                         <div className="form-group">
                             <label htmlFor="location">Select Area</label>
-                            <select className="form-control" onChange={e => { this.handleLocationChange(e) }} id="location">
-                                <option value="">---PLEASE SELECT---</option>
-                                <option value="Ang Mo Kio">Ang Mo Kio</option>
-                                <option value="Bedok">Bedok</option>
-                                <option value="Bishan">Bishan</option>
-                                <option value="Bukit Batok">Bukit Batok</option>
-                                <option value="Bukit Merah">Bukit Merah</option>
-                                <option value="Bukit Panjang">Bukit Panjang</option>
-                                <option value="Bukit Timah">Bukit Timah</option>
-                                <option value="Central">Central</option>
-                                <option value="Choa Chu Kang">Choa Chu Kang</option>
-                                <option value="Clementi">Clementi</option>
-                                <option value="Geylang">Geylang</option>
-                                <option value="Hougang">Hougang</option>
-                                <option value="Jurong East">Jurong East</option>
-                                <option value="Jurong West">Jurong West</option>
-                                <option value="Kallang / Whampoa">Kallang / Whampoa</option>
-                                <option value="Marine Parade">Marine Parade</option>
-                                <option value="Pasir Ris">Pasir Ris</option>
-                                <option value="Punggol">Punggol</option>
-                                <option value="Queenstown">Queenstown</option>
-                                <option value="Sembawang">Sembawang</option>
-                                <option value="Sengkang">Sengkang</option>
-                                <option value="Serangoon">Serangoon</option>
-                                <option value="Tampines">Tampines</option>
-                                <option value="Toa Payoh">Toa Payoh</option>
-                                <option value="Woodlands">Woodlands</option>
-                                <option value="Yishun">Yishun</option>
+                            <select className="form-control" value={this.state.location} onChange={e => { this.handleLocationChange(e) }} id="location">
+                                <option>---PLEASE SELECT---</option>
+                                <option>Ang Mo Kio</option>
+                                <option>Bedok</option>
+                                <option>Bishan</option>
+                                <option>Bukit Batok</option>
+                                <option>Bukit Merah</option>
+                                <option>Bukit Panjang</option>
+                                <option>Bukit Timah</option>
+                                <option>Central</option>
+                                <option>Choa Chu Kang</option>
+                                <option>Clementi</option>
+                                <option>Geylang</option>
+                                <option>Hougang</option>
+                                <option>Jurong East</option>
+                                <option>Jurong West</option>
+                                <option>Kallang / Whampoa</option>
+                                <option>Marine Parade</option>
+                                <option>Pasir Ris</option>
+                                <option>Punggol</option>
+                                <option>Queenstown</option>
+                                <option>Sembawang</option>
+                                <option>Sengkang</option>
+                                <option>Serangoon</option>
+                                <option>Tampines</option>
+                                <option>Toa Payoh</option>
+                                <option>Woodlands</option>
+                                <option>Yishun</option>
                             </select>
                         </div>
         
@@ -104,4 +119,4 @@ class UserProfile extends React.Component {
     }
 }
 
-export default UserProfile
+export default withRouter(withCookies(UserProfile))
