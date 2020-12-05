@@ -3,6 +3,7 @@ import axios from 'axios'
 import { withCookies } from 'react-cookie'
 import { withRouter } from 'react-router-dom'
 import jwt from 'jwt-decode'
+import moment from 'moment'
 import './ShowOneEvents.scss'
 class ShowOneEvents extends Component {
     constructor(props) {
@@ -88,7 +89,7 @@ class ShowOneEvents extends Component {
                                 <div className="col-7">
                                     <div className="page-heading">
                                         <h1>Event Details</h1>
-                                        <p>{this.state.event.hosted_date} at {this.state.event.hosted_time}</p>
+                                        <p>{moment(this.state.hosted_date).format("YYYY-MM-DD")} at {this.state.event.hosted_time}</p>
                                         <hr />
                                     </div>
                                     <article>

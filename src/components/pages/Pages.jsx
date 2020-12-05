@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react'
 import Home from './../pages/Home'
 import About from './../pages/About'
@@ -11,10 +12,8 @@ class Pages extends Component {
         return (
             <div id="guest-pages">
                 <Home />
-                <GuestRoute path="/about" component={About} />
-
-                <GuestRoute path="/contact" component={Contact} />
-
+                <About />
+                <Contact />
             </div>
         )
     }

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import qs from 'qs'
 import { withCookies } from 'react-cookie'
 import { withRouter } from 'react-router-dom'
+import moment from 'moment'
 import './ShowUserEvents.scss'
 
 class ShowUserEvents extends Component {
@@ -64,7 +65,7 @@ class ShowUserEvents extends Component {
                                                             }
                                                         }}><p className="host-by">{items.hosted_by} </p>
                                                         </Link>
-                                                        <p className="host-date">{items.hosted_date}</p>
+                                                        <p className="host-date">{moment(items.hosted_date).format("YYYY-MM-DD")}</p>
                                                         <p className="host-time">{items.hosted_time}</p>
                                                         <p className="location">{items.location}</p>
                                                     </div>
