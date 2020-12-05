@@ -56,10 +56,15 @@ class SiteHeader extends Component {
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent_center">
                         <ul class="navbar-nav mr-auto">
-                            <li id="dashboard" className="nav-item">
-                                <IconButton>
-                                    <Dashboard style={{ fontSize: '20px' }} /><Link to="/" className="nav-link">Dashboard</Link>
-                                </IconButton>
+                            <li id="dashboard" className="nav-item dropdown">
+                            <Link className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <IconButton>
+                                        <Dashboard style={{ fontSize: '20px' }} /><Link className="nav-link">DashBoard</Link>
+                                    </IconButton>
+                                </Link>
+                                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <Link className="dropdown-item" to="/currentuser/events">See User Events</Link>
+                                </div>
                             </li>
                             <li id="event" className="nav-item dropdown">
                                 <Link className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -69,10 +74,8 @@ class SiteHeader extends Component {
                                 </Link>
                                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <Link className="dropdown-item" to="/events/new">Host new event</Link>
-                                    <Link className="dropdown-item" to="/events/all">Show all events</Link>
+                                    <Link className="dropdown-item" to="/events">Show all events</Link>
                                 </div>
-
-
                             </li>
                         </ul>
                     </div>
