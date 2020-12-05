@@ -11,3 +11,4 @@ NPM DEPENDENCIES INSTALLED
 `@material-ui/core`
 `@material-ui/icons`
 
+npm install `tailwindcss` `postcss` `autoprefixer`
