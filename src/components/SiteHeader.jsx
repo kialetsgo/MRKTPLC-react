@@ -26,20 +26,20 @@ class SiteHeader extends Component {
 
                             <li id="home" className="nav-item">
                                 <IconButton>
-                                    <Home style={{fontSize: '20px'}}/><HLink to="/#page-home" className="nav-link">Home</HLink>
+                                    <Home style={{ fontSize: '20px' }} /><HLink to="/#page-home" className="nav-link">Home</HLink>
                                 </IconButton>
 
                             </li>
                             <li id="info" className="nav-item">
                                 <IconButton>
-                                    <Info style={{fontSize: '20px'}}/><HLink to="/about#page-about" className="nav-link">Info</HLink>
+                                    <Info style={{ fontSize: '20px' }} /><HLink to="/about#page-about" className="nav-link">Info</HLink>
                                 </IconButton>
 
                             </li>
                             <li id="contact" className="nav-item">
 
                                 <IconButton>
-                                    <ContactMail style={{fontSize: '20px'}}/><HLink to="/contact#page-contact" className="nav-link">Contact</HLink>
+                                    <ContactMail style={{ fontSize: '20px' }} /><HLink to="/contact#page-contact" className="nav-link">Contact</HLink>
                                 </IconButton>
 
                             </li>
@@ -56,15 +56,26 @@ class SiteHeader extends Component {
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent_center">
                         <ul class="navbar-nav mr-auto">
-                            <li id="dashboard" className="nav-item">
-                                <IconButton>
-                                    <Dashboard style={{fontSize: '20px'}}/><Link to="/" className="nav-link">Dashboard</Link>
-                                </IconButton>
+                            <li id="dashboard" className="nav-item dropdown">
+                            <Link className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <IconButton>
+                                        <Dashboard style={{ fontSize: '20px' }} /><Link className="nav-link">DashBoard</Link>
+                                    </IconButton>
+                                </Link>
+                                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <Link className="dropdown-item" to="/currentuser/events">See User Events</Link>
+                                </div>
                             </li>
-                            <li id="event" className="nav-item">
-                                <IconButton>
-                                    <EventAvailable style={{fontSize: '20px'}}/><Link to="/" className="nav-link">Events</Link>
-                                </IconButton>
+                            <li id="event" className="nav-item dropdown">
+                                <Link className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <IconButton>
+                                        <EventAvailable style={{ fontSize: '20px' }} /><Link className="nav-link">Events</Link>
+                                    </IconButton>
+                                </Link>
+                                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <Link className="dropdown-item" to="/events/new">Host new event</Link>
+                                    <Link className="dropdown-item" to="/events">Show all events</Link>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -78,17 +89,17 @@ class SiteHeader extends Component {
                         <ul class="navbar-nav ml-auto">
                             <li className="nav-item">
                                 <IconButton>
-                                    <PersonSharp style={{fontSize: '20px'}}/><Link to="/users/login" className="nav-link">Login</Link>
+                                    <PersonSharp style={{ fontSize: '20px' }} /><Link to="/users/login" className="nav-link">Login</Link>
                                 </IconButton>
                             </li>
                             <li className="nav-item">
                                 <IconButton>
-                                    <AddCircleOutline style={{fontSize: '20px'}}/><Link to="/users/register" className="nav-link">Register</Link>
+                                    <AddCircleOutline style={{ fontSize: '20px' }} /><Link to="/users/register" className="nav-link">Register</Link>
                                 </IconButton>
                             </li>
                             <li className="nav-item">
                                 <IconButton fontSize="small">
-                                    <ExitToApp style={{fontSize: '20px'}}/><Link to="/" className="nav-link" >Logout</Link>
+                                    <ExitToApp style={{ fontSize: '20px' }} /><Link to="/" className="nav-link" >Logout</Link>
                                 </IconButton>
                             </li>
 

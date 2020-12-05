@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import 'bootstrap/scss/bootstrap.scss'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -6,7 +7,6 @@ import ProtectedRoute from './components/ProtectedRoute'
 import GuestRoute from './components/GuestRoute'
 import Home from './components/pages/Home'
 import About from './components/pages/About'
-import Contact from './components/pages/Contact.jsx'
 import UserProfile from './components/pages/UserProfile'
 import Login from './components/pages/Login'
 import Register from './components/pages/Register'
@@ -18,6 +18,11 @@ import AllListings from './components/pages/AllListings'
 import UserListings from './components/pages/UserListings'
 import Listing from './components/pages/Listing'
 import EditListing from './components/pages/EditListing'
+import Pages from './components/pages/Pages'
+import CreateEvents from './components/pages/CreateEvents'
+import ShowAllEvents from './components/pages/ShowAllEvents'
+import ShowOneEvents from './components/pages/ShowOneEvents'
+import ShowUserEvents from './components/pages/ShowUserEvents'
 
 class App extends React.Component {
   render() {
@@ -32,9 +37,10 @@ class App extends React.Component {
 
             <GuestRoute path="/users/register" component={Register} />
 
-            <GuestRoute path="/about" component={About} />
-
-            <GuestRoute path="/contact" component={Contact} />
+            <Route path="/currentuser/events" component={ShowUserEvents} />
+            <Route path="/events/new" component={CreateEvents} />
+            <Route path="/events/:id" component={ShowOneEvents} />
+            <Route path="/events" component={ShowAllEvents} />
 
             <Route path="/listings/edit/:slug" component={EditListing} />
             <Route path="/listings/all" component={AllListings} />
@@ -43,13 +49,9 @@ class App extends React.Component {
 
 
             <ProtectedRoute path="/users/profile" component={UserProfile} />
-
             <ProtectedRoute path="/users/listing/new" component={CreateListing} />
 
-            <Route path="/">
-              <Home />
-            </Route>
-
+            <Route path="/" component={Pages} />
           </Switch>
           <SiteFooter />
         </Router>
