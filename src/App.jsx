@@ -13,11 +13,17 @@ import Register from './components/pages/Register'
 import SiteHeader from './components/SiteHeader'
 import SiteFooter from './components/SiteFooter'
 import CreateListing from './components/pages/CreateListing'
+import UserDashboard from './components/pages/UserDashboard'
+import AllListings from './components/pages/AllListings'
+import UserListings from './components/pages/UserListings'
+import Listing from './components/pages/Listing'
+import EditListing from './components/pages/EditListing'
 import Pages from './components/pages/Pages'
 import CreateEvents from './components/pages/CreateEvents'
 import ShowAllEvents from './components/pages/ShowAllEvents'
 import ShowOneEvents from './components/pages/ShowOneEvents'
 import ShowUserEvents from './components/pages/ShowUserEvents'
+
 class App extends React.Component {
   render() {
     return (
@@ -31,22 +37,19 @@ class App extends React.Component {
 
             <GuestRoute path="/users/register" component={Register} />
 
-            <Route path="/currentuser/events" component={ShowUserEvents}/>
+            <Route path="/currentuser/events" component={ShowUserEvents} />
             <Route path="/events/new" component={CreateEvents} />
             <Route path="/events/:id" component={ShowOneEvents} />
             <Route path="/events" component={ShowAllEvents} />
 
-
-
+            <Route path="/listings/edit/:slug" component={EditListing} />
+            <Route path="/listings/all" component={AllListings} />
+            <Route path="/listings/:slug" component={Listing} />
+            <ProtectedRoute path="/users/listings" component={UserListings} />
 
 
             <ProtectedRoute path="/users/profile" component={UserProfile} />
-
-
-            <ProtectedRoute path="/listings/new" component={CreateListing} />
-
-
-
+            <ProtectedRoute path="/users/listing/new" component={CreateListing} />
 
             <Route path="/" component={Pages} />
           </Switch>
