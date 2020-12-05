@@ -1,21 +1,34 @@
-import axios from 'axios'
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
-import './ShowAllEvents.scss'
+import qs from 'qs'
+import { withCookies } from 'react-cookie'
+import { withRouter } from 'react-router-dom'
+import './ShowUserEvents.scss'
 
-class CreateEvents extends Component {
+class ShowUserEvents extends Component {
     constructor(props) {
         super(props)
         this.state = {
             events: []
         }
     }
-    componentDidMount() {
-        this.getEvents()
-    }
-    getEvents() {
 
-        axios.get('http://localhost:5000/api/v1/events')
+    componentDidMount() {
+        this.getUsersEvents()
+    }
+    getUsersEvents() {
+
+        const token = this.props.cookies.get('token')
+        const config = {
+            headers: {
+                'Authorization': token
+            }
+        }
+        console.log(token)
+
+        axios.get('http://localhost:5000/api/v1/currentuser/events',config)
             .then(response => {
                 this.setState({
                     events: response.data
@@ -29,7 +42,7 @@ class CreateEvents extends Component {
 
     render() {
         return (
-            <div id="show-all-event-page">
+            <div id="show-all-user-event-page">
                 <div className="container">
                     <div className="page-heading">
                         <h1>Current active events</h1>
@@ -77,4 +90,5 @@ class CreateEvents extends Component {
     }
 }
 
-export default CreateEvents
+
+export default withRouter(withCookies(ShowUserEvents))

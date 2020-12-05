@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import axios from'axios'
+import axios from 'axios'
 import qs from 'qs'
+import { withCookies } from 'react-cookie'
+import { withRouter } from 'react-router-dom'
 import './CreateEvents.scss'
 
 class CreateEvents extends Component {
@@ -9,8 +11,8 @@ class CreateEvents extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            hosted_by: '',
             hosted_date: '',
+            hosted_time: '',
             location: '',
             description: '',
             listed_product: '',
@@ -29,6 +31,11 @@ class CreateEvents extends Component {
                     hosted_date: e.target.value
                 })
                 break;
+            case 'hosted_time':
+                this.setState({
+                    hosted_time: e.target.value
+                })
+                break;
             case 'location':
                 this.setState({
                     location: e.target.value
@@ -44,24 +51,32 @@ class CreateEvents extends Component {
                     listed_product: e.target.value
                 })
                 break;
-                default:
+            default:
         }
     }
 
     handleFormSubmission(e) {
         e.preventDefault() // prevent submit to another page
-        axios.post('http://localhost:5000/api/vi/events/new', qs.stringify({
-            hosted_by: this.state.hosted_by,
+        const token = this.props.cookies.get('token')
+        const config = {
+            headers: {
+                'Authorization': token
+            }
+        }
+        console.log(token)
+
+        axios.post('http://localhost:5000/api/v1/events/new', qs.stringify({
             hosted_date: this.state.hosted_date,
+            hosted_time:this.state.hosted_time,
             location: this.state.location,
             description: this.state.description,
             listed_product: this.state.listed_product,
-        }))
+        }), config)
             .then(response => {
                 console.log(response.data)
                 this.setState({
-                    hosted_by: '',
                     hosted_date: '',
+                    hosted_time:'',
                     location: '',
                     description: '',
                     listed_product: '',
@@ -71,21 +86,14 @@ class CreateEvents extends Component {
                 console.log(err)
             })
     }
-
-
-
-
     render() {
         return (
 
 
-            <div id="create-event-page" className="container">
-                <p>this is create a event page</p>
+            <div id="create-event-page">
+                <div className="container">
+                <h1>this is create a event page</h1>
                 <form className="mt-5 mb-5" onSubmit={e => { this.handleFormSubmission(e) }}>
-                <div className="form-group">
-                        <label htmlFor="hosted_by">Hosted by:</label>
-                        <input type="string" value={this.state.hosted_by} onChange={e => { this.handleChange(e, 'hosted_by') }} className="form-control" id="hosted_by" />
-                    </div>
                     <div className="form-group">
                         <label htmlFor="location">Location</label>
                         <input type="string" value={this.state.location} onChange={e => { this.handleChange(e, 'location') }} className="form-control" id="location" />
@@ -93,6 +101,10 @@ class CreateEvents extends Component {
                     <div className="form-group">
                         <label htmlFor="hosted_date">Date of event</label>
                         <input type="date" value={this.state.hosted_date} onChange={e => { this.handleChange(e, 'hosted_date') }} className="form-control" id="hosted_date" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="hosted_time">Time of event</label>
+                        <input type="time" value={this.state.hosted_time} onChange={e => { this.handleChange(e, 'hosted_time') }} className="form-control" id="hosted_time" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="description">Description</label>
@@ -104,6 +116,7 @@ class CreateEvents extends Component {
                         <button type="submit" className="btn btn-primary">Login</button>
                     </div>
                 </form>
+                </div>
             </div>
 
 
@@ -112,4 +125,4 @@ class CreateEvents extends Component {
     }
 }
 
-export default CreateEvents
+export default withRouter(withCookies(CreateEvents))

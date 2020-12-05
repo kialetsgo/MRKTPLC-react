@@ -16,6 +16,8 @@ import CreateListing from './components/pages/CreateListing'
 import Pages from './components/pages/Pages'
 import CreateEvents from './components/pages/CreateEvents'
 import ShowAllEvents from './components/pages/ShowAllEvents'
+import ShowOneEvents from './components/pages/ShowOneEvents'
+import ShowUserEvents from './components/pages/ShowUserEvents'
 class App extends React.Component {
   render() {
     return (
@@ -29,9 +31,11 @@ class App extends React.Component {
 
             <GuestRoute path="/users/register" component={Register} />
 
-
+            <Route path="/currentuser/events" component={ShowUserEvents}/>
             <Route path="/events/new" component={CreateEvents} />
-            <Route path="/events/all" component={ShowAllEvents} />
+            <Route path="/events/:id" component={ShowOneEvents} />
+            <Route path="/events" component={ShowAllEvents} />
+
 
 
 

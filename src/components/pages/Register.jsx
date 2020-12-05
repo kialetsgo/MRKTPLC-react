@@ -91,7 +91,7 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div className="page-login">
+            <div id="page-register">
                 <div className="container">
                     <form className="mt-5 mb-5" onSubmit={e => { this.handleFormSubmission(e) }}>
                         <div className="form-group">
