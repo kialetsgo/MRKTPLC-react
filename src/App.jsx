@@ -13,6 +13,11 @@ import Register from './components/pages/Register'
 import SiteHeader from './components/SiteHeader'
 import SiteFooter from './components/SiteFooter'
 import CreateListing from './components/pages/CreateListing'
+import UserDashboard from './components/pages/UserDashboard'
+import AllListings from './components/pages/AllListings'
+import UserListings from './components/pages/UserListings'
+import Listing from './components/pages/Listing'
+import EditListing from './components/pages/EditListing'
 
 class App extends React.Component {
   render() {
@@ -31,9 +36,15 @@ class App extends React.Component {
 
             <GuestRoute path="/contact" component={Contact} />
 
+            <Route path="/listings/edit/:slug" component={EditListing} />
+            <Route path="/listings/all" component={AllListings} />
+            <Route path="/listings/:slug" component={Listing} />
+            <ProtectedRoute path="/users/listings" component={UserListings} />
+
+
             <ProtectedRoute path="/users/profile" component={UserProfile} />
 
-            <ProtectedRoute path="/listings/new" component={CreateListing} />
+            <ProtectedRoute path="/users/listing/new" component={CreateListing} />
 
             <Route path="/">
               <Home />
