@@ -2,9 +2,12 @@ import React from 'react'
 import axios from 'axios'
 import qs from 'qs'
 import moment from 'moment'
+import Ajv from 'ajv'
+import LoginValidationSchema from '../../validation-schemas/login'
 import { withCookies } from 'react-cookie'
 import { withRouter } from 'react-router-dom'
 
+const ajv = new Ajv({ allErrors: true })
 class Login extends React.Component {
     constructor(props) {
         super(props)
@@ -31,32 +34,67 @@ class Login extends React.Component {
     handleFormSubmission(e) {
         e.preventDefault()
 
-        // make api call to login
-        axios.post('http://localhost:5000/api/v1/users/login', qs.stringify({
-            email: this.state.email,
-            password: this.state.password,
-        }))
-            .then(response => {
-                if (!response.data.success) {
+        this.setState({
+            formErr: []
+        })
+
+        // validate form
+        const formValid = this.validateFormInputs()
+
+        if (formValid) {
+
+            // make api call to login
+            axios.post('http://localhost:5000/api/v1/users/login', qs.stringify({
+                email: this.state.email,
+                password: this.state.password,
+            }))
+                .then(response => {
+                    if (!response.data.success) {
+                        this.setState({
+                            formErr: "Email or username is incorrect, please try again"
+                        })
+                        return
+                    }
+
+                    this.props.cookies.set('token', response.data.token, {
+                        path: '/',
+                        expires: moment.unix(response.data.expiresAt).toDate()
+                    })
+
+                    this.props.history.push('/users/profile')
+                })
+
+                .catch(err => {
                     this.setState({
                         formErr: "Email or username is incorrect, please try again"
                     })
-                    return
-                }
-
-                this.props.cookies.set('token', response.data.token, {
-                    path: '/',
-                    expires: moment.unix(response.data.expiresAt).toDate()
                 })
 
-                this.props.history.push('/users/profile')
-            })
+        }
 
-            .catch(err => {
-                this.setState({
-                    formErr: "Email or username is incorrect, please try again"
-                })
+    }
+
+    validateFormInputs() {
+        const err = []
+
+        const formValid = ajv.validate(LoginValidationSchema, this.state)
+
+        if (!formValid) {
+            ajv.errors.forEach(e => {
+                let field = e.dataPath.toUpperCase()
+                err.push(`${field} field ${e.message}`)
             })
+        }
+
+        if (err.length === 0) {
+            return true
+        }
+
+        this.setState({
+            formErr: err
+        })
+
+        return false
     }
 
     render() {
@@ -73,13 +111,19 @@ class Login extends React.Component {
                             <input type="password" onChange={ e => { this.handlePasswrdChange(e) } } className="form-control" id="exampleInputPassword1" />
                         </div>
                         {
-                            this.state.formErr !== "" ? (
+                            this.state.formErr.length > 0 ?
+                            (
                                 <div className="form-group">
-                                    <p>{ this.state.formErr }</p>
+                                    {
+                                        this.state.formErr.map(msg => {
+                                            return (
+                                                <p>{msg}</p>
+                                            )
+                                        })
+                                    }
                                 </div>
-                            ) : (
-                                ""
-                            )
+                            ) :
+                            ''
                         }
                         <button type="submit" className="btn btn-primary">Login</button>
                     </form>
