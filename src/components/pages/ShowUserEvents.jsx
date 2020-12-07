@@ -29,7 +29,7 @@ class ShowUserEvents extends Component {
         }
         console.log(token)
 
-        axios.get('http://localhost:5000/api/v1/currentuser/events',config)
+        axios.get('http://localhost:5000/api/v1/users/events',config)
             .then(response => {
                 this.setState({
                     events: response.data
