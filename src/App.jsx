@@ -23,6 +23,7 @@ import CreateEvents from './components/pages/CreateEvents'
 import ShowAllEvents from './components/pages/ShowAllEvents'
 import ShowOneEvents from './components/pages/ShowOneEvents'
 import ShowUserEvents from './components/pages/ShowUserEvents'
+import 'tailwindcss/tailwind.css'
 
 class App extends React.Component {
   render() {
