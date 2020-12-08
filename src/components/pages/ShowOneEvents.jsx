@@ -4,6 +4,7 @@ import { withCookies } from 'react-cookie'
 import { withRouter } from 'react-router-dom'
 import jwt from 'jwt-decode'
 import moment from 'moment'
+import qs from 'qs'
 import './ShowOneEvents.scss'
 
 class ShowOneEvents extends Component {
@@ -28,6 +29,7 @@ class ShowOneEvents extends Component {
 
         this.getSingleEvent(routeParams.id)
         this.confirmUser()
+
     }
 
     getSingleEvent(id) {
@@ -37,7 +39,7 @@ class ShowOneEvents extends Component {
                 this.setState({
                     event: response.data
                 })
-                console.log(response.data)
+                console.log(this.state.event.people_joining)
             })
             .catch(err => {
                 console.log(err)
@@ -81,6 +83,48 @@ class ShowOneEvents extends Component {
 
     }
 
+
+    RSVP(e) {
+
+
+        e.preventDefault()
+        const token = this.props.cookies.get("token")
+        const decodedToken = jwt(token)
+        const routeParams = this.props.match.params
+        const id = routeParams.id
+
+        let currentUserList = this.state.event.people_joining
+        if (currentUserList.includes(decodedToken.username) === false) {
+
+            this.setState({
+                event: { ...this.state.event, people_joining: decodedToken.username }
+            })
+            console.log(this.state.event)
+            const config = {
+                headers: {
+                    auth_token: token
+                }
+            }
+
+            axios.patch(`http://localhost:5000/api/v1/events/${id}`, qs.stringify({
+
+                people_joining: decodedToken.username
+            }), config)
+                .then(response => {
+                    console.log(this.state)
+                    console.log(response.data)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        } else {
+            console.log('nope')
+            let array = this.state.event.people_joining
+            console.log(Array.isArray(array))
+            console.log(this.state.event.people_joining.length)
+        }
+    }
+
     render() {
         return (
             <div id="show-single-event">
@@ -92,6 +136,11 @@ class ShowOneEvents extends Component {
                                     <div className="page-heading">
                                         <h1>Event Details</h1>
                                         <p>{moment(this.state.hosted_date).format("YYYY-MM-DD")} at {this.state.event.hosted_time}</p>
+                                        <p>Contact us at {this.state.event.contact_number}</p>
+
+                                        <p>{this.state.event.people_joining}</p>
+
+
                                         <hr />
                                     </div>
                                     <article>
@@ -102,6 +151,8 @@ class ShowOneEvents extends Component {
                                         }
                                     </article>
                                     <button onClick={e => { this.RSVP(e) }} type="button" class="btn btn-primary">Join Event</button> ) :""
+
+                                    <button onClick={e => { this.RSVP(e) }} type="button" class="btn btn-primary">Join Event</button>
 
 
 

@@ -9,7 +9,8 @@ class UserProfile extends React.Component {
         super(props)
 
         this.state = {
-            location: ''
+            location: '',
+            formUpdate: []
         }
     }
 
@@ -34,8 +35,8 @@ class UserProfile extends React.Component {
         })
     }
 
-    autoFillForm(location) {
-        return axios.get('/users/profile')
+    autoFillForm() {
+        return axios.get('http://localhost:5000/api/v1/users/profile')
             .then(response => {
                 this.setState({
                     location: response.data
@@ -47,7 +48,12 @@ class UserProfile extends React.Component {
     }
 
     handleFormSubmission(e) {
-        e.preventDefault() // prevent submit to another page
+        e.preventDefault()
+
+        this.setState({
+            formUpdate: []
+        })
+
         const token = this.props.cookies.get('token')
         const config = {
             headers: {
@@ -55,24 +61,31 @@ class UserProfile extends React.Component {
             }
         }
         // console.log(token)
-        let location = this.props.match.params.location
-        axios.patch('/users/profile', qs.stringify({
+        axios.patch('http://localhost:5000/api/v1/users/profile', qs.stringify({
             location: this.state.location
         }), config)
             .then(response => {
                 console.log(response.data)
+                this.setState({
+                    formUpdate: "Location has been updated"
+                })
             })
             .catch(err => {
                 console.log(err)
             })
 
+        this.setState({
+            location: '',
+        })
+
+
     }
 
     render() {
-        return(
+        return (
             <div className="page-userProfile">
                 <div className="container">
-                    <form className="mt-5 mb-5" onSubmit={ e => { this.handleFormSubmission(e) } }>
+                    <form className="mt-5 mb-5" onSubmit={e => { this.handleFormSubmission(e) }}>
                         {/* <div className="form-group">
                             <label htmlFor="exampleInputEmail1">Email address</label>
                             <input type="email" defaultValue={this.state.email} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
@@ -109,12 +122,23 @@ class UserProfile extends React.Component {
                                 <option>Yishun</option>
                             </select>
                         </div>
-        
-                        <button type="submit" className="btn btn-primary">Update</button>
-                    </form>
-                </div>
+<<<<<<< HEAD
 
+=======
+                        {
+                        this.state.formUpdate !== '' ? (
+                            <div className="form-group">
+                                <p>{this.state.formUpdate}</p>
+                            </div>
+                        ) :
+                            ''
+                    }
+>>>>>>> master
+                    <button type="submit" className="btn btn-primary">Update</button>
+                    </form>
             </div>
+
+            </div >
         )
     }
 }
