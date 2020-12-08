@@ -122,21 +122,17 @@ class UserProfile extends React.Component {
                                 <option>Yishun</option>
                             </select>
                         </div>
-<<<<<<< HEAD
-
-=======
                         {
-                        this.state.formUpdate !== '' ? (
-                            <div className="form-group">
-                                <p>{this.state.formUpdate}</p>
-                            </div>
-                        ) :
-                            ''
-                    }
->>>>>>> master
-                    <button type="submit" className="btn btn-primary">Update</button>
+                            this.state.formUpdate !== '' ? (
+                                <div className="form-group">
+                                    <p>{this.state.formUpdate}</p>
+                                </div>
+                            ) :
+                                ''
+                        }
+                        <button type="submit" className="btn btn-primary">Update</button>
                     </form>
-            </div>
+                </div>
 
             </div >
         )
