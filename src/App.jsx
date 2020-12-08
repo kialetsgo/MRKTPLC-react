@@ -24,6 +24,7 @@ import CreateEvents from './components/pages/CreateEvents'
 import ShowAllEvents from './components/pages/ShowAllEvents'
 import ShowOneEvents from './components/pages/ShowOneEvents'
 import ShowUserEvents from './components/pages/ShowUserEvents'
+import 'tailwindcss/tailwind.css'
 
 class App extends React.Component {
   render() {
@@ -34,11 +35,11 @@ class App extends React.Component {
 
           <Switch>
 
-            <GuestRoute path="/users/login" component={Login} />
+            <Route path="/users/login" component={Login} />
 
-            <GuestRoute path="/users/register" component={Register} />
+            <Route path="/users/register" component={Register} />
 
-            <Route path="/currentuser/events" component={ShowUserEvents} />
+            <Route path="/user/events" component={ShowUserEvents} />
             <Route path="/events/new" component={CreateEvents} />
             <Route path="/events/:id" component={ShowOneEvents} />
             <Route path="/events" component={ShowAllEvents} />

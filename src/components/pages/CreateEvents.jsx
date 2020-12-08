@@ -17,6 +17,7 @@ class CreateEvents extends Component {
             location: '',
             description: '',
             listed_product: '',
+            contact_number: '',
         }
     }
 
@@ -52,6 +53,11 @@ class CreateEvents extends Component {
                     listed_product: e.target.value
                 })
                 break;
+            case 'contact_number':
+                this.setState({
+                    contact_number: e.target.value
+                })
+                break;
             default:
         }
     }
@@ -61,7 +67,7 @@ class CreateEvents extends Component {
         const token = this.props.cookies.get('token')
         const config = {
             headers: {
-                'Authorization': token
+                auth_token : token
             }
         }
         console.log(token)
@@ -72,6 +78,7 @@ class CreateEvents extends Component {
             location: this.state.location,
             description: this.state.description,
             listed_product: this.state.listed_product,
+            contact_number:this.state.contact_number,
         }), config)
             .then(response => {
                 console.log(response.data)
@@ -81,6 +88,7 @@ class CreateEvents extends Component {
                     location: '',
                     description: '',
                     listed_product: '',
+                    contact_number:'',
                 })
             })
             .catch(err => {
@@ -134,6 +142,10 @@ class CreateEvents extends Component {
                         <div className="form-group">
                             <label htmlFor="hosted_time">Time of event</label>
                             <input type="time" value={this.state.hosted_time} onChange={e => { this.handleChange(e, 'hosted_time') }} className="form-control" id="hosted_time" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="contact_number">Contact</label>
+                            <input type="number" value={this.state.contact_number} onChange={e => { this.handleChange(e, 'contact_number') }} className="form-control" id="contact_number" />
                         </div>
                         <div className="form-group">
                             <label htmlFor="description">Description</label>

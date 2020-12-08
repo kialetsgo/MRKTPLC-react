@@ -24,3 +24,19 @@
     }
 
 }
+
+
+
+.sticky {
+    position: fixed;
+    width: 100vw;
+    top: 0; /* required */
+    background-color: lightgrey;
+  
+  }
+  
+
+  /*extra cause the loging seems not working*/
+  .nav-item {
+      list-style-type: none;
+  }
