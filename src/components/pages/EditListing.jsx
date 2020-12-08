@@ -4,7 +4,6 @@ import qs from 'qs'
 import { withCookies } from 'react-cookie'
 import { withRouter } from 'react-router-dom'
 import moment from 'moment'
-
 class EditListing extends React.Component {
     constructor(props) {
         super(props)
@@ -71,6 +70,7 @@ class EditListing extends React.Component {
         }), config)
             .then(response => {
                 console.log(response.data)
+                this.props.history.push(`/users/listings`)
             })
             .catch(err => {
                 console.log(err)

@@ -3,6 +3,7 @@ import React from 'react'
 import jwt from 'jwt-decode'
 import { withCookies } from 'react-cookie'
 import { Link } from 'react-router-dom'
+import './Listing.scss'
 
 class Listing extends React.Component {
     constructor(props) {
@@ -64,7 +65,7 @@ class Listing extends React.Component {
         axios.delete(`http://localhost:5000/api/v1/listings/${slug}`)
             .then(response => {
                 console.log(response.data)
-                this.props.history.push('/listings/all')
+                this.props.history.push('/users/listings')
             })
             .catch(err => {
                 console.log(err)
@@ -91,17 +92,21 @@ class Listing extends React.Component {
 
                 {
                     this.confirmUser() ? (
-                        <div>
-                            <button type="button" class="btn btn-primary">Edit Listing</button>
-                            <Link to={{
-                                // link to new path
-                                pathname: `/listings/edit/${this.state.listing.slug}`,
-                                state: {
-                                    listing: this.state.listing.slug
-                                }
-                            }}>
-                            </Link>
-                            <button onClick={e => { this.handleDelete(e) }} type="button" class="btn btn-danger">Delete Listing</button>
+                        <div className="buttons">
+                            <div className="edit-button">
+                                <button type="button" class="btn btn-primary">Edit Listing</button>
+                                <Link to={{
+                                    // link to new path
+                                    pathname: `/listings/edit/${this.state.listing.slug}`,
+                                    state: {
+                                        listing: this.state.listing.slug
+                                    }
+                                }}>
+                                </Link>
+                            </div>
+                            <div className="delete-button">
+                                <button onClick={e => { this.handleDelete(e) }} type="button" class="btn btn-danger">Delete Listing</button>
+                            </div>
                         </div>
 
                     ) : ""

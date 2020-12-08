@@ -5,11 +5,12 @@ import { withRouter } from 'react-router-dom'
 import jwt from 'jwt-decode'
 import moment from 'moment'
 import './ShowOneEvents.scss'
+
 class ShowOneEvents extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            event: []
+            event: {},
         }
     }
 
@@ -59,26 +60,27 @@ class ShowOneEvents extends Component {
         }
     }
 
-    
+
     handleDelete(e) {
         console.log('click')
         e.preventDefault()
         const routeParams = this.props.match.params
         const id = routeParams.id
-        
+
 
         axios.delete(`http://localhost:5000/api/v1/events/${id}`)
-        .then(response => {
-            console.log(response.data)
-            this.props.history.push('/events')
+            .then(response => {
+                console.log(response.data)
+                this.props.history.push('/events')
 
-        })
-        .catch(err => {
-            console.log(err)
-        })
+            })
+            .catch(err => {
+                console.log(err)
+            })
 
 
     }
+
     render() {
         return (
             <div id="show-single-event">
@@ -96,9 +98,10 @@ class ShowOneEvents extends Component {
                                         <p>{this.state.event.description}</p>
                                         {
                                             this.confirmUser() ? (
-                                            <button onClick={e => { this.handleDelete(e) }} type="button" class="btn btn-primary">Delete Event</button> ) :""
+                                                <button onClick={e => { this.handleDelete(e) }} type="button" class="btn btn-primary">Delete Event</button>) : ""
                                         }
                                     </article>
+                                    <button onClick={e => { this.RSVP(e) }} type="button" class="btn btn-primary">Join Event</button> ) :""
 
 
 

@@ -2,10 +2,13 @@ import React from 'react'
 import axios from 'axios'
 import qs from 'qs'
 import moment from 'moment'
+import Ajv from 'ajv'
+import RegistrationValidationSchema from '../../validation-schemas/registration'
 import { withCookies } from 'react-cookie'
 import { withRouter } from 'react-router-dom'
 import './Register.scss'
 
+const ajv = new Ajv({ allErrors: true })
 class Login extends React.Component {
     constructor(props) {
         super(props)
@@ -16,6 +19,7 @@ class Login extends React.Component {
             password: '',
             location: '',
             formErr: [],
+            formMsg:[]
         }
     }
 
@@ -48,45 +52,80 @@ class Login extends React.Component {
     handleFormSubmission(e) {
         e.preventDefault()
 
-        const userObject = {
-            email: this.state.email,
-            username: this.state.username,
-            password: this.state.password,
-            location: this.state.location
+        this.setState({
+            formErr: [],
+            formMsg: []
+        })
+
+        // validate form
+        const formValid = this.validateFormInputs()
+
+        if (formValid) {
+
+            const userObject = {
+                email: this.state.email,
+                username: this.state.username,
+                password: this.state.password,
+                location: this.state.location
+            }
+    
+            // make api call to register
+            axios.post('http://localhost:5000/api/v1/users/register', qs.stringify(userObject))
+                .then(response => {
+    
+                    console.log(response.data)
+    
+                    this.props.cookies.set('token', response.data.token, {
+                        path: '/',
+                        expires: moment.unix(response.data.expiresAt).toDate()
+                    })
+    
+                    // clear form messages
+                    this.setState({
+                        email: '',
+                        username: '',
+                        password: '',
+                        location: '',
+                        formErr: [],
+                        formMsg: []
+                        })
+    
+                    this.props.history.push('/users/profile')
+    
+                })
+                
+                .catch(err => {
+                    console.log(err)
+                    this.setState({
+                        formMsg: "Username or email is taken, please try again"
+                    })
+                })
+
         }
 
-        // make api call to register
-        axios.post('http://localhost:5000/api/v1/users/register', qs.stringify(userObject))
-            .then(response => {
+    }
 
-                console.log(response.data)
+    validateFormInputs() {
+        const err = []
 
-                this.props.cookies.set('token', response.data.token, {
-                    path: '/',
-                    expires: moment.unix(response.data.expiresAt).toDate()
-                })
+        const formValid = ajv.validate(RegistrationValidationSchema, this.state)
 
-                // clear form messages
-                this.setState({
-                    email: '',
-                    username: '',
-                    password: '',
-                    location: '',
-                    formErr: [],
-                })
-
-                this.props.history.push('/users/profile')
-
+        if (!formValid) {
+            ajv.errors.forEach(e => {
+                let field = e.dataPath.toUpperCase()
+                err.push(`${field} field ${e.message}`)
             })
+        }
 
-            .catch(err => {
-                console.log(err)
-                this.setState({
-                    formErr: "Username or email is taken, please try again"
-                })
-            })
+        if (err.length === 0) {
+            return true
+        }
 
+        this.setState({
+            formErr: err
+        })
 
+        return false
     }
 
     render() {
@@ -107,17 +146,59 @@ class Login extends React.Component {
                             <input type="password" value={this.state.password} onChange={e => { this.handleChange(e, 'password') }} className="form-control" id="exampleInputPassword1" />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="exampleInputLocation1">Location</label>
-                            <input type="text" value={this.state.location} onChange={e => { this.handleChange(e, 'location') }} className="form-control" id="exampleInputLocation1" />
+                            <label htmlFor="location">Select Area</label>
+                            <select className="form-control" value={this.state.location} onChange={e => { this.handleChange(e, 'location') }} id="location">
+                                <option>---PLEASE SELECT---</option>
+                                <option>Ang Mo Kio</option>
+                                <option>Bedok</option>
+                                <option>Bishan</option>
+                                <option>Bukit Batok</option>
+                                <option>Bukit Merah</option>
+                                <option>Bukit Panjang</option>
+                                <option>Bukit Timah</option>
+                                <option>Central</option>
+                                <option>Choa Chu Kang</option>
+                                <option>Clementi</option>
+                                <option>Geylang</option>
+                                <option>Hougang</option>
+                                <option>Jurong East</option>
+                                <option>Jurong West</option>
+                                <option>Kallang / Whampoa</option>
+                                <option>Marine Parade</option>
+                                <option>Pasir Ris</option>
+                                <option>Punggol</option>
+                                <option>Queenstown</option>
+                                <option>Sembawang</option>
+                                <option>Sengkang</option>
+                                <option>Serangoon</option>
+                                <option>Tampines</option>
+                                <option>Toa Payoh</option>
+                                <option>Woodlands</option>
+                                <option>Yishun</option>
+                            </select>
                         </div>
                         {
-                            this.state.formErr !== "" ? (
+                            this.state.formErr.length > 0 ?
+                            (
                                 <div className="form-group">
-                                    <p>{this.state.formErr}</p>
+                                    {
+                                        this.state.formErr.map(msg => {
+                                            return (
+                                                <p>{msg}</p>
+                                            )
+                                        })
+                                    }
                                 </div>
-                            ) : (
-                                    ""
-                                )
+                            ) :
+                            ''
+                        }
+                        {
+                            this.state.formMsg !== '' ? (
+                                <div className="form-group">
+                                    <p>{this.state.formMsg}</p>
+                                </div>
+                            ) :
+                            ''
                         }
                         <button type="submit" className="btn btn-primary">Register</button>
                     </form>

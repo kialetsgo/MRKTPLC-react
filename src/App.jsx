@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import 'bootstrap/scss/bootstrap.scss'
+import 'tailwindcss/tailwind.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.scss'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -12,8 +13,8 @@ import Login from './components/pages/Login'
 import Register from './components/pages/Register'
 import SiteHeader from './components/SiteHeader'
 import SiteFooter from './components/SiteFooter'
+import Header from './components/Header'
 import CreateListing from './components/pages/CreateListing'
-import UserDashboard from './components/pages/UserDashboard'
 import AllListings from './components/pages/AllListings'
 import UserListings from './components/pages/UserListings'
 import Listing from './components/pages/Listing'
@@ -30,7 +31,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-          <SiteHeader />
+          <Header />
 
           <Switch>
 

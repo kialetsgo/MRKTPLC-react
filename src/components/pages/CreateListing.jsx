@@ -80,7 +80,9 @@ class CreateListing extends React.Component {
                     category: '',
                     location: '',
                     expiry_date: '',
+                    redirect: true,
                 })
+                this.props.history.push('/users/listings')
             })
             .catch(err => {
                 console.log(err)
