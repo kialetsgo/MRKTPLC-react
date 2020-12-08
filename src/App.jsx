@@ -2,18 +2,18 @@
 import React from 'react'
 import 'bootstrap/scss/bootstrap.scss'
 import 'tailwindcss/tailwind.css'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.scss'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import ProtectedRoute from './components/ProtectedRoute'
 import GuestRoute from './components/GuestRoute'
-import Home from './components/pages/Home'
 import About from './components/pages/About'
 import UserProfile from './components/pages/UserProfile'
 import Login from './components/pages/Login'
 import Register from './components/pages/Register'
-import SiteHeader from './components/SiteHeader'
-import SiteFooter from './components/SiteFooter'
+// import SiteHeader from './components/SiteHeader'
+// import SiteFooter from './components/SiteFooter'
 import Header from './components/Header'
+import Footer from './components/Footer'
 import CreateListing from './components/pages/CreateListing'
 import AllListings from './components/pages/AllListings'
 import UserListings from './components/pages/UserListings'
@@ -53,8 +53,9 @@ class App extends React.Component {
             <ProtectedRoute path="/users/listing/new" component={CreateListing} />
 
             <Route path="/" component={Pages} />
+
           </Switch>
-          <SiteFooter />
+          <Footer />
         </Router>
       </div>
     )
