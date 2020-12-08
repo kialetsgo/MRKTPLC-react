@@ -15,9 +15,6 @@ class SiteHeader extends Component {
         return (
             <div id="site-header sticky" className="sticky">
                 <nav id="navbar-data" className="navbar navbar-expand-lg navbar-light bg-light">
-
-
-
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent_left" aria-controls="navbarSupportedContent_left" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
