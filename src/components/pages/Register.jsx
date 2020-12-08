@@ -80,15 +80,15 @@ class Login extends React.Component {
                         expires: moment.unix(response.data.expiresAt).toDate()
                     })
     
-                    // clear form messages
-                    this.setState({
-                        email: '',
-                        username: '',
-                        password: '',
-                        location: '',
-                        formErr: [],
-                        formMsg: []
-                        })
+                    // // clear form messages
+                    // this.setState({
+                    //     email: '',
+                    //     username: '',
+                    //     password: '',
+                    //     location: '',
+                    //     formErr: [],
+                    //     formMsg: []
+                    //     })
     
                     this.props.history.push('/users/profile')
     
