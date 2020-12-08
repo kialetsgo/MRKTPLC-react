@@ -102,7 +102,7 @@ class ShowOneEvents extends Component {
             console.log(this.state.event)
             const config = {
                 headers: {
-                    'Authorization': token
+                    auth_token: token
                 }
             }
 

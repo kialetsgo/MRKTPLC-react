@@ -35,9 +35,9 @@ class App extends React.Component {
 
           <Switch>
 
-            <GuestRoute path="/users/login" component={Login} />
+            <Route path="/users/login" component={Login} />
 
-            <GuestRoute path="/users/register" component={Register} />
+            <Route path="/users/register" component={Register} />
 
             <Route path="/user/events" component={ShowUserEvents} />
             <Route path="/events/new" component={CreateEvents} />

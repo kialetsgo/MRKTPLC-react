@@ -67,7 +67,7 @@ class CreateEvents extends Component {
         const token = this.props.cookies.get('token')
         const config = {
             headers: {
-                'Authorization': token
+                auth_token : token
             }
         }
         console.log(token)
