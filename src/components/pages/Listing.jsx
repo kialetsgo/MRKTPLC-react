@@ -3,6 +3,7 @@ import React from 'react'
 import jwt from 'jwt-decode'
 import { withCookies } from 'react-cookie'
 import { Link } from 'react-router-dom'
+import './Listing.scss'
 
 class Listing extends React.Component {
     constructor(props) {
@@ -64,7 +65,7 @@ class Listing extends React.Component {
         axios.delete(`http://localhost:5000/api/v1/listings/${slug}`)
             .then(response => {
                 console.log(response.data)
-                this.props.history.push('/listings/all')
+                this.props.history.push('/users/listings')
             })
             .catch(err => {
                 console.log(err)
@@ -73,41 +74,45 @@ class Listing extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid">
-                <div className="page-heading">
-                    <h1>
-                        Listing Name: {this.state.listing.listing_name}
-                    </h1>
-                </div>
+            <div className="container container-listing">
                 <div className="listing">
-                    <figure>
-                        <img src={this.state.listing.img} />
-                        <figcaption>
-                            <p className="p-name">{this.state.listing.name}</p>
-                            <p className="p-location">{this.state.listing.location}</p>
-                        </figcaption>
-                    </figure>
-                </div>
-
-                {
-                    this.confirmUser() ? (
-                        <div>
-                            <button type="button" class="btn btn-primary">Edit Listing</button>
-                            <Link to={{
-                                // link to new path
-                                pathname: `/listings/edit/${this.state.listing.slug}`,
-                                state: {
-                                    listing: this.state.listing.slug
-                                }
-                            }}>
-                            </Link>
-                            <button onClick={e => { this.handleDelete(e) }} type="button" class="btn btn-danger">Delete Listing</button>
+                    < div className="row" >
+                        <div className="col-6">
+                            <figure>
+                                <img src={this.state.listing.img} />
+                            </figure>
                         </div>
+                        <div className="col-6">
+                            <h1 className="listing-name">{this.state.listing.listing_name}</h1>
+                            <hr />
+                            <p className="p-location">{this.state.listing.location}</p>
+                            {
+                                this.confirmUser() ? (
+                                    <div className="buttons">
+                                        <div className="edit-button">
+                                            <button type="button" class="btn btn-primary">Edit Listing</button>
+                                            <Link to={{
+                                                // link to new path
+                                                pathname: `/listings/edit/${this.state.listing.slug}`,
+                                                state: {
+                                                    listing: this.state.listing.slug
+                                                }
+                                            }}>
+                                            </Link>
+                                        </div>
+                                        <div className="delete-button">
+                                            <button onClick={e => { this.handleDelete(e) }} type="button" class="btn btn-danger">Delete Listing</button>
+                                        </div>
+                                    </div>
 
-                    ) : ""
-                }
-            </div>
+                                ) : ""
+                            }
+                        </div>
+                    </div >
+                </div >
 
+
+            </div >
         )
     }
 

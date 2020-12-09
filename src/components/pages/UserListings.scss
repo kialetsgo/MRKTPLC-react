@@ -1,10 +1,36 @@
-.listing {
-    position: relative;
-    a {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
+.container-all-listings {
+    margin-top: 160px;
+    z-index: 9998;
+    .filter-section{
+        max-height: auto;
+    }
+    .filter-header{
+        display:block;
+    }
+   
+    select.form-control{
+        width:100%;
+    }
+    h1{
+        text-align: center;
+        font-weight: bolder;
+        font-size: 48px;
+        padding-bottom: 100px;
+    }
+    img{
+        // max-height: 5000px;
+        object-fit: cover
+    }
+    .listing {
+        position: relative;
+        margin-bottom: 10px;
+        a {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
     }
 }
+

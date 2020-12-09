@@ -1,7 +1,11 @@
-#site-header {    
-    z-index: 9999;
+#site-header {   
+    z-index: 9999; 
     .navbar {
         padding: 20px 0;
+        max-height:100px; 
+    }
+    .container{
+        margin-top: 0
     }
     .navbar-brand {
         padding-top: 0;
@@ -42,10 +46,5 @@
       list-style-type: none;
   }
 
-a {
-    z-index: 9999;
-}
-
-.nav-link {
-    z-index: 9999;
-}
+  
+  
