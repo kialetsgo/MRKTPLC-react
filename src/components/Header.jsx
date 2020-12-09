@@ -93,100 +93,93 @@ class Header extends React.Component {
     render() {
         return (
 
-            <header id="site-header" className="sticky">
+            <header id="site-header">
 
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <div className="container">
+                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
                         <Link to="/" className="navbar-brand">
-                            <img src="../../img/mrktplc.png" alt="logo" />
+                            <img src="../../img/mrktplc.png" alt="logo" id="brand-logo" />
                         </Link>
+                        
+                            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span className="navbar-toggler-icon"></span>
+                            </button>
 
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                            <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-                            <ul className="navbar-nav mr-auto">
-                                <li className="nav-item dropdown">
-                                    <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        MRKTPLC
-                                    </Link>
-                                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <HLink to="/#page-home" className="dropdown-item">Home</HLink>
-                                        <HLink to="/about#page-about" className="dropdown-item">About Us</HLink>
-                                        <HLink to="/contact#page-contact" className="dropdown-item">Contact Us</HLink>
-                                    </div>
-                                </li>
-                                <li className="nav-item dropdown">
-                                    <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Events
-                                    </Link>
-                                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <Link to="/events" className="dropdown-item">Show All</Link>
-                                        <Link to="/events/new" className="dropdown-item">Create New</Link>
-                                    </div>
-                                </li>
-                                <li className="nav-item dropdown">
-                                    <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Listings
-                                    </Link>
-                                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <Link to="/listings/all" className="dropdown-item">Show All</Link>
-                                        <Link to="/users/listings/new" className="dropdown-item">Create New</Link>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            {/* <form className="form-inline my-2 my-lg-0" onSubmit={e => { this.handleFormSubmission(e) }}>
-                                    <div className="input-group">
-                                        <select className="form-control" value={this.state.searchField} onChange={e => { this.handleChange(e, 'searchField') }} id="search-field">
-                                            <option>Location</option>
-                                            <option>Category</option>
-                                        </select>
-                                        <input type="text" className="form-control" value={this.state.searchInput} onChange={e => { this.handleChange(e, 'searchInput') }} aria-label="Text input with dropdown button" />
-                                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                                    </div>
-                                </form> */}
-
-
-
-
-                            <ul className="navbar-nav mr-auto float-right" id="profile-dropdown">
-
-                                {
-                                    this.isAuthenticated() ? (
-                                        <li className="nav-item dropdown">
-                                            <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Profile
+                                <ul className="navbar-nav mr-auto">
+                                    <li className="nav-item dropdown">
+                                        <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            MRKTPLC
                                         </Link>
-                                            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <Link to="/users/profile" className="dropdown-item">Update</Link>
-                                                <Link to="/users/events" className="dropdown-item">Event</Link>
-                                                <Link to="/users/listings" className="dropdown-item">Listing</Link>
-                                            </div>
-                                        </li>
-                                    ) : (
-                                            <li className="nav-item">
-                                                <Link to="/users/login" className="nav-link">Login</Link>
+                                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <HLink to="/#page-home" className="dropdown-item">Home</HLink>
+                                            <HLink to="/about#page-about" className="dropdown-item">About Us</HLink>
+                                            <HLink to="/contact#page-contact" className="dropdown-item">Contact Us</HLink>
+                                        </div>
+                                    </li>
+
+                                    {
+                                        this.isAuthenticated() ? (
+                                            <li className="nav-item dropdown">
+                                                <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Events
+                                                </Link>
+                                                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <Link to="/events" className="dropdown-item">Show All Events</Link>
+                                                    <Link to="/events/new" className="dropdown-item">Create Event</Link>
+                                                    <Link to="/users/events" className="dropdown-item">Show User Events</Link>
+                                                </div>
                                             </li>
-                                        )
-                                }
+                                        ) : (
+                                            <li className="nav-item">
+                                                <Link to="/events" className="nav-link">Events</Link>
+                                            </li>
+                                            )
+                                    }
 
-                            </ul>
-                            <li className="nav-item dropdown">
-                                <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Users
-                                    </Link>
-                                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <Link to="/users/login" className="dropdown-item">Login</Link>
-                                    <Link to="/users/register" className="dropdown-item">Register</Link>
-                                    <Link to="/user/events" className="dropdown-item">Show My Events</Link>
-                                    <Link to="/users/listings" className="dropdown-item">Show My Listings</Link>
-                                </div>
-                            </li>
+                                    {
+                                        this.isAuthenticated() ? (
+                                            <li className="nav-item dropdown">
+                                                <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Listings
+                                                </Link>
+                                                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <Link to="/listings/all" className="dropdown-item">Show All Listings</Link>
+                                                    <Link to="/users/listings/new" className="dropdown-item">Add Item</Link>
+                                                    <Link to="/users/listings" className="dropdown-item">Show User Items</Link>
+                                                </div>
+                                            </li>
+                                        ) : (
+                                            <li className="nav-item">
+                                                <Link to="/listings/all" className="nav-link">Listings</Link>
+                                            </li>
+                                            )
+                                    }
 
-                        </div>
-                    </div>
+                                </ul>
 
-                </nav>
+                                    {
+                                        this.isAuthenticated() ? (
+                                            <li className="nav-item dropdown">
+                                                <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Profile
+                                            </Link>
+                                                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <Link to="/users/profile" className="dropdown-item">Update</Link>
+                                                </div>
+                                            </li>
+                                        ) : (
+                                                <li className="nav-item">
+                                                    <Link to="/users/login" className="nav-link btn btn-primary active">Login</Link>
+                                                </li>
+                                            )
+                                    }
+
+                            </div>
+                    </nav>
+                    
+
             </header>
 
         )

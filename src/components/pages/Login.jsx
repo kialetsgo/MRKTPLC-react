@@ -103,39 +103,53 @@ class Login extends React.Component {
         return (
             <div id="page-login">
 
-                <div className="container marginTop">
+                <div className="container">
 
-                    <form className="mt-5 mb-5" onSubmit={e => { this.handleFormSubmission(e) }}>
-                        <div className="form-group">
-                            <label htmlFor="exampleInputEmail1">Email address</label>
-                            <input type="email" onChange={e => { this.handleEmailChange(e) }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="exampleInputPassword1">Password</label>
-                            <input type="password" onChange={e => { this.handlePasswrdChange(e) }} className="form-control" id="exampleInputPassword1" />
-                        </div>
+                    <div className="wrapper">
 
-                        {
-                            this.state.formErr.length > 0 ?
-                                (
-                                    <div className="form-group">
+
+                        <div className="form-input">
+                            <div className="row">
+                                <div className="col-md-4 offset-md-3">
+
+                                    <form className="mt-5 mb-5" onSubmit={ e => { this.handleFormSubmission(e) } }>
+                                        <div className="form-group">
+                                            <label htmlFor="exampleInputEmail1">Email address</label>
+                                            <input type="email" onChange={ e => { this.handleEmailChange(e) } } className="form-control" placeholder="Email" id="email-input" aria-describedby="emailHelp" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="exampleInputPassword1">Password</label>
+                                            <input type="password" onChange={ e => { this.handlePasswrdChange(e) } } className="form-control" placeholder="Password" id="pw-input" />
+                                        </div>
+
                                         {
-                                            this.state.formErr.map(msg => {
-                                                return (
-                                                    <p>{msg}</p>
-                                                )
-                                            })
+                                            this.state.formErr.length > 0 ?
+                                            (
+                                                <div className="form-group">
+                                                    {
+                                                        this.state.formErr.map(msg => {
+                                                            return (
+                                                                <p>{msg}</p>
+                                                            )
+                                                        })
+                                                    }
+                                                </div>
+                                            ) :
+                                            ''
                                         }
-                                    </div>
-                                ) :
-                                ''
-                        }
-                        <button type="submit" className="btn btn-primary">Login</button>
-                    </form>
+                                        <button type="submit" className="btn input-group" id="login-button">Login</button>
+                                    </form>
 
-                    <hr />
+                                </div>
+                            </div>
+                        </div>
 
-                    <Link to="/users/register" class="btn btn-primary active" id="reg-btn" role="button" aria-pressed="true">Register New Account</Link>
+                        <hr />
+
+
+                        <Link to="/users/register" class="btn btn-primary active" id="reg-btn" role="button" aria-pressed="true">Register New Account</Link>
+
+                    </div>
 
                 </div>
 
