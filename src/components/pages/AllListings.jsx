@@ -56,6 +56,26 @@ class AllListings extends React.Component {
         })
     }
 
+    // mouseOverShadow(e) {
+    //     // let cards = document.getElementsByClassName('.card')
+    //     // console.log(cards)
+    //     // for (let i = 0; i < cards.length; i++) {
+    //     //     cards[i].setAttribute("className", "shadow - sm p - 3 mb - 5 bg - white rounded")
+    //     // }
+    //     if (e.target) {
+    //         console.log('hi')
+    //     }
+
+    // }
+
+    // mouseOutShadow() {
+    //     let cards = document.getElementsByClassName('.shadow - sm p - 3 mb - 5 bg - white rounded')
+    //     console.log(cards)
+    //     for (let i = 0; i < cards.length; i++) {
+    //         cards[i].setAttribute("className", "")
+    //     }
+    // }
+
     render() {
         return (
             <div className="container container-all-listings" >
@@ -110,16 +130,15 @@ class AllListings extends React.Component {
                                 </div>
                             </form>
                         </div>
-                        <div className="col-10">
+                        <div className="col-10 shadow p-3 mb-5 bg-white rounded">
                             <div className="row">
                                 {
                                     this.state.filteredListings.length > 0 ? (
                                         this.state.filteredListings.map(listing => {
                                             return (
-
                                                 <div className="listing col-3">
                                                     <div className="card" style={{ "width": "18rem" }}>
-                                                        <div class="card-header">
+                                                        <div className="card-header">
                                                             <p className="card-text p-username">{listing.username}</p>
                                                             {/* <p className="card-text p-listing-age">{this.getListingAge(listing.created_at)}</p> */}
                                                         </div>
