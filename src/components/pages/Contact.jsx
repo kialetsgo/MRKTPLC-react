@@ -87,7 +87,7 @@ class Contact extends Component {
                             Get in touch
                         </h1>
                         <p className="text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">
-                            Fill in the form to to ask your question
+                            Fill in the form with your question
                         </p>
 
                         <div className="flex items-center mt-8 text-gray-600 dark:text-gray-400">
@@ -120,7 +120,7 @@ class Contact extends Component {
                         </div>
                     </div>
                     <form onSubmit={e => { this.handleFormSubmit(e) }} className="p-6 flex flex-col justify-center">
-                        <h3 className="text-2xl text-gray-900 font-semibold">Want to Know More? Leave your query here!</h3>
+                        <h3 className="text-2xl text-gray-900 font-semibold">Want to know more? Leave your query below!</h3>
 
                         <div className="form-group">
                             <label htmlFor="name">Name</label>
