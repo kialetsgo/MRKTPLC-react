@@ -79,13 +79,7 @@ class AllListings extends React.Component {
                                 <div className="input-group filter-header">
                                     <h3>Filter by location</h3>
                                     <select className="form-control" value={this.state.location} onChange={e => { this.handleChange(e, 'location') }} id="filter-location">
-                                        <option>---PLEASE SELECT---</option>
-                                        {/* {
-                                            this.state.listings.location.length > 1 ? (
-                                                this.state.listings.
-                                            )
-                                        } */}
-
+                                        <option value="">---PLEASE SELECT---</option>
                                         <option>Ang Mo Kio</option>
                                         <option>Bedok</option>
                                         <option>Bishan</option>
