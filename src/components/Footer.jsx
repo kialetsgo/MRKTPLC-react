@@ -45,7 +45,7 @@ class Footer extends React.Component {
                     </div>
 
                     <div id="brand" className="footer-copyright text-center py-4">© 2020 Copyright: &nbsp;
-                        <Link to="/">FOOD MRKTPLC</Link>
+                        <Link to="/">FOOD SHARE MRKTPLC</Link>
                     </div>
 
             </footer>

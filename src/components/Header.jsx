@@ -118,32 +118,46 @@ class Header extends React.Component {
                                             <HLink to="/contact#page-contact" className="dropdown-item">Contact Us</HLink>
                                         </div>
                                     </li>
-                                    <li className="nav-item dropdown">
-                                        <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Events
-                                        </Link>
-                                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <Link to="/events" className="dropdown-item">Show All</Link>
-                                            <Link to="/events/new" className="dropdown-item">Create New</Link>
-                                        </div>
-                                    </li>
-                                    <li className="nav-item dropdown">
-                                        <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Listings
-                                        </Link>
-                                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <Link to="/users/listings" className="dropdown-item">Show All</Link>
-                                            <Link to="/listing/new" className="dropdown-item">Create New</Link>
-                                        </div>
-                                    </li>
+
+                                    {
+                                        this.isAuthenticated() ? (
+                                            <li className="nav-item dropdown">
+                                                <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Events
+                                                </Link>
+                                                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <Link to="/events" className="dropdown-item">Show All Events</Link>
+                                                    <Link to="/events/new" className="dropdown-item">Create Event</Link>
+                                                    <Link to="/users/events" className="dropdown-item">Show User Events</Link>
+                                                </div>
+                                            </li>
+                                        ) : (
+                                            <li className="nav-item">
+                                                <Link to="/events" className="nav-link">Events</Link>
+                                            </li>
+                                            )
+                                    }
+
+                                    {
+                                        this.isAuthenticated() ? (
+                                            <li className="nav-item dropdown">
+                                                <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Listings
+                                                </Link>
+                                                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <Link to="/listings/all" className="dropdown-item">Show All Listings</Link>
+                                                    <Link to="/users/listings/new" className="dropdown-item">Add Item</Link>
+                                                    <Link to="/users/listings" className="dropdown-item">Show User Items</Link>
+                                                </div>
+                                            </li>
+                                        ) : (
+                                            <li className="nav-item">
+                                                <Link to="/listings/all" className="nav-link">Listings</Link>
+                                            </li>
+                                            )
+                                    }
+
                                 </ul>
-
-                                <form className="form-inline my-2 my-lg-0">
-                                    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                                </form>
-
-                                {/* <ul className="navbar-nav mr-auto float-right" id="profile-dropdown"> */}
 
                                     {
                                         this.isAuthenticated() ? (
@@ -153,32 +167,14 @@ class Header extends React.Component {
                                             </Link>
                                                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                                     <Link to="/users/profile" className="dropdown-item">Update</Link>
-                                                    <Link to="/users/events" className="dropdown-item">Event</Link>
-                                                    <Link to="/users/listings" className="dropdown-item">Listing</Link>
                                                 </div>
                                             </li>
                                         ) : (
                                                 <li className="nav-item">
-                                                    <Link to="/users/login" className="nav-link">Login</Link>
+                                                    <Link to="/users/login" className="nav-link btn btn-primary active">Login</Link>
                                                 </li>
                                             )
                                     }
-
-                                {/* </ul> */}
-
-                                {/* <li className="nav-item dropdown">
-                                    <Link to="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Users
-                                        </Link>
-                                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <Link to="/users/login" className="dropdown-item">Login</Link>
-                                        <Link to="/users/register" className="dropdown-item">Register</Link>
-                                        <Link to="/user/events" className="dropdown-item">Show My Events</Link>
-                                        <Link to="/listings/all" className="dropdown-item">Show All</Link>
-                                        <Link to="/users/listings/new" className="dropdown-item">Create New</Link>
-
-                                    </div>
-                                </li> */}
 
                             </div>
                     </nav>
