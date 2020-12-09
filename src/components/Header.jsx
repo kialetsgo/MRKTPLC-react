@@ -130,7 +130,7 @@ class Header extends React.Component {
                                     </Link>
                                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <Link to="/listings/all" className="dropdown-item">Show All</Link>
-                                        <Link to="/listing/new" className="dropdown-item">Create New</Link>
+                                        <Link to="/users/listings/new" className="dropdown-item">Create New</Link>
                                     </div>
                                 </li>
                             </ul>
@@ -179,6 +179,7 @@ class Header extends React.Component {
                                     <Link to="/users/login" className="dropdown-item">Login</Link>
                                     <Link to="/users/register" className="dropdown-item">Register</Link>
                                     <Link to="/user/events" className="dropdown-item">Show My Events</Link>
+                                    <Link to="/users/listings" className="dropdown-item">Show My Listings</Link>
                                 </div>
                             </li>
 
