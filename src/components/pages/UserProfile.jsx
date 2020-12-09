@@ -15,18 +15,8 @@ class UserProfile extends React.Component {
     }
 
     componentDidMount() {
-        const routeParams = this.props.match.params
-        // console.log(routeParams)
-        // console.log(this.props)
-
-        if (this.props.location.state && this.props.location.state.location) {
-            this.setState({
-                location: this.props.location.state.location
-            })
-            return
-        }
         // call UserProfile with the input
-        this.autoFillForm(routeParams.location)
+        this.autoFillForm()
     }
 
     handleLocationChange(e) {
@@ -36,10 +26,16 @@ class UserProfile extends React.Component {
     }
 
     autoFillForm() {
-        return axios.get('http://localhost:5000/api/v1/users/profile')
+        const token = this.props.cookies.get('token')
+        const config = {
+            headers: {
+                auth_token: token
+            }
+        }
+        return axios.get('http://localhost:5000/api/v1/users/profile', config)
             .then(response => {
                 this.setState({
-                    location: response.data
+                    location: response.data[0].location
                 })
             })
             .catch(err => {
