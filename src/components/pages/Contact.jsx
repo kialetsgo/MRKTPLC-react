@@ -2,7 +2,11 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import qs from 'qs'
+import Ajv from 'ajv'
+import contactFormValidationSchema from '../../validation-schemas/contact'
 import './Contact.scss'
+
+const ajv = new Ajv()
 
 class Contact extends Component {
     constructor(props) {
@@ -55,15 +59,15 @@ class Contact extends Component {
     validateFormInputs() {
         const err = []
 
-        if (this.state.name === "") {
-            err.push('Name must not be empty')
+        const formValid = ajv.validate(contactFormValidationSchema, this.state)
+
+        if (!formValid) {
+            ajv.errors.forEach(e => {
+                let field = e.dataPath.toUpperCase()
+                err.push(`${field} field ${e.message}`)
+            })
         }
-        if (this.state.email === "") {
-            err.push('Email must not be empty')
-        }
-        if (this.state.message === "") {
-            err.push('Message must not be empty')
-        }
+
 
         if (err.length === 0) {
             return true
@@ -76,11 +80,11 @@ class Contact extends Component {
         return false
     }
 
-
     render() {
         return (
-
-            <div id="page-contact" className="flex items-top justify-center bg-white dark:bg-gray-900 sm:items-center sm:pt-0">
+     
+            <div id="page-contact" className="background_image flex items-top justify-center bg-white dark:bg-gray-900 sm:items-center sm:pt-0" style={ { backgroundImage: 'url(/img/foodpic2.jpg)' } }>
+     
                 <div className="grid grid-cols-1 md:grid-cols-2 form-container">
                     <div className="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
                         <h1 className="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">
@@ -120,22 +124,25 @@ class Contact extends Component {
                         </div>
                     </div>
                     <form onSubmit={e => { this.handleFormSubmit(e) }} className="p-6 flex flex-col justify-center">
+                        
                         <h3 className="text-2xl text-gray-900 font-semibold">Want to know more? Leave your query below!</h3>
 
+                        <hr></hr>
+
                         <div className="form-group">
-                            <label htmlFor="name">Name</label>
+                            <label htmlFor="name" className="block text-xs font-semibold text-gray-600 uppercase">Name</label>
                             <input type="text" className="form-control form-control-lg" id="name" name="name" value={this.state.name} onChange={e => { this.handleInputChange(e) }} placeholder="Your Name" />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email" className="block text-xs font-semibold text-gray-600 uppercase">Email</label>
                             <input type="email" className="form-control form-control-lg" id="email" name="email" value={this.state.email} onChange={e => { this.handleInputChange(e) }} placeholder="Your Email" />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="message">Message</label>
+                            <label htmlFor="message" className="block text-xs font-semibold text-gray-600 uppercase">Message</label>
                             <textarea className="form-control form-control-lg" id="message" name="message" value={this.state.message} onChange={e => { this.handleInputChange(e) }} placeholder="What do you wish to know?"></textarea>
                         </div>
                         <div className="form-group text-center">
-                            <button type="submit" className="md:w-32 bg-indigo-600 hover:bg-blue-dark text-white font-bold py-3 px-6 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300">Submit</button>
+                            <button type="submit" className="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">Submit</button>
                         </div>
                         {
                             this.state.formMsg.length > 0 ?

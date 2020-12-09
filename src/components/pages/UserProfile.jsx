@@ -74,18 +74,18 @@ class UserProfile extends React.Component {
                 console.log(err)
             })
 
-            this.setState({
-                location: '',
-            })
+        this.setState({
+            location: '',
+        })
 
 
     }
 
     render() {
-        return(
+        return (
             <div className="page-userProfile">
                 <div className="container">
-                    <form className="mt-5 mb-5" onSubmit={ e => { this.handleFormSubmission(e) } }>
+                    <form className="mt-5 mb-5" onSubmit={e => { this.handleFormSubmission(e) }}>
                         {/* <div className="form-group">
                             <label htmlFor="exampleInputEmail1">Email address</label>
                             <input type="email" defaultValue={this.state.email} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
@@ -128,13 +128,13 @@ class UserProfile extends React.Component {
                                     <p>{this.state.formUpdate}</p>
                                 </div>
                             ) :
-                            ''
+                                ''
                         }
                         <button type="submit" className="btn btn-primary">Update</button>
                     </form>
                 </div>
 
-            </div>
+            </div >
         )
     }
 }

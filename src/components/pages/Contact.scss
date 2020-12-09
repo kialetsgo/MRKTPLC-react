@@ -1,8 +1,12 @@
 #page-contact {
-    height: 85vh;
-    .form-container{
-        margin-top: 10vh;
-    }
-
+    height: 90vh;
   }
   
+  img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.background_image{
+  background-size: 100%;
+}

@@ -19,7 +19,7 @@ class Login extends React.Component {
             password: '',
             location: '',
             formErr: [],
-            formMsg:[]
+            formMsg: []
         }
     }
 
@@ -45,7 +45,7 @@ class Login extends React.Component {
                     location: e.target.value
                 })
                 break
-                default:
+            default:
         }
     }
 
@@ -68,18 +68,18 @@ class Login extends React.Component {
                 password: this.state.password,
                 location: this.state.location
             }
-    
+
             // make api call to register
             axios.post('http://localhost:5000/api/v1/users/register', qs.stringify(userObject))
                 .then(response => {
-    
+
                     console.log(response.data)
-    
+
                     this.props.cookies.set('token', response.data.token, {
                         path: '/',
                         expires: moment.unix(response.data.expiresAt).toDate()
                     })
-    
+
                     // // clear form messages
                     // this.setState({
                     //     email: '',
@@ -89,11 +89,11 @@ class Login extends React.Component {
                     //     formErr: [],
                     //     formMsg: []
                     //     })
-    
+
                     this.props.history.push('/users/profile')
-    
+
                 })
-                
+
                 .catch(err => {
                     console.log(err)
                     this.setState({
@@ -179,18 +179,18 @@ class Login extends React.Component {
                         </div>
                         {
                             this.state.formErr.length > 0 ?
-                            (
-                                <div className="form-group">
-                                    {
-                                        this.state.formErr.map(msg => {
-                                            return (
-                                                <p>{msg}</p>
-                                            )
-                                        })
-                                    }
-                                </div>
-                            ) :
-                            ''
+                                (
+                                    <div className="form-group">
+                                        {
+                                            this.state.formErr.map(msg => {
+                                                return (
+                                                    <p>{msg}</p>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                ) :
+                                ''
                         }
                         {
                             this.state.formMsg !== '' ? (
@@ -198,7 +198,7 @@ class Login extends React.Component {
                                     <p>{this.state.formMsg}</p>
                                 </div>
                             ) :
-                            ''
+                                ''
                         }
                         <button type="submit" className="btn btn-primary">Register</button>
                     </form>

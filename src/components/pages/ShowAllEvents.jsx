@@ -18,10 +18,10 @@ class CreateEvents extends Component {
     componentDidMount() {
         this.getEvents()
 
-      
 
-        
-        
+
+
+
     }
     getEvents() {
 
@@ -31,20 +31,20 @@ class CreateEvents extends Component {
                     events: response.data
                 })
                 console.log(response.data)
-                document.querySelector('.glider').addEventListener('glider-slide-visible', function(event){
+                document.querySelector('.glider').addEventListener('glider-slide-visible', function (event) {
                     var glider = Glider(this);
                     console.log('Slide Visible %s', event.detail.slide)
                 });
-                document.querySelector('.glider').addEventListener('glider-slide-hidden', function(event){
+                document.querySelector('.glider').addEventListener('glider-slide-hidden', function (event) {
                     console.log('Slide Hidden %s', event.detail.slide)
                 });
-                document.querySelector('.glider').addEventListener('glider-refresh', function(event){
+                document.querySelector('.glider').addEventListener('glider-refresh', function (event) {
                     console.log('Refresh')
                 });
-                document.querySelector('.glider').addEventListener('glider-loaded', function(event){
+                document.querySelector('.glider').addEventListener('glider-loaded', function (event) {
                     console.log('Loaded')
                 });
-          
+
                 window._ = new Glider(document.querySelector('.glider'), {
                     slidesToShow: 1, //'auto',
                     slidesToScroll: 1,
@@ -62,7 +62,7 @@ class CreateEvents extends Component {
                             breakpoint: 800,
                             settings: {
                                 slidesToScroll: 'auto',
-                                itemWidth: 300,
+                                itemWidth: 400,
                                 slidesToShow: 'auto',
                                 exactWidth: true
                             }
@@ -103,18 +103,20 @@ class CreateEvents extends Component {
 
     render() {
         return (
-            <div id="show-all-event-page">
-                <div className="glider-contain">
-                    <h1 className="page-header">Show Featured on-going events</h1>
+            <div id="show-all-event-page" className='background_image' style={{ backgroundImage: "url(/img/drink1.jpg)" }}>
+                <h1 className="page-header col-12 bg-gray-100 dark:bg-gray-800 event-sections text-3xl font-semibold">Featured on-going events from All Users</h1>
+                
+                <div className="entire-container glider-contain">
+
                     <div className="glider">
 
                         {
                             this.state.events.length > 0 ? (
                                 this.state.events.map(items => {
                                     return (
-                                        <div className="event-sections col-4 max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20" key={items._id}>
+                                        <div className="event-sections col-4 max-w-md py-4 px-8 bg-white shadow-lg rounded-lg" key={items._id}>
                                             <div>
-                                                <h2 class="text-gray-800 text-3xl font-semibold">{items.location}</h2>
+                                                <h2 class="text-gray-800 text-2xl font-semibold">Location : {items.location}</h2>
                                                 <p class="mt-2 text-gray-600">{items.description}</p>
                                             </div>
                                             <div class="flex justify-end mt-4">
@@ -123,25 +125,25 @@ class CreateEvents extends Component {
                                                     state: {
                                                         product: items
                                                     }
-                                                }}><p className="host-by text-xl font-medium text-indigo-500" >{items.hosted_by} </p>
+                                                }}><p className="host-by text-1xl font-medium text-indigo-500" >Click to know more</p>
                                                 </Link>
                                             </div>
-                                                <div>
-                                                    <p className="host-date">Date: {moment(items.hosted_date).format("YYYY-MM-DD")}</p>
-                                                    <p className="host-time">Time: {items.hosted_time}</p>
-                                                </div>
+                                            <div>
+                                                <p className="host-date">Date: {moment(items.hosted_date).format("YYYY-MM-DD")}</p>
+                                                <p className="host-time">Time: {items.hosted_time}</p>
+                                            </div>
                                         </div>
                                     )
                                 })
                             ) : (
-                                    <p>no events hosted yet</p>
+                                    <p className="content-center bg-gray-100 dark:bg-gray-800 event-sections col-9 lg:flex shadow rounded-lg border  border-gray-400 text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">no events hosted yet</p>
                                 )
 
                         }
 
                     </div>
-                    <button className="glider-prev">&laquo;</button>
-                    <button className="glider-next">&raquo;</button>
+                    <button className="glider-prev arrow">&laquo;</button>
+                    <button className="glider-next arrow">&raquo;</button>
                     <div id="dots"></div>
                 </div>
             </div>

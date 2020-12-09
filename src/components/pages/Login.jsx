@@ -100,7 +100,7 @@ class Login extends React.Component {
     }
 
     render() {
-        return(
+        return (
             <div id="page-login">
 
                 <div className="container">
@@ -145,6 +145,7 @@ class Login extends React.Component {
                         </div>
 
                         <hr />
+
 
                         <Link to="/users/register" class="btn btn-primary active" id="reg-btn" role="button" aria-pressed="true">Register New Account</Link>
 
