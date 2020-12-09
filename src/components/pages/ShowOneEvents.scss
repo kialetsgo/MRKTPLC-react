@@ -1,11 +1,13 @@
 #show-single-event {
 
     height: 95vh;
-    border:3px solid red;
+
     
     .container{
-      margin-top:10vh;
+      padding-top:10vh;
     }
   }
   
-  
+  .background_image{
+    background-size: 100%;
+  }

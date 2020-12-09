@@ -26,7 +26,7 @@ class Header extends React.Component {
                     <div className="container">
 
                         <Link to="/" className="navbar-brand">
-                            <img src="img/mrktplc.png" alt="logo" />
+                            <img src="../../img/mrktplc.png" alt="logo" />
                         </Link>
 
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -56,7 +56,7 @@ class Header extends React.Component {
                                         Listings
                                     </Link>
                                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <Link to="/users/listings" className="dropdown-item">Show All</Link>
+                                        <Link to="/listings/all" className="dropdown-item">Show All</Link>
                                         <Link to="/listing/new" className="dropdown-item">Create New</Link>
                                     </div>
                                 </li>
@@ -97,6 +97,7 @@ class Header extends React.Component {
                                     <Link to="/users/login" className="dropdown-item">Login</Link>
                                     <Link to="/users/register" className="dropdown-item">Register</Link>
                                     <Link to="/user/events" className="dropdown-item">Show My Events</Link>
+                                    <Link to="/users/listings" className="dropdown-item">Show My Listings</Link>
                                 </div>
                             </li>
 

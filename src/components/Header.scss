@@ -1,4 +1,5 @@
 #site-header {    
+    z-index: 9999;
     .navbar {
         padding: 20px 0;
     }
@@ -40,3 +41,11 @@
   .nav-item {
       list-style-type: none;
   }
+
+a {
+    z-index: 9999;
+}
+
+.nav-link {
+    z-index: 9999;
+}
