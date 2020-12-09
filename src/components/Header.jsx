@@ -4,9 +4,17 @@ import { Link } from 'react-router-dom'
 import { withCookies } from 'react-cookie'
 import { HashLink as HLink } from 'react-router-hash-link';
 import './Header.scss'
+import axios from 'axios'
+import qs from 'qs'
 
 class Header extends React.Component {
-
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //         searchField: '',
+    //         searchInput: ''
+    //     }
+    // }
     isAuthenticated() {
         const token = this.props.cookies.get('token')
 
@@ -17,6 +25,71 @@ class Header extends React.Component {
         return true
     }
 
+    // handleChange(e, elemName) {
+    //     this.setState({ [elemName]: e.target.value })
+    // switch (elemName) {
+    //     case 'listing_name':
+    //         this.setState({
+    //             listing_name: e.target.value
+    //         })
+    //         break;
+    //     case 'img':
+    //         this.setState({
+    //             img: e.target.value
+    //         })
+    //         break;
+    //     case 'description':
+    //         this.setState({
+    //             description: e.target.value
+    //         })
+    //         break;
+    //     case 'location':
+    //         this.setState({
+    //             location: e.target.value
+    //         })
+    //         break;
+    //     case 'category':
+    //         this.setState({
+    //             category: e.target.value
+    //         })
+    //         break;
+    //     case 'expiry_date':
+    //         this.setState({
+    //             expiry_date: e.target.value
+    //         })
+    //         break;
+    // }
+    //     console.log(this.state)
+    // }
+
+
+    // handleFormSubmission(e) {
+    //     e.preventDefault() // prevent submit to another page
+    //     const token = this.props.cookies.get('token')
+    //     const config = {
+    //         headers: {
+    //             auth_token: token
+    //         }
+    //     }
+    //     console.log(token)
+    //     axios.get(`http://localhost:5000/api/v1/?${this.state.searchField}/?${this.state.searchInput}`, qs.stringify({
+    //         searchField: this.state.searchField,
+    //         searchInput: this.state.searchInput
+    //     }), config)
+    //         .then(response => {
+    //             console.log(response.data)
+    //             this.setState({
+    //                 searchField: '',
+    //                 searchInput: ''
+    //             })
+    //             this.props.history.push('/search')
+    //         })
+    //         .catch(err => {
+    //             console.log(err)
+    //         })
+    // }
+
+
     render() {
         return (
 
@@ -26,7 +99,7 @@ class Header extends React.Component {
                     <div className="container">
 
                         <Link to="/" className="navbar-brand">
-                            <img src="img/mrktplc.png" alt="logo" />
+                            <img src="../../img/mrktplc.png" alt="logo" />
                         </Link>
 
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -56,16 +129,25 @@ class Header extends React.Component {
                                         Listings
                                     </Link>
                                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <Link to="/users/listings" className="dropdown-item">Show All</Link>
+                                        <Link to="/listings/all" className="dropdown-item">Show All</Link>
                                         <Link to="/listing/new" className="dropdown-item">Create New</Link>
                                     </div>
                                 </li>
                             </ul>
 
-                            <form className="form-inline my-2 my-lg-0">
-                                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                            </form>
+                            {/* <form className="form-inline my-2 my-lg-0" onSubmit={e => { this.handleFormSubmission(e) }}>
+                                    <div className="input-group">
+                                        <select className="form-control" value={this.state.searchField} onChange={e => { this.handleChange(e, 'searchField') }} id="search-field">
+                                            <option>Location</option>
+                                            <option>Category</option>
+                                        </select>
+                                        <input type="text" className="form-control" value={this.state.searchInput} onChange={e => { this.handleChange(e, 'searchInput') }} aria-label="Text input with dropdown button" />
+                                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                    </div>
+                                </form> */}
+
+
+
 
                             <ul className="navbar-nav mr-auto float-right" id="profile-dropdown">
 

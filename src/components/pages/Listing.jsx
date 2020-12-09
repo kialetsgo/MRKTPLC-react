@@ -74,45 +74,45 @@ class Listing extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid">
-                <div className="page-heading">
-                    <h1>
-                        Listing Name: {this.state.listing.listing_name}
-                    </h1>
-                </div>
+            <div className="container container-listing">
                 <div className="listing">
-                    <figure>
-                        <img src={this.state.listing.img} />
-                        <figcaption>
-                            <p className="p-name">{this.state.listing.name}</p>
-                            <p className="p-location">{this.state.listing.location}</p>
-                        </figcaption>
-                    </figure>
-                </div>
-
-                {
-                    this.confirmUser() ? (
-                        <div className="buttons">
-                            <div className="edit-button">
-                                <button type="button" class="btn btn-primary">Edit Listing</button>
-                                <Link to={{
-                                    // link to new path
-                                    pathname: `/listings/edit/${this.state.listing.slug}`,
-                                    state: {
-                                        listing: this.state.listing.slug
-                                    }
-                                }}>
-                                </Link>
-                            </div>
-                            <div className="delete-button">
-                                <button onClick={e => { this.handleDelete(e) }} type="button" class="btn btn-danger">Delete Listing</button>
-                            </div>
+                    < div className="row" >
+                        <div className="col-6">
+                            <figure>
+                                <img src={this.state.listing.img} />
+                            </figure>
                         </div>
+                        <div className="col-6">
+                            <h1 className="listing-name">{this.state.listing.listing_name}</h1>
+                            <hr />
+                            <p className="p-location">{this.state.listing.location}</p>
+                            {
+                                this.confirmUser() ? (
+                                    <div className="buttons">
+                                        <div className="edit-button">
+                                            <button type="button" class="btn btn-primary">Edit Listing</button>
+                                            <Link to={{
+                                                // link to new path
+                                                pathname: `/listings/edit/${this.state.listing.slug}`,
+                                                state: {
+                                                    listing: this.state.listing.slug
+                                                }
+                                            }}>
+                                            </Link>
+                                        </div>
+                                        <div className="delete-button">
+                                            <button onClick={e => { this.handleDelete(e) }} type="button" class="btn btn-danger">Delete Listing</button>
+                                        </div>
+                                    </div>
 
-                    ) : ""
-                }
-            </div>
+                                ) : ""
+                            }
+                        </div>
+                    </div >
+                </div >
 
+
+            </div >
         )
     }
 
