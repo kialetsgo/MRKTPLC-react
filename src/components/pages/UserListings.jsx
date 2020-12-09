@@ -70,7 +70,7 @@ class UserListings extends React.Component {
                                     )
                                 })
                             ) : (
-                                    <p>No listings at this moment</p>
+                                    <p className="content-center bg-gray-100 dark:bg-gray-800 event-sections col-9 lg:flex shadow rounded-lg border  border-gray-400 text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">No listings at this moment</p>
                                 )
                         }
 

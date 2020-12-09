@@ -1,12 +1,37 @@
 #show-all-user-event-page {
+height: 96vh;
 
-    height: 85vh;
-.container {
-align-items: center;
-margin-top: 10vh;
 }
-  }
-  
-  .event-sections {
-padding-top:20px
-  }
+
+.event-sections {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.events-listing {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.entire-container {
+  padding-top: 15vh;
+}
+
+.content-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.headings {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.arrow {
+  padding-top:100px;
+}
+
+.glider {
+  padding-top: 50px;
+}
