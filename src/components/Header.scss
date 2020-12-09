@@ -1,5 +1,11 @@
 #site-header {   
-    z-index: 9999; 
+    z-index: 999;
+
+    #navbarSupportedContent {
+        z-index: 999;
+        background-color: rgb(248, 249, 250);
+    }
+
     .navbar {
         padding: 20px 0;
         max-height:100px; 
@@ -21,6 +27,12 @@
     .nav-item {
         padding-left: 10px;
         padding-right:10px;
+        list-style-type: none;
+    }
+
+    #login-btn {
+        border-radius: 25px;
+        margin-right: 30px;
     }
 
 }
@@ -33,12 +45,7 @@
 //     background-color: lightgrey;
   
 //   }
-  
 
-  /*extra cause the loging seems not working*/
-  .nav-item {
-      list-style-type: none;
-  }
 
   
   

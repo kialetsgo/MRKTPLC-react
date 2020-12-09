@@ -63,7 +63,7 @@ class Login extends React.Component {
                         expires: moment.unix(response.data.expiresAt).toDate()
                     })
 
-                    this.props.history.push('/users/profile')
+                    this.props.history.push('/')
                 })
 
                 .catch(err => {
@@ -109,17 +109,28 @@ class Login extends React.Component {
 
 
                         <div className="form-input">
-                            <div className="row">
-                                <div className="col-md-4 offset-md-3">
 
-                                    <form className="mt-5 mb-5" onSubmit={ e => { this.handleFormSubmission(e) } }>
+                            <div className="row">
+                                <div className="col-md-4 offset-md-4">
+
+                                <div className="titleDiv">
+                                    <p className="title">Login</p>
+                                </div>
+
+                                    <form className="mt-3 mb-4" onSubmit={ e => { this.handleFormSubmission(e) } }>
                                         <div className="form-group">
-                                            <label htmlFor="exampleInputEmail1">Email address</label>
-                                            <input type="email" onChange={ e => { this.handleEmailChange(e) } } className="form-control" placeholder="Email" id="email-input" aria-describedby="emailHelp" />
+                                            {/* <label htmlFor="exampleInputEmail1">Email address</label> */}
+                                            <input type="email" onChange={ e => { this.handleEmailChange(e) } } className="form-control font-weight-bold" placeholder="Email" id="email-input" aria-describedby="emailHelp" />
+                                                {/* <span id="symbol-envelope">
+                                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                </span> */}
                                         </div>
                                         <div className="form-group">
-                                            <label htmlFor="exampleInputPassword1">Password</label>
-                                            <input type="password" onChange={ e => { this.handlePasswrdChange(e) } } className="form-control" placeholder="Password" id="pw-input" />
+                                            {/* <label htmlFor="exampleInputPassword1">Password</label> */}
+                                            <input type="password" onChange={ e => { this.handlePasswrdChange(e) } } className="form-control font-weight-bold" placeholder="Password" id="pw-input" />
+                                                {/* <span id="symbol-lock">
+                                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                                </span> */}
                                         </div>
 
                                         {
@@ -140,14 +151,14 @@ class Login extends React.Component {
                                         <button type="submit" className="btn input-group" id="login-button">Login</button>
                                     </form>
 
+                                    <hr />
+
+                                <Link to="/users/register" class="btn active font-weight-bold" id="reg-btn" role="button" aria-pressed="true">Create New Account</Link>
+
                                 </div>
                             </div>
                         </div>
 
-                        <hr />
-
-
-                        <Link to="/users/register" class="btn btn-primary active" id="reg-btn" role="button" aria-pressed="true">Register New Account</Link>
 
                     </div>
 
