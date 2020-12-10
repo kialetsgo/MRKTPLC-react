@@ -1,22 +1,41 @@
 .container-listing {
-    margin-top: 160px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     z-index: 9998;
     border: 1px solid black ;
-    border-radius: 1em;
+    border-radius: 0.5em;
 
     .row {
         padding: 0 50px 0 50px
     }
-    figure{
+    .fix-image{
+        border: 0.5px solid black ;
         margin:0;
-        padding: 0 20px 20px 20px;
-        max-height:500px;
+        padding: 10px;
+        max-height:600px;
         max-width: auto;
     }
+    
     hr {
         margin-left: 0;
         margin-right: 0;
     }
+    .listing-body {
+        .listing-name{
+            padding:30px 30px 0 30px;
+            text-align: center;
+            font-weight: bolder;
+            font-size: 48px;
+            padding-bottom: 100px;
+        }
+        .listing-username {
+            padding:10px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 30px;
+        }
+    }
+    
     .edit-button {
         position: relative;
         a {
