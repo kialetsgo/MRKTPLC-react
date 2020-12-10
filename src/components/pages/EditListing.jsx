@@ -14,7 +14,7 @@ class EditListing extends React.Component {
 
     componentDidMount() {
         const routeParams = this.props.match.params
-        // console.log(routeParams)
+        console.log(routeParams)
         // console.log(this.props)
 
         if (this.props.location.state && this.props.location.state.product) {
@@ -41,7 +41,7 @@ class EditListing extends React.Component {
                 this.setState({
                     listing: response.data
                 })
-                // console.log(response.data)
+                console.log(response.data)
                 // console.log(this.state.listing)
 
             })
