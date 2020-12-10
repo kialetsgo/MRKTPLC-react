@@ -90,7 +90,7 @@ class Login extends React.Component {
                     //     formMsg: []
                     //     })
 
-                    this.props.history.push('/users/profile')
+                    this.props.history.push('/')
 
                 })
 
