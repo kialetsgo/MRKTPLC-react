@@ -128,7 +128,7 @@ class UserListings extends React.Component {
                                 </div>
                             </form>
                         </div>
-                        <div className="col-10">
+                        <div className="col-10 shadow p-3 mb-5 bg-white rounded">
                             <div className="row">
                                 {
                                     this.state.filteredListings.length > 0 ? (
