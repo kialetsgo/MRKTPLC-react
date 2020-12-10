@@ -86,7 +86,7 @@ class AllListings extends React.Component {
                                 <div className="input-group filter-header">
                                     <h3>Filter by category</h3>
                                     <select className="form-control" value={this.state.category} onChange={e => { this.handleChange(e, 'category') }} id="filter-category">
-                                        <option value="">---PLEASE SELECT---</option>
+                                        <option value="">---Please Select---</option>
                                         <option>Dairy, Chilled & Eggs</option>
                                         <option>Fruits & Vegetables</option>
                                         <option>Meat & Seafood</option>
@@ -99,7 +99,7 @@ class AllListings extends React.Component {
                                 <div className="input-group filter-header">
                                     <h3>Filter by location</h3>
                                     <select className="form-control" value={this.state.location} onChange={e => { this.handleChange(e, 'location') }} id="filter-location">
-                                        <option value="">---PLEASE SELECT---</option>
+                                        <option value="">---Please Select---</option>
                                         <option>Ang Mo Kio</option>
                                         <option>Bedok</option>
                                         <option>Bishan</option>
@@ -140,7 +140,6 @@ class AllListings extends React.Component {
                                                     <div className="card" style={{ "width": "18rem" }}>
                                                         <div className="card-header">
                                                             <p className="card-text p-username">{listing.username}</p>
-                                                            {/* <p className="card-text p-listing-age">{this.getListingAge(listing.created_at)}</p> */}
                                                         </div>
                                                         <img src={listing.img} className="card-img-top" alt="" />
                                                         <div className="card-body">
