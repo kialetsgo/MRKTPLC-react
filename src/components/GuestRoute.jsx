@@ -19,7 +19,7 @@ class GuestRoute extends React.Component {
 
         return (
             this.isAuthenticated() ? (
-                <Redirect to="/users/profile" />
+                <Redirect to="/" />
             ) : (
                 <Comp />
             )

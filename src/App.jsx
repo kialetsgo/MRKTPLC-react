@@ -35,16 +35,16 @@ class App extends React.Component {
 
           <Switch>
 
-            <Route path="/users/login" component={Login} />
+            <GuestRoute path="/users/login" component={Login} />
 
-            <Route path="/users/register" component={Register} />
+            <GuestRoute path="/users/register" component={Register} />
 
-            <Route path="/user/events" component={ShowUserEvents} />
-            <Route path="/events/new" component={CreateEvents} />
+            <ProtectedRoute path="/users/events" component={ShowUserEvents} />
+            <ProtectedRoute path="/events/new" component={CreateEvents} />
             <Route path="/events/:id" component={ShowOneEvents} />
             <Route path="/events" component={ShowAllEvents} />
 
-            <Route path="/listings/edit/:slug" component={EditListing} />
+            <ProtectedRoute path="/listings/edit/:slug" component={EditListing} />
             <Route path="/listings/all" component={AllListings} />
             <Route path="/listings/:slug" component={Listing} />
             <ProtectedRoute path="/users/listings/new" component={CreateListing} />
