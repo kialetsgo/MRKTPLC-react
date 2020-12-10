@@ -14,29 +14,27 @@ class Footer extends React.Component {
                             <div className="col-md-6 mt-md-0 mt-3">
 
                                 <h3 className="text-uppercase font-weight-bold text-center mb-3">About Us</h3>
-                                <p className="text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil
-                                repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam recusandae
-                                harum esse fugiat. Itaque, culpa?</p>
+                                <p className="text-justify">FOOD SHARE MRKTPLC aims to provide a platform for users to share food products with their neighbours. Simply sign up and start sharing your food with others.</p>
 
                             </div>
 
                             <hr className="clearfix w-100 d-md-none pb-3" />
 
                             <div className="col-md-3 mb-md-0 mb-3">
-                                <h3 className="text-uppercase font-weight-bold text-center mb-3">APP Info</h3>
+                                <h3 className="text-uppercase font-weight-bold text-center mb-3">Follow Us</h3>
                                     <ul className="text-center">
-                                        <Link to="#"><span className="mt-1 mb-3">Backend</span></Link>
-                                        <Link to="#"><span className="mt-1 mb-3">Frontend</span></Link>
+                                        <Link to="#"><span className="mt-1 mb-3">Facebook</span></Link>
+                                        <Link to="#"><span className="mt-1 mb-3">Instagram</span></Link>
                                     </ul>
                             </div>
 
                             <hr className="clearfix w-100 d-md-none pb-3" />
 
                             <div className="col-md-3 mb-md-0 mb-3">
-                                <h3 className="text-uppercase font-weight-bold text-center mb-3">GitHub</h3>
+                                <h3 className="text-uppercase font-weight-bold text-center mb-3">Links</h3>
                                     <ul className="text-center">
-                                        <Link to="#"><span className="mt-1 mb-3">Backend</span></Link>
-                                        <Link to="#"><span className="mt-1 mb-3">Frontend</span></Link>
+                                        <Link to="/events"><span className="mt-1 mb-3">Events</span></Link>
+                                        <Link to="/listings/all"><span className="mt-1 mb-3">Listings</span></Link>
                                     </ul>
                             </div>
 
