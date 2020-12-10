@@ -105,7 +105,7 @@ class CreateEvents extends Component {
                         listed_product: '',
                         contact_number: '',
                     })
-                    this.props.history.push('/user/events')
+                    this.props.history.push('/users/events')
                 })
                 .catch(err => {
                     console.log(err)

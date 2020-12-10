@@ -162,7 +162,7 @@ class Header extends React.Component {
                                     {
                                         this.isAuthenticated() ? (
                                             <li className="nav-item dropdown">
-                                                <Link to="#" className="nav-link dropdown-toggle font-weight-bold" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <Link to="#" className="nav-link dropdown-toggle font-weight-bold text-uppercase" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Profile
                                             </Link>
                                                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -171,7 +171,7 @@ class Header extends React.Component {
                                             </li>
                                         ) : (
                                                 <li className="nav-item">
-                                                    <Link to="/users/login" className="nav-link btn btn-primary active font-weight-bold" id="login-btn">Login</Link>
+                                                    <Link to="/users/login" className="nav-link btn active font-weight-bold" id="login-btn">Login</Link>
                                                 </li>
                                             )
                                     }

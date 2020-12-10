@@ -3,6 +3,7 @@ import axios from 'axios'
 import qs from 'qs'
 import { withCookies } from 'react-cookie'
 import { withRouter } from 'react-router-dom'
+import './UserProfile.scss'
 
 class UserProfile extends React.Component {
     constructor(props) {
@@ -63,7 +64,7 @@ class UserProfile extends React.Component {
             .then(response => {
                 console.log(response.data)
                 this.setState({
-                    formUpdate: "Location has been updated"
+                    formUpdate: "Location has been updated!"
                 })
             })
             .catch(err => {
@@ -79,55 +80,72 @@ class UserProfile extends React.Component {
 
     render() {
         return (
-            <div className="page-userProfile">
+            <div id="page-userProfile">
                 <div className="container">
-                    <form className="mt-5 mb-5" onSubmit={e => { this.handleFormSubmission(e) }}>
-                        {/* <div className="form-group">
-                            <label htmlFor="exampleInputEmail1">Email address</label>
-                            <input type="email" defaultValue={this.state.email} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                        </div> */}
-                        <div className="form-group">
-                            <label htmlFor="location">Select Area</label>
-                            <select className="form-control" value={this.state.location} onChange={e => { this.handleLocationChange(e) }} id="location">
-                                <option>---PLEASE SELECT---</option>
-                                <option>Ang Mo Kio</option>
-                                <option>Bedok</option>
-                                <option>Bishan</option>
-                                <option>Bukit Batok</option>
-                                <option>Bukit Merah</option>
-                                <option>Bukit Panjang</option>
-                                <option>Bukit Timah</option>
-                                <option>Central</option>
-                                <option>Choa Chu Kang</option>
-                                <option>Clementi</option>
-                                <option>Geylang</option>
-                                <option>Hougang</option>
-                                <option>Jurong East</option>
-                                <option>Jurong West</option>
-                                <option>Kallang / Whampoa</option>
-                                <option>Marine Parade</option>
-                                <option>Pasir Ris</option>
-                                <option>Punggol</option>
-                                <option>Queenstown</option>
-                                <option>Sembawang</option>
-                                <option>Sengkang</option>
-                                <option>Serangoon</option>
-                                <option>Tampines</option>
-                                <option>Toa Payoh</option>
-                                <option>Woodlands</option>
-                                <option>Yishun</option>
-                            </select>
-                        </div>
-                        {
-                            this.state.formUpdate !== '' ? (
-                                <div className="form-group">
-                                    <p>{this.state.formUpdate}</p>
+                    <div className="wrapper">
+
+                        <div className="form-input">
+                            <div className="row">
+                                <div className="col-md-4 offset-md-4">
+
+                                <div className="titleDiv">
+                                    <p className="title">Update Location</p>
                                 </div>
-                            ) :
-                                ''
-                        }
-                        <button type="submit" className="btn btn-primary">Update</button>
-                    </form>
+
+
+                                    <form className="mt-5 mb-5" onSubmit={e => { this.handleFormSubmission(e) }}>
+                                        {/* <div className="form-group">
+                                            <label htmlFor="exampleInputEmail1">Email address</label>
+                                            <input type="email" defaultValue={this.state.email} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                        </div> */}
+                                        <div className="form-group">
+                                            {/* <label className="font-weight-bold" htmlFor="location">Update Location</label> */}
+                                            <select className="form-control" value={this.state.location} onChange={e => { this.handleLocationChange(e) }} id="location">
+                                                <option>Please select</option>
+                                                <option>Ang Mo Kio</option>
+                                                <option>Bedok</option>
+                                                <option>Bishan</option>
+                                                <option>Bukit Batok</option>
+                                                <option>Bukit Merah</option>
+                                                <option>Bukit Panjang</option>
+                                                <option>Bukit Timah</option>
+                                                <option>Central</option>
+                                                <option>Choa Chu Kang</option>
+                                                <option>Clementi</option>
+                                                <option>Geylang</option>
+                                                <option>Hougang</option>
+                                                <option>Jurong East</option>
+                                                <option>Jurong West</option>
+                                                <option>Kallang / Whampoa</option>
+                                                <option>Marine Parade</option>
+                                                <option>Pasir Ris</option>
+                                                <option>Punggol</option>
+                                                <option>Queenstown</option>
+                                                <option>Sembawang</option>
+                                                <option>Sengkang</option>
+                                                <option>Serangoon</option>
+                                                <option>Tampines</option>
+                                                <option>Toa Payoh</option>
+                                                <option>Woodlands</option>
+                                                <option>Yishun</option>
+                                            </select>
+                                        </div>
+                                        {
+                                            this.state.formUpdate !== '' ? (
+                                                <div className="form-group text-center">
+                                                    <p>{this.state.formUpdate}</p>
+                                                </div>
+                                            ) :
+                                                ''
+                                        }
+                                        <button type="submit" className="btn" id="submit-btn">Update</button>
+                                        
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div >

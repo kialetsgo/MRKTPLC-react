@@ -132,76 +132,93 @@ class Login extends React.Component {
         return (
             <div id="page-register">
                 <div className="container">
-                    <form className="mt-5 mb-5" onSubmit={e => { this.handleFormSubmission(e) }}>
-                        <div className="form-group">
-                            <label htmlFor="exampleInputEmail1">Email address</label>
-                            <input type="email" value={this.state.email} onChange={e => { this.handleChange(e, 'email') }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="exampleInputUser1">Username</label>
-                            <input type="text" value={this.state.username} onChange={e => { this.handleChange(e, 'username') }} className="form-control" id="exampleInputUser1" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="exampleInputPassword1">Password</label>
-                            <input type="password" value={this.state.password} onChange={e => { this.handleChange(e, 'password') }} className="form-control" id="exampleInputPassword1" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="location">Select Area</label>
-                            <select className="form-control" value={this.state.location} onChange={e => { this.handleChange(e, 'location') }} id="location">
-                                <option>---PLEASE SELECT---</option>
-                                <option>Ang Mo Kio</option>
-                                <option>Bedok</option>
-                                <option>Bishan</option>
-                                <option>Bukit Batok</option>
-                                <option>Bukit Merah</option>
-                                <option>Bukit Panjang</option>
-                                <option>Bukit Timah</option>
-                                <option>Central</option>
-                                <option>Choa Chu Kang</option>
-                                <option>Clementi</option>
-                                <option>Geylang</option>
-                                <option>Hougang</option>
-                                <option>Jurong East</option>
-                                <option>Jurong West</option>
-                                <option>Kallang / Whampoa</option>
-                                <option>Marine Parade</option>
-                                <option>Pasir Ris</option>
-                                <option>Punggol</option>
-                                <option>Queenstown</option>
-                                <option>Sembawang</option>
-                                <option>Sengkang</option>
-                                <option>Serangoon</option>
-                                <option>Tampines</option>
-                                <option>Toa Payoh</option>
-                                <option>Woodlands</option>
-                                <option>Yishun</option>
-                            </select>
-                        </div>
-                        {
-                            this.state.formErr.length > 0 ?
-                                (
-                                    <div className="form-group">
-                                        {
-                                            this.state.formErr.map(msg => {
-                                                return (
-                                                    <p>{msg}</p>
-                                                )
-                                            })
-                                        }
-                                    </div>
-                                ) :
-                                ''
-                        }
-                        {
-                            this.state.formMsg !== '' ? (
-                                <div className="form-group">
-                                    <p>{this.state.formMsg}</p>
+                    <div className="wrapper">
+
+                        <div className="form-input">
+                            <div className="row">
+                                <div className="col-md-4 offset-md-4">
+
+
+                                <div className="titleDiv">
+                                    <p className="title">Register</p>
                                 </div>
-                            ) :
-                                ''
-                        }
-                        <button type="submit" className="btn btn-primary">Register</button>
-                    </form>
+
+
+                                    <form className="mt-5 mb-5" onSubmit={e => { this.handleFormSubmission(e) }}>
+                                        <div className="form-group">
+                                            <label className="entryTitle" htmlFor="exampleInputEmail1">Email address</label>
+                                            <input type="email" value={this.state.email} onChange={e => { this.handleChange(e, 'email') }} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label className="entryTitle" htmlFor="exampleInputUser1">Username</label>
+                                            <input type="text" value={this.state.username} onChange={e => { this.handleChange(e, 'username') }} className="form-control" id="exampleInputUser1" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label className="entryTitle" htmlFor="exampleInputPassword1">Password</label>
+                                            <input type="password" value={this.state.password} onChange={e => { this.handleChange(e, 'password') }} className="form-control" id="exampleInputPassword1" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label className="entryTitle" htmlFor="location">Select Area</label>
+                                            <select className="form-control" value={this.state.location} onChange={e => { this.handleChange(e, 'location') }} id="location">
+                                                <option>Please select</option>
+                                                <option>Ang Mo Kio</option>
+                                                <option>Bedok</option>
+                                                <option>Bishan</option>
+                                                <option>Bukit Batok</option>
+                                                <option>Bukit Merah</option>
+                                                <option>Bukit Panjang</option>
+                                                <option>Bukit Timah</option>
+                                                <option>Central</option>
+                                                <option>Choa Chu Kang</option>
+                                                <option>Clementi</option>
+                                                <option>Geylang</option>
+                                                <option>Hougang</option>
+                                                <option>Jurong East</option>
+                                                <option>Jurong West</option>
+                                                <option>Kallang / Whampoa</option>
+                                                <option>Marine Parade</option>
+                                                <option>Pasir Ris</option>
+                                                <option>Punggol</option>
+                                                <option>Queenstown</option>
+                                                <option>Sembawang</option>
+                                                <option>Sengkang</option>
+                                                <option>Serangoon</option>
+                                                <option>Tampines</option>
+                                                <option>Toa Payoh</option>
+                                                <option>Woodlands</option>
+                                                <option>Yishun</option>
+                                            </select>
+                                        </div>
+                                        {
+                                            this.state.formErr.length > 0 ?
+                                                (
+                                                    <div className="form-group">
+                                                        {
+                                                            this.state.formErr.map(msg => {
+                                                                return (
+                                                                    <p>{msg}</p>
+                                                                )
+                                                            })
+                                                        }
+                                                    </div>
+                                                ) :
+                                                ''
+                                        }
+                                        {
+                                            this.state.formMsg !== '' ? (
+                                                <div className="form-group">
+                                                    <p>{this.state.formMsg}</p>
+                                                </div>
+                                            ) :
+                                                ''
+                                        }
+                                        <button type="submit" className="btn font-weight-bold" id="submit-btn">Register</button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

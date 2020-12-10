@@ -14,7 +14,7 @@ class Footer extends React.Component {
                             <div className="col-md-6 mt-md-0 mt-3">
 
                                 <h3 className="text-uppercase font-weight-bold text-center mb-3">About Us</h3>
-                                <p className="text-justify">FOOD SHARE MRKTPLC aims to a platform for users to share food products with their neighbours. Simply sign up and start sharing your food with others.</p>
+                                <p className="text-justify">FOOD SHARE MRKTPLC aims to provide a platform for users to share food products with their neighbours. Simply sign up and start sharing your food with others.</p>
 
                             </div>
 
