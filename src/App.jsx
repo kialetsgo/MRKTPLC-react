@@ -44,7 +44,7 @@ class App extends React.Component {
             <Route path="/events/:id" component={ShowOneEvents} />
             <Route path="/events" component={ShowAllEvents} />
 
-            <ProtectedRoute path="/listings/edit/:slug" component={EditListing} />
+            <Route path="/listings/edit/:slug" component={EditListing} />
             <Route path="/listings/all" component={AllListings} />
             <Route path="/listings/:slug" component={Listing} />
             <ProtectedRoute path="/users/listings/new" component={CreateListing} />

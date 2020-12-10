@@ -19,38 +19,6 @@ class CreateListing extends React.Component {
 
     handleChange(e, elemName) {
         this.setState({ [elemName]: e.target.value })
-        // switch (elemName) {
-        //     case 'listing_name':
-        //         this.setState({
-        //             listing_name: e.target.value
-        //         })
-        //         break;
-        //     case 'img':
-        //         this.setState({
-        //             img: e.target.value
-        //         })
-        //         break;
-        //     case 'description':
-        //         this.setState({
-        //             description: e.target.value
-        //         })
-        //         break;
-        //     case 'location':
-        //         this.setState({
-        //             location: e.target.value
-        //         })
-        //         break;
-        //     case 'category':
-        //         this.setState({
-        //             category: e.target.value
-        //         })
-        //         break;
-        //     case 'expiry_date':
-        //         this.setState({
-        //             expiry_date: e.target.value
-        //         })
-        //         break;
-        // }
         console.log(this.state)
     }
 
@@ -105,7 +73,7 @@ class CreateListing extends React.Component {
                     <div className="form-group">
                         <label htmlFor="category">Select Food Category</label>
                         <select className="form-control" value={this.state.category} onChange={e => { this.handleChange(e, 'category') }} id="category">
-                            <option>---PLEASE SELECT---</option>
+                            <option>---Please Select---</option>
                             <option>Dairy, Chilled & Eggs</option>
                             <option>Fruits & Vegetables</option>
                             <option>Meat & Seafood</option>
@@ -118,7 +86,7 @@ class CreateListing extends React.Component {
                     <div className="form-group">
                         <label htmlFor="location">Select Area</label>
                         <select className="form-control" value={this.state.location} onChange={e => { this.handleChange(e, 'location') }} id="location">
-                            <option>---PLEASE SELECT---</option>
+                            <option>---Please Select---</option>
                             <option>Ang Mo Kio</option>
                             <option>Bedok</option>
                             <option>Bishan</option>

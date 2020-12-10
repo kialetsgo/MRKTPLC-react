@@ -26,6 +26,7 @@ class Listing extends React.Component {
         }
         // call getListing with the slug input
         this.getListing(routeParams.slug)
+        this.confirmUser()
     }
 
     confirmUser() {
@@ -57,32 +58,57 @@ class Listing extends React.Component {
             })
     }
 
+    confirmUser() {
+        // get token
+        const token = this.props.cookies.get("token");
+        try {
+            const decodedToken = jwt(token);
+            if (decodedToken.username === this.state.listing.username) {
+                return true;
+            }
+            return false;
+        } catch (e) {
+            return false;
+        }
+    }
+
     handleDelete(e) {
         e.preventDefault()
         console.log('click')
         const slug = this.props.match.params.slug
         console.log(slug)
-        axios.delete(`http://localhost:5000/api/v1/listings/${slug}`)
+        const token = this.props.cookies.get("token");
+        const config = {
+            headers: {
+                auth_token: token,
+            },
+        };
+        axios.delete(`http://localhost:5000/api/v1/listings/${slug}`, config)
             .then(response => {
                 console.log(response.data)
-                this.props.history.push('/users/listings')
+                this.props.history.push('/listings/all')
             })
             .catch(err => {
                 console.log(err)
             })
     }
 
+
     render() {
         return (
-            <div className="container container-listing">
+            <div className="container container-listing shadow p-3 mb-5 bg-white rounded">
                 <div className="listing">
                     < div className="row" >
-                        <div className="col-6">
-                            <figure>
-                                <img src={this.state.listing.img} />
-                            </figure>
+                        <div style={{
+                            backgroundImage: `url(${this.state.listing.img})`,
+                            backgroundRepeat: "no-repeat",
+                            backgroundSize: "contain",
+                            maxHeight: "600px",
+                        }}
+                            className="col-6 fix-img">
                         </div>
-                        <div className="col-6">
+                        <div className="col-6 listing-body">
+                            <h1 className="listing-username">{this.state.listing.username}</h1>
                             <h1 className="listing-name">{this.state.listing.listing_name}</h1>
                             <hr />
                             <p className="p-location">{this.state.listing.location}</p>
