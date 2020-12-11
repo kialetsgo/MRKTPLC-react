@@ -37,13 +37,13 @@ class CreateEvents extends Component {
          
                 document.querySelector('.glider').addEventListener('glider-slide-visible', function (event) {
                     var glider = Glider(this);
-    
+
                 });
                 document.querySelector('.glider').addEventListener('glider-slide-hidden', function (event) {
 
                 });
                 document.querySelector('.glider').addEventListener('glider-refresh', function (event) {
-          
+
                 });
                 document.querySelector('.glider').addEventListener('glider-loaded', function (event) {
 
@@ -168,11 +168,11 @@ class CreateEvents extends Component {
                     <button className="glider-next arrow">&raquo;</button>
                     <div id="dots"></div>
                 </div>
-                
+
                 <div className="container container-all-events" >
                     < div className="events" >
                         <div className="row">
-                            <div className="col-1 filter-section">
+                            <div className="col-2 filter-section">
                                 <form className="form">
                                     <div className="input-group filter-header">
                                         <h3>Filter By Location</h3>
@@ -214,7 +214,7 @@ class CreateEvents extends Component {
                                         this.state.filteredEvents.length > 0 ? (
                                             this.state.filteredEvents.map(item => {
                                                 return (
-                                                    <div className="event col-3" key={item._id}>
+                                                    <div className="event col-4" key={item._id}>
                                                         <div className="card" style={{ "width": "18rem" }}>
                                                             <div className="card-header">
                                                                 <p className="card-text p-username">{item.location}</p>
