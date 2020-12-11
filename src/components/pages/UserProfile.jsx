@@ -33,7 +33,7 @@ class UserProfile extends React.Component {
                 auth_token: token
             }
         }
-        return axios.get('http://localhost:5000/api/v1/users/profile', config)
+        return axios.get('https://app-mrktplc-server.herokuapp.com/api/v1/users/profile', config)
             .then(response => {
                 this.setState({
                     location: response.data[0].location

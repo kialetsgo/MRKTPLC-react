@@ -19,7 +19,7 @@ class AllListings extends React.Component {
     }
 
     getAllListings() {
-        return axios.get('http://localhost:5000/api/v1/listings/all')
+        return axios.get('https://app-mrktplc-server.herokuapp.com/api/v1/listings/all')
             .then(response => {
                 this.setState({
                     listings: response.data,

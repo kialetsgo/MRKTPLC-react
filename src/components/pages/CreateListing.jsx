@@ -32,7 +32,7 @@ class CreateListing extends React.Component {
             }
         }
         console.log(token)
-        axios.post('http://localhost:5000/api/v1/users/listings/new', qs.stringify({
+        axios.post('https://app-mrktplc-server.herokuapp.com/api/v1/users/listings/new', qs.stringify({
             description: this.state.description,
             img: this.state.img,
             listing_name: this.state.listing_name,

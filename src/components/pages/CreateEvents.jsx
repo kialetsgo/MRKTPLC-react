@@ -87,7 +87,7 @@ class CreateEvents extends Component {
             }
 
 
-            axios.post('http://localhost:5000/api/v1/events/new', qs.stringify({
+            axios.post('https://app-mrktplc-server.herokuapp.com/api/v1/events/new', qs.stringify({
                 hosted_date: this.state.hosted_date,
                 hosted_time: this.state.hosted_time,
                 location: this.state.location,

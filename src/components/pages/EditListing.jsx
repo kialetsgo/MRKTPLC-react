@@ -47,7 +47,7 @@ class EditListing extends React.Component {
     }
 
     autoFillForm(slug) {
-        return axios.get(`http://localhost:5000/api/v1/listings/${slug}`)
+        return axios.get(`https://app-mrktplc-server.herokuapp.com/api/v1/listings/${slug}`)
             .then(response => {
                 this.setState({
                     listing: response.data

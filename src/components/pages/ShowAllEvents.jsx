@@ -28,7 +28,7 @@ class CreateEvents extends Component {
     }
     getEvents() {
 
-        axios.get('http://localhost:5000/api/v1/events')
+        axios.get('https://app-mrktplc-server.herokuapp.com/api/v1/events')
             .then(response => {
                 this.setState({
                     events: response.data,
