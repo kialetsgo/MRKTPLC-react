@@ -237,15 +237,6 @@ class ShowOneEvents extends Component {
                 </div>
 
 
-                {this.state.users.length > 0 ? (
-                  this.state.users.map((people) => {
-                    return <p>Participants : {people}</p>;
-                  })
-                ) : (
-                    <p className="content-center">no participants</p>
-                  )}
-
-
               </div>
             </div>
           ) : (

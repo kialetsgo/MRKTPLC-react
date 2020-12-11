@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import 'bootstrap/scss/bootstrap.scss'
 import 'tailwindcss/tailwind.css'
+import 'bootstrap/scss/bootstrap.scss'
 import './App.scss'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -24,7 +24,6 @@ import CreateEvents from './components/pages/CreateEvents'
 import ShowAllEvents from './components/pages/ShowAllEvents'
 import ShowOneEvents from './components/pages/ShowOneEvents'
 import ShowUserEvents from './components/pages/ShowUserEvents'
-import 'tailwindcss/tailwind.css'
 
 class App extends React.Component {
   render() {
