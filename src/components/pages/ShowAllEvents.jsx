@@ -37,13 +37,13 @@ class CreateEvents extends Component {
                 console.log(response.data)
                 document.querySelector('.glider').addEventListener('glider-slide-visible', function (event) {
                     var glider = Glider(this);
-    
+
                 });
                 document.querySelector('.glider').addEventListener('glider-slide-hidden', function (event) {
 
                 });
                 document.querySelector('.glider').addEventListener('glider-refresh', function (event) {
-          
+
                 });
                 document.querySelector('.glider').addEventListener('glider-loaded', function (event) {
 
@@ -168,7 +168,7 @@ class CreateEvents extends Component {
                     <button className="glider-next arrow">&raquo;</button>
                     <div id="dots"></div>
                 </div>
-                
+
                 <div className="container container-all-events" >
                     < div className="events" >
                         <div className="row">
