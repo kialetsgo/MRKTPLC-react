@@ -10,10 +10,34 @@ import qs from 'qs'
 class Header extends React.Component {
     // constructor(props) {
     //     super(props)
+
     //     this.state = {
-    //          searchField: '',
-    //          searchInput: ''
+    //             user: '',
+    // //          searchField: '',
+    // //          searchInput: ''
     //     }
+    // }
+
+    // componentDidMount() {
+    //     this.getUser()
+    // }
+
+    // getUser() {
+    //     const token = this.props.cookies.get('token')
+    //     const config = {
+    //         headers: {
+    //             auth_token: token
+    //         }
+    //     }
+    //     return axios.get('https://app-mrktplc-server.herokuapp.com/api/v1/users/profile', config)
+    //         .then(response => {
+    //             this.setState({
+    //                 username: response.data[0].username
+    //             })
+    //         })
+    //         .catch(err => {
+    //             console.log(err)
+    //         })
     // }
     
     isAuthenticated() {
@@ -163,9 +187,10 @@ class Header extends React.Component {
                                     {
                                         this.isAuthenticated() ? (
                                             <li className="nav-item dropdown">
-                                                <Link to="#" className="nav-link dropdown-toggle font-weight-bold text-uppercase" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Profile
-                                            </Link>
+                                                <Link to="#" className="nav-link dropdown-toggle font-weight-bold" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    {/* {this.state.username} */}
+                                                    PROFILE
+                                                </Link>
                                                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                                     <Link to="/users/profile" className="dropdown-item">Update</Link>
                                                 </div>

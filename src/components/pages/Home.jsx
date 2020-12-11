@@ -24,10 +24,10 @@ class Home extends React.Component {
         <div className='h-screen bg-opacity-50 bg-black flex items-center justify-center'>
           <div className='mx-2 text-center'>
             <h1 className='text-gray-100 font-extrabold text-4xl xs:text-5xl md:text-6xl'>
-              <span className='text-white'>The BEST</span> Place To
+              <span className='text-white'>The BEST</span> way to
             </h1>
             <h2 className='text-gray-200 font-extrabold text-3xl xs:text-4xl md:text-5xl leading-tight'>
-              Share Food With <span className='text-white'>Friends</span> And <span className='text-white'>Strangers</span>
+              share food in your <span className='text-white'>neighbourhood</span>
             </h2>
             <div className='inline-flex'>
               {
