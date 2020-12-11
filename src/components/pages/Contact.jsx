@@ -37,7 +37,7 @@ class Contact extends Component {
         if (formValid) {
 
   
-            axios.post('https://app-mrktplc-server.herokuapp.com/api/v1/send-message', qs.stringify({
+            axios.post('http://localhost:5000/api/v1/send-message', qs.stringify({
                 name: this.state.name,
                 email: this.state.email,
                 message: this.state.message,
