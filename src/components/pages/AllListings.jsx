@@ -3,6 +3,7 @@ import axios from 'axios'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './AllListings.scss'
+import moment from 'moment'
 class AllListings extends React.Component {
     constructor(props) {
         super(props)
@@ -148,6 +149,8 @@ class AllListings extends React.Component {
                                                         <hr />
                                                         <div className="card-body">
                                                             <p className="card-text p-listing_name">{listing.listing_name}</p>
+                                                            <hr />
+                                                            <p className="card-expiry p-listing-expiry">{moment(listing.expiry_date).format('DD MMM YYYY')}</p>
                                                             <Link to={{
                                                                 // link to new path
                                                                 pathname: `/listings/${listing.slug}`,
