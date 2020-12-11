@@ -1,5 +1,5 @@
-.container-all-listings {
-    margin-top: 160px;
+.container-all-user-listings {
+    margin-top: 100px;
     z-index: 9998;
     .filter-section{
         max-height: auto;
@@ -17,13 +17,24 @@
         font-size: 48px;
         padding-bottom: 100px;
     }
-    img{
-        // max-height: 5000px;
-        object-fit: cover
-    }
     .listing {
         position: relative;
         margin-bottom: 10px;
+        hr{
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .card-body{
+            height:96px;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-direction: column;
+        }
+        .card-img{
+            // max-height: 5000px;
+            object-fit: cover
+        }
         a {
             position: absolute;
             left: 0;

@@ -142,7 +142,10 @@ class AllListings extends React.Component {
                                                         <div className="card-header">
                                                             <p className="card-text p-username">{listing.username}</p>
                                                         </div>
-                                                        <img src={listing.img} className="card-img-top" alt="" />
+                                                        <div className="card-img">
+                                                            <img src={listing.img} className="card-img-top" alt="" />
+                                                        </div>
+                                                        <hr />
                                                         <div className="card-body">
                                                             <p className="card-text p-listing_name">{listing.listing_name}</p>
                                                             <Link to={{
