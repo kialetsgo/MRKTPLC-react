@@ -17,8 +17,8 @@ class HomePage extends Component {
             </div>
           </div>
           <div className='hidden lg:block lg:w-1/2' style={{ clipPath: "polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%)" }}>
-            <div className='h-full  background_image' style={{ backgroundImage: "url(/img/foodpic5.jpg)" }}>
-              <div className='h-full bg-black opacity-25'></div>
+            <div className='h-full background_image' style={{ backgroundImage: "url(/img/foodpic5.jpg)" }}>
+              <div className='h-full bg-white bg-black opacity-25'></div>
             </div>
           </div>
         </div>

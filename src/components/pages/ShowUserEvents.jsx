@@ -30,7 +30,7 @@ class ShowUserEvents extends Component {
         }
         console.log(token)
 
-        axios.get('http://localhost:5000/api/v1/users/events', config)
+        axios.get('https://app-mrktplc-server.herokuapp.com/api/v1/users/events', config)
             .then(response => {
                 this.setState({
                     events: response.data
