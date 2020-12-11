@@ -89,39 +89,50 @@ class Listing extends React.Component {
                     </div>
                     <div className="actual-form p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg justify-center">
                         <div className="listing-owner">
-                            <label htmlFor="listing_owner" className="listing-owner-heading block text-xs font-semibold text-gray-600 uppercase">Listing Owner</label>
+                            <label htmlFor="listing_owner" className="listing-heading block text-xs font-semibold text-gray-600 uppercase">Listing Owner</label>
                             <h3 className="listing-owner text-2xl text-gray-900 font-semibold">{this.state.listing.username}</h3>
                         </div>
                         <div className="listing-name">
-                            <label htmlFor="listing_name" className="listing-name-heading block text-xs font-semibold text-gray-600 uppercase">Listing Name</label>
+                            <label htmlFor="listing_name" className="listing-heading block text-xs font-semibold text-gray-600 uppercase">Listing Name</label>
                             <h1 className="text-4xl sm:text-3xl text-gray-800 dark:text-white font-extrabold tracking-tight">
                                 {this.state.listing.listing_name}
                             </h1>
                         </div>
                         <div className="listing-category">
-                            <label htmlFor="listing_name" className="listing-category-heading block text-xs font-semibold text-gray-600 uppercase">Category</label>
+                            <label htmlFor="listing_name" className="listing-heading block text-xs font-semibold text-gray-600 uppercase">Category</label>
                             <p className="listing-category text-normal text-lg sm:text-xl font-medium text-gray-600 dark:text-gray-400 mt-2">
-                                Category: {this.state.listing.category}
+                                {this.state.listing.category}
                             </p>
                         </div>
-
-                        {/* <div className="form-group">
-                            <label htmlFor="contact_number" className="block text-xs font-semibold text-gray-600 uppercase">Contact</label>
-                            <input type="number" value={this.state.contact_number} onChange={e => { this.handleChange(e, 'contact_number') }} className="form-control" id="contact_number" />
-                        </div> */}
                         <div className="listing-description">
-                            <label htmlFor="description" className="listing-description-heading block text-xs font-semibold text-gray-600 uppercase">Description</label>
+                            <label htmlFor="description" className="listing-heading block text-xs font-semibold text-gray-600 uppercase">Description</label>
                             <p className="listing-description">{this.state.listing.description}</p>
                         </div>
                         <div className="listing-expiry">
-                            <label htmlFor="location" className="listing-expiry-heading block text-xs font-semibold text-gray-600 uppercase">Expiry Date</label>
+                            <label htmlFor="location" className="listing-heading block text-xs font-semibold text-gray-600 uppercase">Expiry Date</label>
                             <p className="listing-expiry">{moment(this.state.listing.expiry_date).format('DD MMM YYYY')}</p>
                         </div>
-                        {/* <div className="form-group">
-                            <label htmlFor="description" className="block text-xs font-semibold text-gray-600 uppercase">Description</label>
-                            <textarea type="string" value={this.state.description} onChange={e => { this.handleChange(e, 'description') }} className="form-control" id="description"></textarea>
-                        </div>
-                        <button type="submit" className="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">Host</button> */}
+                        {
+                            this.confirmUser() ? (
+                                <div className="buttons">
+                                    <div className="edit-button">
+                                        <button type="button" id="edit-button" className="btn">Edit Listing</button>
+                                        <Link to={{
+                                            // link to new path
+                                            pathname: `/listings/edit/${this.state.listing.slug}`,
+                                            state: {
+                                                listing: this.state.listing.slug
+                                            }
+                                        }}>
+                                        </Link>
+                                    </div>
+                                    <div className="delete-button">
+                                        <button onClick={e => { this.handleDelete(e) }} type="button" id="delete-button" className="btn">Delete Listing</button>
+                                    </div>
+                                </div>
+
+                            ) : ""
+                        }
                     </div>
 
                 </div>

@@ -126,7 +126,7 @@ class CreateEvents extends Component {
 
     render() {
         return (
-            <div id="show-all-event-page" className='background_image' style={{ backgroundImage: "url(/img/drink1.jpg)" }}>
+            <div id="show-all-event-page" className='background_image bg-grey-300'>
                 <div className="entire-container glider-contain">
 
 
@@ -171,8 +171,8 @@ class CreateEvents extends Component {
 
                 <div className="container container-all-events" >
                     < div className="events" >
-                        <div className="row">
-                            <div className="col-2 filter-section">
+                        <div className="column">
+                            <div className="col-12 filter-section">
                                 <form className="form">
                                     <div className="input-group filter-header">
                                         <h3>Filter By Location</h3>
@@ -208,7 +208,7 @@ class CreateEvents extends Component {
                                     </div>
                                 </form>
                             </div>
-                            <div className="col-10 shadow  rounded">
+                            <div className="col-12">
                                 <div className="row">
                                     {
                                         this.state.filteredEvents.length > 0 ? (
@@ -221,7 +221,7 @@ class CreateEvents extends Component {
                                                                 {/* <p className="card-text p-listing-age">{this.getListingAge(listing.created_at)}</p> */}
                                                             </div>
                                                             <div className="card-body">
-                                                                <p className="card-text p-listing_name">{item.hosted_by}</p>
+                                                                <p className="card-text p-listing_name">Hosted by: {item.hosted_by}</p>
                                                                 <p className="host-date">Date: {moment(item.hosted_date).format("YYYY-MM-DD")}</p>
                                                                 <p className="host-time">Time: {item.hosted_time}</p>
                                                                 <Link to={{
