@@ -137,7 +137,7 @@ class AllListings extends React.Component {
                                     this.state.filteredListings.length > 0 ? (
                                         this.state.filteredListings.map(listing => {
                                             return (
-                                                <div className="listing col-3">
+                                                <div className="listing col-4">
                                                     <div className="card" style={{ "width": "18rem" }}>
                                                         <div className="card-header">
                                                             <p className="card-text p-username">{listing.username}</p>
