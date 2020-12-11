@@ -34,7 +34,7 @@ class CreateEvents extends Component {
                     events: response.data,
                     filteredEvents: response.data,
                 })
-                console.log(response.data)
+         
                 document.querySelector('.glider').addEventListener('glider-slide-visible', function (event) {
                     var glider = Glider(this);
 

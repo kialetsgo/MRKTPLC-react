@@ -178,7 +178,7 @@ class ShowOneEvents extends Component {
       <div id='show-single-event' className='background_image' style={{ backgroundImage: "url(/img/partypic2.jpg)" }}>
         <div className='container'>
           {this.state.event ? (
-            <div class="md:flex shadow-lg  mx-6 md:mx-auto my-40 max-w-lg md:max-w-6xl h-64">
+            <div class="md:flex shadow-lg  mx-6 md:mx-auto my-40 max-w-lg md:max-w-6xl h-100">
               <div class="w-full md:w-1/4 px-4 py-4 bg-white rounded-lg">
                 <div className="bg-gray-400 dark:bg-gray-800 rounded-lg lg:w-12/12 py-5 block h-full shadow-inner">
                   <div className="text-center tracking-wide">
@@ -235,6 +235,15 @@ class ShowOneEvents extends Component {
                     )}
 
                 </div>
+
+
+                {this.state.users.length > 0 ? (
+                  this.state.users.map((people) => {
+                    return <p>Participant : {people}</p>;
+                  })
+                ) : (
+                    <p className="content-center">no participants</p>
+                  )}
 
 
               </div>
