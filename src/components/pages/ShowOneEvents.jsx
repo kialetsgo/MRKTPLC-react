@@ -33,7 +33,7 @@ class ShowOneEvents extends Component {
   getSingleEvent(id) {
     console.log(id);
     axios
-      .get(`http://localhost:5000/api/v1/events/${id}`)
+      .get(`https://app-mrktplc-server.herokuapp.com/api/v1/events/${id}`)
       .then((response) => {
         this.setState({
           event: response.data,
@@ -81,7 +81,7 @@ class ShowOneEvents extends Component {
     const id = routeParams.id;
 
     axios
-      .delete(`http://localhost:5000/api/v1/events/${id}`)
+      .delete(`https://app-mrktplc-server.herokuapp.com/api/v1/events/${id}`)
       .then((response) => {
         console.log(response.data);
         this.props.history.push("/events");
@@ -112,7 +112,7 @@ class ShowOneEvents extends Component {
 
       axios
         .patch(
-          `http://localhost:5000/api/v1/events/${id}/join`,
+          `https://app-mrktplc-server.herokuapp.com/api/v1/events/${id}/join`,
           qs.stringify({
             people_joining: decodedToken.username,
           }),
@@ -153,7 +153,7 @@ class ShowOneEvents extends Component {
 
       axios
         .patch(
-          `http://localhost:5000/api/v1/events/${id}/remove`,
+          `https://app-mrktplc-server.herokuapp.com/api/v1/events/${id}/remove`,
           qs.stringify({
             people_joining: decodedToken.username,
           }),

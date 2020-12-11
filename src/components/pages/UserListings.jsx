@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable jsx-a11y/alt-text */
 import axios from 'axios'
 import React from 'react'
@@ -28,7 +29,7 @@ class UserListings extends React.Component {
                 auth_token: token
             }
         }
-        return axios.get('http://localhost:5000/api/v1/users/listings', config)
+        return axios.get('https://app-mrktplc-server.herokuapp.com/api/v1/users/listings', config)
             .then(response => {
                 this.setState({
                     listings: response.data,
