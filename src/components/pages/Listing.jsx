@@ -4,7 +4,6 @@ import jwt from 'jwt-decode'
 import { withCookies } from 'react-cookie'
 import { Link } from 'react-router-dom'
 import './Listing.scss'
-
 class Listing extends React.Component {
     constructor(props) {
         super(props)
@@ -27,21 +26,6 @@ class Listing extends React.Component {
         // call getListing with the slug input
         this.getListing(routeParams.slug)
         this.confirmUser()
-    }
-
-    confirmUser() {
-        // get token
-        const token = this.props.cookies.get('token')
-        try {
-            const decodedToken = jwt(token)
-            console.log(decodedToken)
-            if (decodedToken.username === this.state.listing.username) {
-                return true
-            }
-            return false
-        } catch (e) {
-            return false
-        }
     }
 
     getListing(slug) {
@@ -93,7 +77,6 @@ class Listing extends React.Component {
             })
     }
 
-
     render() {
         return (
             <div className="container container-listing shadow p-3 mb-5 bg-white rounded">
@@ -103,13 +86,21 @@ class Listing extends React.Component {
                             backgroundImage: `url(${this.state.listing.img})`,
                             backgroundRepeat: "no-repeat",
                             backgroundSize: "contain",
-                            maxHeight: "600px",
+                            height: "600px",
+                            width: "auto",
                         }}
-                            className="col-6 fix-img">
+                            className="col-5 fix-img">
                         </div>
-                        <div className="col-6 listing-body">
-                            <h1 className="listing-username">{this.state.listing.username}</h1>
-                            <h1 className="listing-name">{this.state.listing.listing_name}</h1>
+                        <div className="col-7 listing-body">
+                            <div className="listing-username">
+                                <h1>{this.state.listing.username}</h1>
+                            </div>
+                            <div className="listing-name">
+                                <h1>{this.state.listing.listing_name}</h1>
+                            </div>
+                            <div className="listing-description">
+                                <p>Listing Description:<br /> <span>{this.state.listing.description}</span></p>
+                            </div>
                             <hr />
                             <p className="p-location">{this.state.listing.location}</p>
                             {
