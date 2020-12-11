@@ -101,7 +101,7 @@ class UserProfile extends React.Component {
                                         <div className="form-group">
                                             {/* <label className="font-weight-bold" htmlFor="location">Update Location</label> */}
                                             <select className="form-control" value={this.state.location} onChange={e => { this.handleLocationChange(e) }} id="location">
-                                                <option>Please select</option>
+                                                <option>---Please Select---</option>
                                                 <option>Ang Mo Kio</option>
                                                 <option>Bedok</option>
                                                 <option>Bishan</option>

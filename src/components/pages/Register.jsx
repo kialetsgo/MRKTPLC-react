@@ -160,7 +160,7 @@ class Login extends React.Component {
                                         <div className="form-group">
                                             <label className="entryTitle" htmlFor="location">Select Area</label>
                                             <select className="form-control" value={this.state.location} onChange={e => { this.handleChange(e, 'location') }} id="location">
-                                                <option>Please select</option>
+                                                <option>---Please Select---</option>
                                                 <option>Ang Mo Kio</option>
                                                 <option>Bedok</option>
                                                 <option>Bishan</option>
