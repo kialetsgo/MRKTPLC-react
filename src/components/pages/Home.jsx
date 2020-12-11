@@ -13,10 +13,10 @@ class Home extends React.Component {
     const token = this.props.cookies.get('token')
 
     if (!token || token === "undefined" || token === "null") {
-      return false
+      return true
     }
 
-    return true
+    return false
   }
   render() {
     return (
