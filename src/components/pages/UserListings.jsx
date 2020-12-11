@@ -68,7 +68,7 @@ class UserListings extends React.Component {
 
     render() {
         return (
-            <div className="container container-all-listings" >
+            <div className="container container-all-user-listings" >
                 {/* <div className="page-heading">
                     <h1>All Listings</h1>
                 </div> */}
@@ -135,14 +135,16 @@ class UserListings extends React.Component {
                                     this.state.filteredListings.length > 0 ? (
                                         this.state.filteredListings.map(listing => {
                                             return (
-
                                                 <div className="listing col-3">
                                                     <div className="card" style={{ "width": "18rem" }}>
                                                         <div class="card-header">
                                                             <p className="card-text p-username">{listing.username}</p>
                                                             {/* <p className="card-text p-listing-age">{this.getListingAge(listing.created_at)}</p> */}
                                                         </div>
-                                                        <img src={listing.img} className="card-img-top" alt="" />
+                                                        <div className="card-img">
+                                                            <img src={listing.img} className="card-img-top" alt="" />
+                                                        </div>
+                                                        <hr />
                                                         <div className="card-body">
                                                             <p className="card-text p-listing_name">{listing.listing_name}</p>
                                                             <Link to={{

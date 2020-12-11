@@ -11,10 +11,11 @@ class Header extends React.Component {
     // constructor(props) {
     //     super(props)
     //     this.state = {
-    //         searchField: '',
-    //         searchInput: ''
+    //          searchField: '',
+    //          searchInput: ''
     //     }
     // }
+    
     isAuthenticated() {
         const token = this.props.cookies.get('token')
 

@@ -1,29 +1,18 @@
 import React from 'react'
-import { withCookies, Cookies } from 'react-cookie'
-import { instanceOf } from 'prop-types'
+import { useCookies } from "react-cookie";
 
-class Logout extends React.Component {
-    static propTypes = {
-        cookies: instanceOf(Cookies).isRequired
-    }
-    
+export default function Logout() {
+  const [cookies, removeCookie] = useCookies(["token"]);
 
-    logout(e) {
+  function handleRemoveCookie() {
+    removeCookie("token");
+  }
 
-        this.props.cookies.remove('token', {
-            path: '/',
-        })
-    }
-
-    render() {
-        return(
-            <div className="page-logout" token={this.state.token}>
-                <div className="container">
-                        <button type="submit" className="btn btn-primary" onClick={this.logout}>Logout</button>
-                </div>
-            </div>
-        )
-    }
+  return (
+    <div className="App">
+      <h1>React Cookie</h1>
+      <p>{cookies.user}</p> {/* access user cookie */}
+      <button onClick={handleRemoveCookie}>Remove Cookie</button>
+    </div>
+  )
 }
-
-export default withCookies(Logout)
