@@ -30,7 +30,7 @@ class Listing extends React.Component {
     }
 
     getListing(slug) {
-        return axios.get(`http://localhost:5000/api/v1/listings/${slug}`)
+        return axios.get(`https://app-mrktplc-server.herokuapp.com/api/v1/listings/${slug}`)
             .then(response => {
                 console.log(response)
                 this.setState({
@@ -68,7 +68,7 @@ class Listing extends React.Component {
                 auth_token: token,
             },
         };
-        axios.delete(`http://localhost:5000/api/v1/listings/${slug}`, config)
+        axios.delete(`https://app-mrktplc-server.herokuapp.com/api/v1/listings/${slug}`, config)
             .then(response => {
                 console.log(response.data)
                 this.props.history.push('/listings/all')

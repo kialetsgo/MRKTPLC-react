@@ -47,7 +47,7 @@ class EditListing extends React.Component {
     }
 
     autoFillForm(slug) {
-        return axios.get(`http://localhost:5000/api/v1/listings/${slug}`)
+        return axios.get(`https://app-mrktplc-server.herokuapp.com/api/v1/listings/${slug}`)
             .then(response => {
                 this.setState({
                     listing: response.data
@@ -71,7 +71,7 @@ class EditListing extends React.Component {
         }
         // console.log(token)
         let slug = this.props.match.params.slug
-        axios.patch(`http://localhost:5000/api/v1/listings/${slug}`, qs.stringify({
+        axios.patch(`https://app-mrktplc-server.herokuapp.com/api/v1/listings/${slug}`, qs.stringify({
             description: this.state.listing.description,
             img: this.state.listing.img,
             listing_name: this.state.listing.listing_name,
@@ -90,24 +90,16 @@ class EditListing extends React.Component {
 
     render() {
         return (
-
-
             this.isAuthenticated() ? (
-
                 <div id="page-editList">
-
-                <div className="container">
-                    <div className="wrapper">
-
-                        <div className="form-input">
-                            <div className="row">
-                                <div className="col-md-4 offset-md-4">
-
-                            
-                                    <div className="titleDiv">
-                                        <p className="title">Edit Listing</p>
-                                    </div>                        
-
+                    <div className="container">
+                        <div className="wrapper">
+                            <div className="form-input">
+                                <div className="row">
+                                    <div className="col-md-4 offset-md-4">
+                                        <div className="titleDiv">
+                                            <p className="title">Edit Listing</p>
+                                        </div>
                                         <form className="mt-5 mb-5" onSubmit={e => { this.handleFormSubmission(e) }}>
                                             <div className="form-group">
                                                 <label className="entryTitle" htmlFor="listing_name">Name of Item</label>
@@ -178,7 +170,6 @@ class EditListing extends React.Component {
                         </div>
                     </div>
                 </div>
-
             ) : (
                     <Redirect to="/users/login" />
                 )
