@@ -86,7 +86,7 @@ class AllListings extends React.Component {
                         <div className="col-2 filter-section">
                             <form className="form my-2 my-lg-0">
                                 <div className="input-group filter-header">
-                                    <h3>Filter by category</h3>
+                                    <h3>Filter by Category</h3>
                                     <select className="form-control" value={this.state.category} onChange={e => { this.handleChange(e, 'category') }} id="filter-category">
                                         <option value="">---Please Select---</option>
                                         <option>Dairy, Chilled & Eggs</option>
@@ -99,7 +99,7 @@ class AllListings extends React.Component {
                                     </select>
                                 </div>
                                 <div className="input-group filter-header">
-                                    <h3>Filter by location</h3>
+                                    <h3>Filter by Location</h3>
                                     <select className="form-control" value={this.state.location} onChange={e => { this.handleChange(e, 'location') }} id="filter-location">
                                         <option value="">---Please Select---</option>
                                         <option>Ang Mo Kio</option>

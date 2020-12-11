@@ -10,7 +10,7 @@ class HomePage extends Component {
           <div className='flex items-center text-center lg:text-left px-8 md:px-12 lg:w-1/2'>
             <div>
               <h2 className='text-3xl font-semibold text-gray-800 md:text-4xl'>
-                Share your food  <span class='text-indigo-600'>Here</span>
+                Share your food <span class='text-indigo-600'>Here</span>
               </h2>
               <p className='mt-2 text-sm text-gray-500 md:text-base'>Welcome to <span class='text-indigo-600'>FOOD SHARE MRKTPLC, </span>where we provide a platform for users to share food products with their neighbours. Simply sign up and start sharing your food with others.</p>
               <div className='flex justify-center lg:justify-start mt-6'></div>

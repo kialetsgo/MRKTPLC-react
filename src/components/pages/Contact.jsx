@@ -93,7 +93,7 @@ class Contact extends Component {
                         </h1>
 
                             <p className="text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">
-                                Fill in the form with your question
+                                Let us know your question
                         </p>
 
                             <div className="flex items-center mt-8 text-gray-600 dark:text-gray-400">
@@ -112,7 +112,7 @@ class Contact extends Component {
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                 </svg>
                                 <div className="ml-4 text-md tracking-wide font-semibold w-40">
-                                    +64 1234567890
+                                    +65 62345678
                             </div>
                             </div>
 
@@ -127,21 +127,21 @@ class Contact extends Component {
                         </div>
                         <form onSubmit={e => { this.handleFormSubmit(e) }} className="p-6 flex flex-col justify-center hidden lg:block">
 
-                            <h3 className="text-2xl text-gray-900 font-semibold">Want to know more? Leave your query below!</h3>
+                            <h3 className="text-2xl text-gray-900 font-semibold">Want to know more? Fill in the form below!</h3>
 
                             <hr></hr>
 
                             <div className="form-group">
                                 <label htmlFor="name" className="block text-xs font-semibold text-gray-600 uppercase">Name</label>
-                                <input type="text" className="form-control form-control-lg" id="name" name="name" value={this.state.name} onChange={e => { this.handleInputChange(e) }} placeholder="Your Name" />
+                                <input type="text" className="form-control form-control-lg" id="name" name="name" value={this.state.name} onChange={e => { this.handleInputChange(e) }} placeholder="Name" />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="email" className="block text-xs font-semibold text-gray-600 uppercase">Email</label>
-                                <input type="email" className="form-control form-control-lg" id="email" name="email" value={this.state.email} onChange={e => { this.handleInputChange(e) }} placeholder="Your Email" />
+                                <input type="email" className="form-control form-control-lg" id="email" name="email" value={this.state.email} onChange={e => { this.handleInputChange(e) }} placeholder="Email" />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="message" className="block text-xs font-semibold text-gray-600 uppercase">Message</label>
-                                <textarea className="form-control form-control-lg" id="message" name="message" value={this.state.message} onChange={e => { this.handleInputChange(e) }} placeholder="What do you wish to know?"></textarea>
+                                <textarea className="form-control form-control-lg" id="message" name="message" value={this.state.message} onChange={e => { this.handleInputChange(e) }} placeholder="Write your question here!"></textarea>
                             </div>
                             <div className="form-group text-center">
                                 <button type="submit" className="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">Submit</button>
