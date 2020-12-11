@@ -147,7 +147,7 @@ class CreateEvents extends Component {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 form-container">
 
-                    <div className="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg justify-center">
+                    <div className="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg justify-center hidden lg:block">
                         <h1 className="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">
                             Start sharing now!
                         </h1>
@@ -159,7 +159,7 @@ class CreateEvents extends Component {
                         <img src="../../img/foodpic1.jpg" width="600" alt="food pic" />
 
                     </div>
-
+            
                     <div className="actual-form p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg justify-center">
                         <h3 className="text-2xl text-gray-900 font-semibold">Host event to share now!</h3>
                         <form className="mt-5 mb-5" onSubmit={e => { this.handleFormSubmission(e) }}>
@@ -240,6 +240,7 @@ class CreateEvents extends Component {
 
                         </form>
                     </div>
+               
                 </div>
 
             </div >
