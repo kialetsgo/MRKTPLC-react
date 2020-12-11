@@ -36,7 +36,7 @@ class Contact extends Component {
 
         if (formValid) {
 
-            console.log(this.state)
+  
             axios.post('https://app-mrktplc-server.herokuapp.com/api/v1/send-message', qs.stringify({
                 name: this.state.name,
                 email: this.state.email,
@@ -125,7 +125,7 @@ class Contact extends Component {
                             </div>
                             </div>
                         </div>
-                        <form onSubmit={e => { this.handleFormSubmit(e) }} className="p-6 flex flex-col justify-center hidden lg:block lg:w-1/2">
+                        <form onSubmit={e => { this.handleFormSubmit(e) }} className="p-6 flex flex-col justify-center hidden lg:block">
 
                             <h3 className="text-2xl text-gray-900 font-semibold">Want to know more? Leave your query below!</h3>
 
