@@ -5,7 +5,7 @@ import "./About.scss";
 class HomePage extends Component {
   render() {
     return (
-      <div id='page-about' className='background_image'>
+      <div id='page-about' className='background_image' style= {{height:"100vh"}}>
         <div className="flex bg-white" style= {{height:"100vh"}}>
           <div className='flex items-center text-center lg:text-left px-8 md:px-12 lg:w-1/2'>
             <div>

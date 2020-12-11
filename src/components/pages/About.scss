@@ -2,11 +2,11 @@
     height: calc(100vh - 80px - 233px);
     background-color: lightgrey;
 
-    p{
-        padding-top:10vh;
-      }
+
   }
+ 
 
   .background_image{
-    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
