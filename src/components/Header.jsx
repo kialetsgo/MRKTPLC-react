@@ -12,33 +12,16 @@ class Header extends React.Component {
     //     super(props)
 
     //     this.state = {
-    //             user: '',
-    // //          searchField: '',
-    // //          searchInput: ''
+    //          user: '',
+    //          searchField: '',
+    //          searchInput: ''
     //     }
     // }
 
-    // componentDidMount() {
-    //     this.getUser()
-    // }
 
-    // getUser() {
-    //     const token = this.props.cookies.get('token')
-    //     const config = {
-    //         headers: {
-    //             auth_token: token
-    //         }
-    //     }
-    //     return axios.get('https://app-mrktplc-server.herokuapp.com/api/v1/users/profile', config)
-    //         .then(response => {
-    //             this.setState({
-    //                 username: response.data[0].username
-    //             })
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //         })
-    // }
+    getUser() {
+        return JSON.parse(localStorage.getItem('user'))
+    }
     
     isAuthenticated() {
         const token = this.props.cookies.get('token')
@@ -48,6 +31,11 @@ class Header extends React.Component {
         }
 
         return true
+    }
+
+    logout(e) {
+        localStorage.removeItem('user')
+        this.props.cookies.remove('token')
     }
 
     // handleChange(e, elemName) {
@@ -193,6 +181,8 @@ class Header extends React.Component {
                                                 </Link>
                                                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                                     <Link to="/users/profile" className="dropdown-item">Update</Link>
+                                                    <Link to="/" className="dropdown-item" onClick={(e) => {this.logout()}}>Log out</Link>
+
                                                 </div>
                                             </li>
                                         ) : (
