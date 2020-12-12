@@ -108,7 +108,7 @@ class ShowUserEvents extends Component {
             <div id="show-all-user-event-page" className='background_image' style={{ backgroundImage: "url(/img/partypic1.jpg)" }}>
                 <div className="entire-container glider-contain">
 
-                        <div className="content-center col-12 bg-gray-100 dark:bg-gray-800 event-sections text-3xl font-semibold">Current User Active Events</div>
+                        <div className="content-center col-12 bg-gray-100 dark:bg-gray-800 event-sections text-3xl font-semibold">Events by User</div>
 
                     <div className="glider">
 
@@ -129,10 +129,10 @@ class ShowUserEvents extends Component {
                                             <div className="w-full lg:w-11/12 xl:w-full px-1 bg-white py-5 lg:px-2 lg:py-2 tracking-wide">
                                                 <div className="flex flex-row lg:justify-start justify-center">
                                                     <div className="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
-                                                        <i className="far fa-clock"></i> Time : {items.hosted_time}
+                                                        <i className="far fa-clock"></i> Time: {items.hosted_time}
                                                     </div>
                                                     <div className="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
-                                                        Organiser : {items.hosted_by}
+                                                        Organiser: {items.hosted_by}
                                                     </div>
                                                 </div>
                                                 <div className="font-semibold text-gray-800 text-xl text-center lg:text-left px-2">{items.location}</div>
@@ -153,13 +153,13 @@ class ShowUserEvents extends Component {
                                                     </span></Link>
                                             </div>
                                             <div className="no_of_participants text-gray-600 bg-gray-200 px-2 text-sm rounded leading-loose mx-2 font-semibold">
-                                                No of Participants :      <div className="font-normal text-2xl">{items.people_joining.length}</div>
+                                                Number of Participants:      <div className="font-normal text-2xl">{items.people_joining.length}</div>
                                             </div>
                                         </div>
                                     )
                                 })
                             ) : (
-                                    <p className="content-center bg-gray-100 dark:bg-gray-800 event-sections col-9 lg:flex shadow rounded-lg border  border-gray-400 text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">no events hosted yet</p>
+                                    <p className="content-center bg-gray-100 dark:bg-gray-800 event-sections col-9 lg:flex shadow rounded-lg border  border-gray-400 text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">No event yet</p>
                                 )
 
                         }

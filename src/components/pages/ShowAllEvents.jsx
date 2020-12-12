@@ -138,7 +138,7 @@ class CreateEvents extends Component {
                                     return (
                                         <div className="event-sections col-3 max-w-md py-4 px-8 bg-yellow-100 shadow-lg rounded-lg" key={items._id}>
                                             <div className="bg-gray-200 rounded-lg pl-2 pt-2 pb-2">
-                                                <h2 className="text-gray-800 bg-text-2xl font-semibold">Location : {items.location}</h2>
+                                                <h2 className="text-gray-800 bg-text-2xl font-semibold">Location: {items.location}</h2>
                                                 <p className="mt-2 text-gray-600">{items.description}</p>
                                             </div>
                                             <div className="flex justify-end mt-4">
@@ -158,7 +158,7 @@ class CreateEvents extends Component {
                                     )
                                 })
                             ) : (
-                                    <p className="content-center bg-gray-100 dark:bg-gray-800 event-sections col-9 lg:flex shadow rounded-lg border  border-gray-400 text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">no events hosted yet</p>
+                                    <p className="content-center bg-gray-100 dark:bg-gray-800 event-sections col-9 lg:flex shadow rounded-lg border  border-gray-400 text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">No event at this moment!</p>
                                 )
 
                         }
@@ -175,9 +175,9 @@ class CreateEvents extends Component {
                             <div className="col-12 filter-section">
                                 <form className="form">
                                     <div className="input-group filter-header">
-                                        <h3>Filter By Location</h3>
+                                        <h3>Filter by Location</h3>
                                         <select className="form-control inline-block" value={this.state.location} onChange={e => { this.handleChange(e, 'location') }} id="filter-location">
-                                            <option value="">---PLEASE SELECT---</option>
+                                            <option value="">---Please Select---</option>
                                             <option>Ang Mo Kio</option>
                                             <option>Bedok</option>
                                             <option>Bishan</option>
@@ -230,7 +230,7 @@ class CreateEvents extends Component {
                                                                     state: {
                                                                         product: item
                                                                     }
-                                                                }}><p className="host-by text-1xl font-medium text-indigo-500" >Click to know more</p>
+                                                                }}><p className="host-by text-1xl font-medium text-indigo-500">Click to know more</p>
                                                                 </Link>
                                                             </div>
                                                         </div>
@@ -239,7 +239,7 @@ class CreateEvents extends Component {
                                                 )
                                             })
                                         ) : (
-                                                <p>No Events at this moment</p>
+                                                <p>No events at this moment!</p>
                                             )
                                     }
                                 </div>

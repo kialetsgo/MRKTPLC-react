@@ -149,10 +149,10 @@ class CreateEvents extends Component {
 
                     <div className="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg justify-center hidden lg:block">
                         <h1 className="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">
-                            Start sharing now!
+                            Start planning now!
                         </h1>
                         <p className="text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">
-                            Select your own time and date to share food!~!
+                            Fill in the form to share food!
                         </p>
                         
 
@@ -161,7 +161,7 @@ class CreateEvents extends Component {
                     </div>
             
                     <div className="actual-form p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg justify-center">
-                        <h3 className="text-2xl text-gray-900 font-semibold">Host event to share now!</h3>
+                        <h3 className="text-2xl text-gray-900 font-semibold">Time, Date, Location!</h3>
                         <form className="mt-5 mb-5" onSubmit={e => { this.handleFormSubmission(e) }}>
                             {
                                 this.state.formMsg.length > 0 ?
@@ -181,7 +181,7 @@ class CreateEvents extends Component {
                             <div className="form-group">
                                 <label htmlFor="location" className="block text-xs font-semibold text-gray-600 uppercase">Location</label>
                                 <select value={this.state.location} onChange={e => { this.handleChange(e, 'location') }} className="form-control" id="location">
-                                    <option>---PLEASE SELECT---</option>
+                                    <option>---Please Select---</option>
                                     <option>Ang Mo Kio</option>
                                     <option>Bedok</option>
                                     <option>Bishan</option>
@@ -214,13 +214,13 @@ class CreateEvents extends Component {
                             <div className="flex justify-between gap-3">
                                 <span className="w-1/2">
                                     <div className="form-group">
-                                        <label htmlFor="hosted_date" className="block text-xs font-semibold text-gray-600 uppercase">Date of event</label>
+                                        <label htmlFor="hosted_date" className="block text-xs font-semibold text-gray-600 uppercase">Date</label>
                                         <input type="date" value={moment(this.state.hosted_date).format("YYYY-MM-DD")} onChange={e => { this.handleChange(e, 'hosted_date') }} className="form-control" id="hosted_date" />
                                     </div>
                                 </span>
                                 <span className="w-1/2">
                                     <div className="form-group">
-                                        <label htmlFor="hosted_time" className="block text-xs font-semibold text-gray-600 uppercase">Time of event</label>
+                                        <label htmlFor="hosted_time" className="block text-xs font-semibold text-gray-600 uppercase">Time</label>
                                         <input type="time" value={this.state.hosted_time} onChange={e => { this.handleChange(e, 'hosted_time') }} className="form-control" id="hosted_time" />
                                     </div>
                                 </span>

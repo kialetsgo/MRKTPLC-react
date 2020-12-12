@@ -192,11 +192,11 @@ class ShowOneEvents extends Component {
 
                 <div className='flex items-center'>
                   <h2 className="text-xl text-gray-800 font-medium mr-auto">Event Details</h2>
-                  <p class="text-gray-800 font-semibold tracking-tighter">No of current participants :
+                  <p class="text-gray-800 font-semibold tracking-tighter">Number of Participants :
                   <i class="text-gray-600"> </i>{this.state.users.length}</p>
                 </div>
-                <p>Contact us at : {this.state.event.contact_number}</p>
-                <p>join us at : {this.state.event.location}</p>
+                <p>Contact us at: {this.state.event.contact_number}</p>
+                <p>Join us at: {this.state.event.location}</p>
                 <hr />
 
                 <p class="text-sm text-gray-700 mt-4">
@@ -208,14 +208,14 @@ class ShowOneEvents extends Component {
 
                   {this.confirmUser() ? (
                     <button onClick={(e) => { this.handleDelete(e); }} type='button' className='bg-red-200 text-red-600 px-2 py-2 rounded-md mr-auto'>
-                      Delete Event
+                      Delete
                     </button>
                   ) : (
                       ""
                     )}
                   {this.confirmLogin() ? (
                     <button onClick={(e) => { this.joinRSVP(e); }} type='button' className='bg-green-200 text-blue-600 px-2 py-2 rounded-md mr-2'>
-                      Join Event
+                      Join
                     </button>
                   ) : (
                       ""
@@ -228,7 +228,7 @@ class ShowOneEvents extends Component {
                       type='button'
                       className='bg-blue-600 text-gray-200 px-2 py-2 rounded-md'
                     >
-                      Leave Event
+                      Leave
                     </button>
                   ) : (
                       ""
@@ -239,10 +239,10 @@ class ShowOneEvents extends Component {
 
                 {this.state.users.length > 0 ? (
                   this.state.users.map((people) => {
-                    return <p>Participant : {people}</p>;
+                    return <p>Participant: {people}</p>;
                   })
                 ) : (
-                    <p className="content-center">no participants</p>
+                    <p className="content-center">No participant yet</p>
                   )}
 
 
